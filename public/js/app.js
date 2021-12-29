@@ -3254,6 +3254,64 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Test.tsx":
+/*!*************************************!*\
+  !*** ./resources/js/Pages/Test.tsx ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var Test = function Test() {
+  return react_1["default"].createElement("div", null, "test");
+};
+
+exports["default"] = Test;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Testing.tsx":
+/*!****************************************!*\
+  !*** ./resources/js/Pages/Testing.tsx ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var Testing = function Testing(props) {
+  return react_1["default"].createElement("div", null, "test ", props && "result: ".concat(props.testingProps));
+};
+
+exports["default"] = Testing;
+
+/***/ }),
+
 /***/ "./resources/js/Components/ApplicationLogo.js":
 /*!****************************************************!*\
   !*** ./resources/js/Components/ApplicationLogo.js ***!
@@ -56818,6 +56876,10 @@ var map = {
 	"./Auth/VerifyEmail.js": "./resources/js/Pages/Auth/VerifyEmail.js",
 	"./Dashboard": "./resources/js/Pages/Dashboard.js",
 	"./Dashboard.js": "./resources/js/Pages/Dashboard.js",
+	"./Test": "./resources/js/Pages/Test.tsx",
+	"./Test.tsx": "./resources/js/Pages/Test.tsx",
+	"./Testing": "./resources/js/Pages/Testing.tsx",
+	"./Testing.tsx": "./resources/js/Pages/Testing.tsx",
 	"./Welcome": "./resources/js/Pages/Welcome.js",
 	"./Welcome.js": "./resources/js/Pages/Welcome.js"
 };
