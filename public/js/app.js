@@ -3324,16 +3324,18 @@ Object.defineProperty(exports, "__esModule", ({
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 function Button(_ref) {
-  var _ref$type = _ref.type,
-      type = _ref$type === void 0 ? "submit" : _ref$type,
+  var children = _ref.children,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? "" : _ref$className,
+      onClick = _ref.onClick,
       processing = _ref.processing,
-      children = _ref.children;
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? "button" : _ref$type;
   return react_1["default"].createElement("button", {
     type: type,
-    className: "inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ".concat(processing && "opacity-25", " ") + className,
-    disabled: processing
+    className: "inline-flex items-center px-4 py-2 bg-[color:var(--my-foreground)] border border-transparent rounded-md font-semibold text-xs text-[color:var(--my-background)] uppercase tracking-widest active:bg-[color:var(--my-foreground)] transition ease-in-out duration-150 ".concat(processing && "opacity-25", " ") + className,
+    disabled: processing,
+    onClick: onClick
   }, children);
 }
 
@@ -3551,11 +3553,19 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var Button_1 = __importDefault(__webpack_require__(/*! ./Button */ "./resources/js/Components/Button.tsx"));
 
 function Nav() {
   var _ref = (0, react_1.useState)(false),
@@ -3567,7 +3577,16 @@ function Nav() {
   (0, react_1.useEffect)(function () {
     colorTheme ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
   }, [colorTheme]);
-  return react_1["default"].createElement("div", null, react_1["default"].createElement("button", {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement(Button_1["default"], {
+    type: "button",
+    onClick: function onClick() {
+      return setColorTheme(function (prevState) {
+        return !prevState;
+      });
+    },
+    className: "",
+    processing: false
+  }, "Nowy"), react_1["default"].createElement("button", {
     onClick: function onClick() {
       return setColorTheme(function (prevState) {
         return !prevState;

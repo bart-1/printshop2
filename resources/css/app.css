@@ -2,11 +2,23 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-html[data-theme="light"] {
-    background-color: #a2c4c8;
-    color: #222222;
+:root {
+    --my-foreground: #222222;
+    --my-background: #a2c4c8;
+    --my-test: red;
 }
+
+html[data-theme="light"] {
+    --my-background: #a2c4c8;
+    --my-foreground: #222222;
+}
+
 html[data-theme="dark"] {
-    background-color: #222222;
-    color: #a2c4c8;
+    --my-background: #222222;
+    --my-foreground: #a2c4c8;
+}
+
+body {
+    background-color: var(--my-background);
+    color: var(--my-foreground);
 }

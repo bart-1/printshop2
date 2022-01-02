@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react'
-
+import React, { useEffect, useState } from "react";
+import Button from "./Button";
 function Nav() {
-
     const [colorTheme, setColorTheme] = useState(false);
 
     //switch for light/dark theme in DOM
@@ -12,9 +11,18 @@ function Nav() {
     }, [colorTheme]);
     return (
         <div>
-            <button onClick={()=>setColorTheme(prevState => !prevState)}>dark/light</button>
-    </div>
-)
+            <Button
+                type="button"
+                onClick={() => setColorTheme((prevState) => !prevState)}
+                className=""
+                processing={false}
+            >Nowy</Button>
+
+            <button onClick={() => setColorTheme((prevState) => !prevState)}>
+                dark/light
+            </button>
+        </div>
+    );
 }
 
 export default Nav;

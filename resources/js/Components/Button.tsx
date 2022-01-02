@@ -1,27 +1,30 @@
-import React, { ReactNode } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 
 export type ButtonType = {
-    type: "submit" | "button" | "reset" | undefined;
+    children?: ReactNode | ReactNode[] | undefined;
     className: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     processing: boolean;
-    children: ReactNode | ReactNode[] | undefined;
+    type: "submit" | "button" | "reset" | undefined;
 };
 
 function Button({
-    type = "submit",
-    className = "",
-    processing,
     children,
+    className = "",
+    onClick,
+    processing,
+    type = "button",
 }: ButtonType) {
     return (
         <button
             type={type}
             className={
-                `inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ${
+                `inline-flex items-center px-4 py-2 bg-[color:var(--my-foreground)] border border-transparent rounded-md font-semibold text-xs text-[color:var(--my-background)] uppercase tracking-widest active:bg-[color:var(--my-foreground)] transition ease-in-out duration-150 ${
                     processing && "opacity-25"
                 } ` + className
             }
             disabled={processing}
+            onClick={onClick}
         >
             {children}
         </button>
