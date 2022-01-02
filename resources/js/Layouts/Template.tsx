@@ -1,17 +1,19 @@
 import React, { ReactNode, FC } from "react";
 import Header from "../Components/Header";
+import Nav from "../Components/Nav";
 
-type TemplateProps = {
+export type TemplateProps = {
     auth: boolean;
     children: ReactNode | ReactNode[];
 };
 
 const Template = ({ auth, children }: TemplateProps) => {
     return (
-        <>
-            <Header auth={ auth}/>
+        <div className="container m-auto h-screen p-2">
+            <Nav />
+            <Header auth={auth} />
             {children}
-        </>
+        </div>
     );
 };
 
