@@ -23,11 +23,32 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
-Route::get('/testing', function () {
-    return Inertia::render('Testing', [
+Route::get('/admin-tools', function () {
+    return Inertia::render('AdminTools', [
     'testingProps' => PHP_VERSION]);
 });
+
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact', [
+        'testingProps' => PHP_VERSION]);
+});
+
+Route::get('/creator', function () {
+    return Inertia::render('Creator', [
+            'testingProps' => PHP_VERSION]);
+});
+
+Route::get('/hello', function () {
+    return Inertia::render('Hello', [
+            'testingProps' => PHP_VERSION]);
+});
+
+Route::get('/printshop', function () {
+    return Inertia::render('Printshop', [
+    'testingProps' => PHP_VERSION]);
+});
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
