@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { ReactNode } from "react";
 
-export default function Button({ type = 'submit', className = '', processing, children }) {
+export type ButtonType = {
+    type: "submit" | "button" | "reset" | undefined;
+    className: string;
+    processing: boolean;
+    children: ReactNode | ReactNode[] | undefined;
+};
+
+function Button({
+    type = "submit",
+    className = "",
+    processing,
+    children,
+}: ButtonType) {
     return (
         <button
             type={type}
             className={
                 `inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ${
-                    processing && 'opacity-25'
+                    processing && "opacity-25"
                 } ` + className
             }
             disabled={processing}
@@ -15,3 +27,5 @@ export default function Button({ type = 'submit', className = '', processing, ch
         </button>
     );
 }
+
+export default Button;

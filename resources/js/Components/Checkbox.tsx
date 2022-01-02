@@ -1,6 +1,12 @@
-import React from 'react';
+import React from "react";
 
-export default function Checkbox({ name, value, handleChange }) {
+export type CheckboxType = {
+    name: string;
+    value: string | number | readonly string[] | undefined;
+    handleChange: CallableFunction;
+};
+
+function Checkbox({ name, value, handleChange }: CheckboxType) {
     return (
         <input
             type="checkbox"
@@ -11,3 +17,5 @@ export default function Checkbox({ name, value, handleChange }) {
         />
     );
 }
+
+export default Checkbox;

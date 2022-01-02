@@ -1,19 +1,30 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-export default function Input({
-    type = 'text',
-    name,
-    value,
-    className,
+export type InputType = {
+    autoComplete: string | undefined;
+    className: string;
+    handleChange: CallableFunction;
+    isFocused: boolean;
+    name: string;
+    required: boolean;
+    type: string;
+    value: string;
+};
+
+function Input({
     autoComplete,
-    required,
-    isFocused,
+    className,
     handleChange,
-}) {
-    const input = useRef();
+    isFocused,
+    name,
+    required,
+    type = "text",
+    value,
+}: InputType) {
+    const input = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (isFocused) {
+        if (isFocused && input.current) {
             input.current.focus();
         }
     }, []);
@@ -36,3 +47,5 @@ export default function Input({
         </div>
     );
 }
+
+export default Input;
