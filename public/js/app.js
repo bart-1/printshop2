@@ -3516,52 +3516,6 @@ exports["default"] = Input;
 "use strict";
 
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -3572,11 +3526,13 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var Button_1 = __importDefault(__webpack_require__(/*! ./Button */ "./resources/js/Components/Button.tsx"));
 
 var NavLink_1 = __importDefault(__webpack_require__(/*! ./NavLink */ "./resources/js/Components/NavLink.tsx"));
+
+var ThemeContext_1 = __webpack_require__(/*! ./ThemeContext */ "./resources/js/Components/ThemeContext.tsx");
 
 var Nav = function Nav(_ref) {
   var navRoutes = _ref.navRoutes;
@@ -3584,14 +3540,16 @@ var Nav = function Nav(_ref) {
   /**
    * switch CSS light / dark theme with HTML tag attributes
    */
-  var _ref2 = (0, react_1.useState)(false),
-      _ref3 = _slicedToArray(_ref2, 2),
-      colorTheme = _ref3[0],
-      setColorTheme = _ref3[1];
+  // const [colorTheme, setColorTheme] = useState(false);
+  // useEffect(() => {
+  //     colorTheme
+  //         ? document.documentElement.setAttribute("data-theme", "dark")
+  //         : document.documentElement.setAttribute("data-theme", "light");
+  // }, [colorTheme]);
+  var _ref2 = (0, ThemeContext_1.useThemeContext)(),
+      colorTheme = _ref2.colorTheme,
+      setColorTheme = _ref2.setColorTheme;
 
-  (0, react_1.useEffect)(function () {
-    colorTheme ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
-  }, [colorTheme]);
   var navButtonFactory = navRoutes === null || navRoutes === void 0 ? void 0 : navRoutes.map(function (route, index) {
     return react_1["default"].createElement(NavLink_1["default"], {
       key: index,
@@ -3609,9 +3567,7 @@ var Nav = function Nav(_ref) {
   return react_1["default"].createElement("div", null, react_1["default"].createElement(Button_1["default"], {
     type: "button",
     onClick: function onClick() {
-      return setColorTheme(function (prevState) {
-        return !prevState;
-      });
+      return setColorTheme(!colorTheme);
     },
     className: "mr-5",
     processing: false
@@ -3659,10 +3615,10 @@ exports["default"] = NavLink;
 
 /***/ }),
 
-/***/ "./resources/js/Layouts/Template.tsx":
-/*!*******************************************!*\
-  !*** ./resources/js/Layouts/Template.tsx ***!
-  \*******************************************/
+/***/ "./resources/js/Components/ThemeContext.tsx":
+/*!**************************************************!*\
+  !*** ./resources/js/Components/ThemeContext.tsx ***!
+  \**************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -3714,6 +3670,55 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.useThemeContext = exports.ThemeContext = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+exports.ThemeContext = (0, react_1.createContext)({
+  colorTheme: false,
+  setColorTheme: function setColorTheme() {}
+});
+
+var ThemeProvider = function ThemeProvider(_ref) {
+  var children = _ref.children;
+
+  var _ref2 = (0, react_1.useState)(false),
+      _ref3 = _slicedToArray(_ref2, 2),
+      colorTheme = _ref3[0],
+      setColorTheme = _ref3[1];
+
+  (0, react_1.useEffect)(function () {
+    colorTheme ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
+  }, [colorTheme]);
+  return react_1["default"].createElement(exports.ThemeContext.Provider, {
+    value: {
+      colorTheme: colorTheme,
+      setColorTheme: setColorTheme
+    }
+  }, children);
+};
+
+var useThemeContext = function useThemeContext() {
+  return (0, react_1.useContext)(exports.ThemeContext);
+};
+
+exports.useThemeContext = useThemeContext;
+exports["default"] = ThemeProvider;
+
+/***/ }),
+
+/***/ "./resources/js/Layouts/Template.tsx":
+/*!*******************************************!*\
+  !*** ./resources/js/Layouts/Template.tsx ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -3724,7 +3729,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var Header_1 = __importDefault(__webpack_require__(/*! ../Components/Header */ "./resources/js/Components/Header.tsx"));
 
@@ -3734,22 +3739,16 @@ var Template = function Template(_ref) {
   var navRoutes = _ref.navRoutes,
       auth = _ref.auth,
       children = _ref.children;
+  return (// <ThemeProvider>
+    react_1["default"].createElement("div", {
+      className: "container m-auto h-screen p-2"
+    }, react_1["default"].createElement(Header_1["default"], {
+      auth: auth
+    }), react_1["default"].createElement(Nav_1["default"], {
+      navRoutes: navRoutes
+    }), children) // </ThemeProvider>
 
-  var _ref2 = (0, react_1.useState)(false),
-      _ref3 = _slicedToArray(_ref2, 2),
-      colorTheme = _ref3[0],
-      setColorTheme = _ref3[1];
-
-  (0, react_1.useEffect)(function () {
-    colorTheme ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
-  }, [colorTheme]);
-  return react_1["default"].createElement("div", {
-    className: "container m-auto h-screen p-2"
-  }, react_1["default"].createElement(Header_1["default"], {
-    auth: auth
-  }), react_1["default"].createElement(Nav_1["default"], {
-    navRoutes: navRoutes
-  }), children);
+  );
 };
 
 exports["default"] = Template;
@@ -5450,7 +5449,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Components_ThemeContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/ThemeContext */ "./resources/js/Components/ThemeContext.tsx");
+/* harmony import */ var _Components_ThemeContext__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_Components_ThemeContext__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _window$document$getE;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -5460,6 +5461,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -5478,7 +5480,9 @@ var appName = ((_window$document$getE = window.document.getElementsByTagName("ti
     var el = _ref.el,
         App = _ref.App,
         props = _ref.props;
-    return (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(App, _objectSpread({}, props)), el);
+    return (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)((_Components_ThemeContext__WEBPACK_IMPORTED_MODULE_4___default()), {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(App, _objectSpread({}, props))
+    }), el);
   }
 });
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init({
