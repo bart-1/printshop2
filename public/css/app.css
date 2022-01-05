@@ -692,6 +692,9 @@ select {
 .mt-1 {
   margin-top: 0.25rem;
 }
+.mr-5 {
+  margin-right: 1.25rem;
+}
 .block {
   display: block;
 }
@@ -901,8 +904,8 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
-.bg-\[color\:var\(--my-test\)\] {
-  background-color: var(--my-test);
+.bg-\[color\:var\(--my-foreground\)\] {
+  background-color: var(--my-foreground);
 }
 .bg-indigo-50 {
   --tw-bg-opacity: 1;
@@ -915,9 +918,6 @@ select {
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
-}
-.bg-\[color\:var\(--my-foreground\)\] {
-  background-color: var(--my-foreground);
 }
 .fill-current {
   fill: currentColor;
@@ -1086,6 +1086,9 @@ select {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
+.text-\[color\:var\(--my-background\)\] {
+  color: var(--my-background);
+}
 .text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
@@ -1105,9 +1108,6 @@ select {
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
-}
-.text-\[color\:var\(--my-background\)\] {
-  color: var(--my-background);
 }
 .underline {
   -webkit-text-decoration-line: underline;

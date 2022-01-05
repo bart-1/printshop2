@@ -20,33 +20,33 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'phpVersion' => PHPxx_VERSION,
     ]);
 });
 Route::get('/admin-tools', function () {
     return Inertia::render('AdminTools', [
-    'testingProps' => PHP_VERSION]);
+    'navRoutes' => ['start', 'printshop', 'creator', 'contact']]);
 });
 
 
 Route::get('/contact', function () {
     return Inertia::render('Contact', [
-        'testingProps' => PHP_VERSION]);
+        'navRoutes' => ['start', 'printshop', 'creator']]);
 });
 
 Route::get('/creator', function () {
     return Inertia::render('Creator', [
-            'testingProps' => PHP_VERSION]);
+            'navRoutes' => ['start', 'printshop', 'contact']]);
 });
 
-Route::get('/hello', function () {
-    return Inertia::render('Hello', [
-            'testingProps' => PHP_VERSION]);
+Route::get('/start', function () {
+    return Inertia::render('Start', [
+            'navRoutes' => [ 'printshop', 'creator', 'contact']]);
 });
 
 Route::get('/printshop', function () {
     return Inertia::render('Printshop', [
-    'testingProps' => PHP_VERSION]);
+    'navRoutes' => ['start', 'creator', 'contact']]);
 });
 
 

@@ -3275,25 +3275,29 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var styles = {
-  fil0: {
-    fill: "black"
-  }
-};
-
 function ApplicationLogo(_ref) {
-  var className = _ref.className;
+  var className = _ref.className,
+      _ref$fillColor = _ref.fillColor,
+      fillColor = _ref$fillColor === void 0 ? "black" : _ref$fillColor,
+      _ref$height = _ref.height,
+      height = _ref$height === void 0 ? 38 : _ref$height,
+      _ref$width = _ref.width,
+      width = _ref$width === void 0 ? 90 : _ref$width;
   return react_1["default"].createElement("svg", {
-    width: "90",
-    height: "38",
+    width: width,
+    height: height,
     viewBox: "0 0 90 38",
     xmlns: "http://www.w3.org/2000/svg",
     className: className
   }, react_1["default"].createElement("g", null, react_1["default"].createElement("path", {
-    // style={styles.fil0}
+    style: {
+      fill: fillColor
+    },
     d: "M 19.103516,0 A 19.103794,18.999977 0 0 0 0,19 19.103794,18.999977 0 0 0 19.103516,38 19.103794,18.999977 0 0 0 38.017578,21.660156 c -0.123274,0.542238 -0.284824,1.067457 -0.488281,1.572266 -0.519162,1.28846 -1.253037,2.397882 -2.199219,3.324219 -0.945838,0.926337 -2.084526,1.650747 -3.414062,2.171875 -1.329193,0.521129 -2.805377,0.78125 -4.425782,0.78125 h -8.121093 v -7.552735 a 9.8864288,9.832715 0 0 1 -9.416016,6.875 A 9.8864288,9.832715 0 0 1 0.06640625,19 9.8864288,9.832715 0 0 1 9.953125,9.1679688 9.8864288,9.832715 0 0 1 19.369141,16.011719 V 8.5058594 h 8.121093 c 1.620405,0 3.096589,0.2601212 4.425782,0.78125 1.329536,0.5211287 2.468224,1.2446576 3.414062,2.1757816 0.946182,0.931466 1.680057,2.040546 2.199219,3.324218 0.204473,0.505443 0.366746,1.031264 0.490234,1.574219 A 19.103794,18.999977 0 0 0 19.103516,0 Z M 38.019531,16.361328 A 19.103794,18.999977 0 0 1 38.207031,19 19.103794,18.999977 0 0 1 38.017578,21.660156 c 0.191284,-0.841388 0.28711,-1.72713 0.28711,-2.660156 -10e-7,-0.924222 -0.0951,-1.80305 -0.285157,-2.638672 z m -18.65039,-0.349609 v 5.945312 A 9.8864288,9.832715 0 0 0 19.839844,19 9.8864288,9.832715 0 0 0 19.369141,16.011719 Z m 4.394531,-4.105469 v 14.201172 h 3.726562 c 0.989502,0 1.879007,-0.162845 2.660157,-0.486328 0.78115,-0.323141 1.439192,-0.791527 1.982421,-1.404297 0.543574,-0.612771 0.960742,-1.356252 1.251954,-2.234375 0.291212,-0.878464 0.4375,-1.872801 0.4375,-2.982422 0,-1.100047 -0.146288,-2.088675 -0.4375,-2.966797 -0.291212,-0.878464 -0.70838,-1.622485 -1.251954,-2.230469 -0.543229,-0.607984 -1.201271,-1.07637 -1.982421,-1.404296 -0.78115,-0.328273 -1.670655,-0.492188 -2.660157,-0.492188 z"
   }), react_1["default"].createElement("path", {
-    // style={styles.fil0}
+    style: {
+      fill: fillColor
+    },
     d: "m 43.151949,11.906777 v 5.399701 h 7.044789 v 3.286121 h -7.044789 v 5.515279 h 9.053362 v 3.401699 H 38.756605 V 8.5050787 H 52.205311 V 11.906777 Z M 71.184986,8.5050787 62.684823,29.509577 H 58.726126 L 50.225963,8.5050787 h 3.522395 c 0.378197,0 0.688663,0.086855 0.926584,0.2653517 0.237577,0.1784968 0.412235,0.4103376 0.528789,0.690051 l 4.570346,12.1018816 c 0.174658,0.453423 0.349317,0.945828 0.519162,1.481319 0.169845,0.53549 0.324906,1.100047 0.47034,1.688881 0.126181,-0.588834 0.267145,-1.153391 0.417393,-1.688881 0.150248,-0.535491 0.310466,-1.027896 0.485124,-1.481319 L 66.207218,9.4604814 c 0.09696,-0.2410733 0.271615,-0.4633395 0.519162,-0.6609854 0.247548,-0.1979879 0.5532,-0.2944173 0.921771,-0.2944173 z m -2.37233,10.5962843 h 7.684975 v 3.271759 h -7.684975 z m 21.687225,7.469512 v 2.938702 H 78.651982 v -2.938702 h 4.191805 V 15.077319 c 0,-0.25099 0.0048,-0.506767 0.01444,-0.767331 0.01,-0.260564 0.02441,-0.525916 0.04367,-0.796397 l -2.765313,2.28729 c -0.193912,0.144986 -0.383354,0.236628 -0.56764,0.275268 -0.184285,0.0383 -0.358944,0.0383 -0.523975,0.0048 -0.165032,-0.03385 -0.310466,-0.09164 -0.436647,-0.17371 -0.12618,-0.08207 -0.223136,-0.164135 -0.291212,-0.25099 l -1.266274,-1.693668 6.49159,-5.4718521 h 3.304072 V 26.570875 Z"
   })));
 }
@@ -3372,7 +3376,7 @@ function Checkbox(_ref) {
     type: "checkbox",
     name: name,
     value: value,
-    className: "rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
+    className: "rounded border-gray-300 text-indigo-600 shadow-sm\n            focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
     onChange: function onChange(e) {
       return handleChange(e);
     }
@@ -3404,9 +3408,14 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var ApplicationLogo_1 = __importDefault(__webpack_require__(/*! ./ApplicationLogo */ "./resources/js/Components/ApplicationLogo.tsx"));
+
 var Header = function Header(_ref) {
   var auth = _ref.auth;
-  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", null, "LOGO"), react_1["default"].createElement("div", null, auth ? "hello user" : "hello unknown user"));
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(ApplicationLogo_1["default"], {
+    className: "",
+    fillColor: "var(--my-foreground)"
+  }), react_1["default"].createElement("div", null, auth ? "hello user" : "hello unknown user"));
 };
 
 exports["default"] = Header;
@@ -3567,16 +3576,36 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var Button_1 = __importDefault(__webpack_require__(/*! ./Button */ "./resources/js/Components/Button.tsx"));
 
-function Nav() {
-  var _ref = (0, react_1.useState)(false),
-      _ref2 = _slicedToArray(_ref, 2),
-      colorTheme = _ref2[0],
-      setColorTheme = _ref2[1]; //switch for light/dark theme in DOM
+var NavLink_1 = __importDefault(__webpack_require__(/*! ./NavLink */ "./resources/js/Components/NavLink.tsx"));
 
+var Nav = function Nav(_ref) {
+  var navRoutes = _ref.navRoutes;
+
+  /**
+   * switch CSS light / dark theme with HTML tag attributes
+   */
+  var _ref2 = (0, react_1.useState)(false),
+      _ref3 = _slicedToArray(_ref2, 2),
+      colorTheme = _ref3[0],
+      setColorTheme = _ref3[1];
 
   (0, react_1.useEffect)(function () {
     colorTheme ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
   }, [colorTheme]);
+  var navButtonFactory = navRoutes === null || navRoutes === void 0 ? void 0 : navRoutes.map(function (route, index) {
+    return react_1["default"].createElement(NavLink_1["default"], {
+      key: index,
+      href: "/" + route,
+      active: true
+    }, react_1["default"].createElement(Button_1["default"], {
+      type: "button",
+      onClick: function onClick() {
+        return null;
+      },
+      className: "",
+      processing: false
+    }, route));
+  });
   return react_1["default"].createElement("div", null, react_1["default"].createElement(Button_1["default"], {
     type: "button",
     onClick: function onClick() {
@@ -3584,24 +3613,152 @@ function Nav() {
         return !prevState;
       });
     },
-    className: "",
+    className: "mr-5",
     processing: false
-  }, "Nowy"), react_1["default"].createElement("button", {
-    onClick: function onClick() {
-      return setColorTheme(function (prevState) {
-        return !prevState;
-      });
-    }
-  }, "dark/light"));
-}
+  }, colorTheme ? "light" : "dark"), navButtonFactory);
+};
 
 exports["default"] = Nav;
+
+/***/ }),
+
+/***/ "./resources/js/Components/NavLink.tsx":
+/*!*********************************************!*\
+  !*** ./resources/js/Components/NavLink.tsx ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+var NavLink = function NavLink(_ref) {
+  var href = _ref.href,
+      active = _ref.active,
+      children = _ref.children;
+  return react_1["default"].createElement(inertia_react_1.Link, {
+    href: href,
+    className: active ? "inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out" : "inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+  }, children);
+};
+
+exports["default"] = NavLink;
 
 /***/ }),
 
 /***/ "./resources/js/Layouts/Template.tsx":
 /*!*******************************************!*\
   !*** ./resources/js/Layouts/Template.tsx ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var Header_1 = __importDefault(__webpack_require__(/*! ../Components/Header */ "./resources/js/Components/Header.tsx"));
+
+var Nav_1 = __importDefault(__webpack_require__(/*! ../Components/Nav */ "./resources/js/Components/Nav.tsx"));
+
+var Template = function Template(_ref) {
+  var navRoutes = _ref.navRoutes,
+      auth = _ref.auth,
+      children = _ref.children;
+
+  var _ref2 = (0, react_1.useState)(false),
+      _ref3 = _slicedToArray(_ref2, 2),
+      colorTheme = _ref3[0],
+      setColorTheme = _ref3[1];
+
+  (0, react_1.useEffect)(function () {
+    colorTheme ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
+  }, [colorTheme]);
+  return react_1["default"].createElement("div", {
+    className: "container m-auto h-screen p-2"
+  }, react_1["default"].createElement(Header_1["default"], {
+    auth: auth
+  }), react_1["default"].createElement(Nav_1["default"], {
+    navRoutes: navRoutes
+  }), children);
+};
+
+exports["default"] = Template;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools.tsx":
+/*!*******************************************!*\
+  !*** ./resources/js/Pages/AdminTools.tsx ***!
   \*******************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -3620,101 +3777,12 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var Header_1 = __importDefault(__webpack_require__(/*! ../Components/Header */ "./resources/js/Components/Header.tsx"));
-
-var Nav_1 = __importDefault(__webpack_require__(/*! ../Components/Nav */ "./resources/js/Components/Nav.tsx"));
-
-var Template = function Template(_ref) {
-  var auth = _ref.auth,
-      children = _ref.children;
-  return react_1["default"].createElement("div", {
-    className: "container m-auto h-screen p-2"
-  }, react_1["default"].createElement(Nav_1["default"], null), react_1["default"].createElement(Header_1["default"], {
-    auth: auth
-  }), children);
-};
-
-exports["default"] = Template;
-
-/***/ }),
-
-/***/ "./resources/js/Pages/AdminTools.tsx":
-/*!*******************************************!*\
-  !*** ./resources/js/Pages/AdminTools.tsx ***!
-  \*******************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
-var AdminTools = function AdminTools() {
-  var _ref = (0, react_1.useState)(false),
-      _ref2 = _slicedToArray(_ref, 2),
-      isAuth = _ref2[0],
-      setIsAuth = _ref2[1];
-
+var AdminTools = function AdminTools(_ref) {
+  var navRoutes = _ref.navRoutes;
   return react_1["default"].createElement(Template_1["default"], {
-    auth: isAuth
+    navRoutes: navRoutes
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body ADM"));
@@ -3733,52 +3801,6 @@ exports["default"] = AdminTools;
 "use strict";
 
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -3789,18 +3811,16 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
-var Contact = function Contact() {
-  var _ref = (0, react_1.useState)(false),
-      _ref2 = _slicedToArray(_ref, 2),
-      isAuth = _ref2[0],
-      setIsAuth = _ref2[1];
-
+var Contact = function Contact(_ref) {
+  var auth = _ref.auth,
+      errors = _ref.errors,
+      navRoutes = _ref.navRoutes;
   return react_1["default"].createElement(Template_1["default"], {
-    auth: isAuth
+    navRoutes: navRoutes
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body"));
@@ -3819,51 +3839,41 @@ exports["default"] = Contact;
 "use strict";
 
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
 };
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
+
+var Creator = function Creator(_ref) {
+  var navRoutes = _ref.navRoutes;
+  return react_1["default"].createElement(Template_1["default"], {
+    navRoutes: navRoutes
+  }, react_1["default"].createElement("div", {
+    className: "bg-blue-500 justify-center"
+  }, "this is body"));
+};
+
+exports["default"] = Creator;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Printshop.tsx":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/Printshop.tsx ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
 
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
@@ -3875,30 +3885,26 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
-var Creator = function Creator() {
-  var _ref = (0, react_1.useState)(false),
-      _ref2 = _slicedToArray(_ref, 2),
-      isAuth = _ref2[0],
-      setIsAuth = _ref2[1];
-
+var Printshop = function Printshop(_ref) {
+  var navRoutes = _ref.navRoutes;
   return react_1["default"].createElement(Template_1["default"], {
-    auth: isAuth
+    navRoutes: navRoutes
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body"));
 };
 
-exports["default"] = Creator;
+exports["default"] = Printshop;
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Hello.tsx":
+/***/ "./resources/js/Pages/Start.tsx":
 /*!**************************************!*\
-  !*** ./resources/js/Pages/Hello.tsx ***!
+  !*** ./resources/js/Pages/Start.tsx ***!
   \**************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -3965,14 +3971,16 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
-var Hello = function Hello() {
-  var _ref = (0, react_1.useState)(false),
-      _ref2 = _slicedToArray(_ref, 2),
-      isAuth = _ref2[0],
-      setIsAuth = _ref2[1];
+var Start = function Start(_ref) {
+  var navRoutes = _ref.navRoutes;
+
+  var _ref2 = (0, react_1.useState)(false),
+      _ref3 = _slicedToArray(_ref2, 2),
+      isAuth = _ref3[0],
+      setIsAuth = _ref3[1];
 
   return react_1["default"].createElement(Template_1["default"], {
-    auth: isAuth
+    navRoutes: navRoutes
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body"), react_1["default"].createElement("button", {
@@ -3985,93 +3993,7 @@ var Hello = function Hello() {
   }, "AUTH"));
 };
 
-exports["default"] = Hello;
-
-/***/ }),
-
-/***/ "./resources/js/Pages/Printshop.tsx":
-/*!******************************************!*\
-  !*** ./resources/js/Pages/Printshop.tsx ***!
-  \******************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
-
-var Printshop = function Printshop() {
-  var _ref = (0, react_1.useState)(false),
-      _ref2 = _slicedToArray(_ref, 2),
-      isAuth = _ref2[0],
-      setIsAuth = _ref2[1];
-
-  return react_1["default"].createElement(Template_1["default"], {
-    auth: isAuth
-  }, react_1["default"].createElement("div", {
-    className: "bg-blue-500 justify-center"
-  }, "this is body"));
-};
-
-exports["default"] = Printshop;
+exports["default"] = Start;
 
 /***/ }),
 
@@ -4262,36 +4184,6 @@ function Label(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/Components/NavLink.js":
-/*!********************************************!*\
-  !*** ./resources/js/Components/NavLink.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ NavLink)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-function NavLink(_ref) {
-  var href = _ref.href,
-      active = _ref.active,
-      children = _ref.children;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
-    href: href,
-    className: active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out',
-    children: children
-  });
-}
-
-/***/ }),
-
 /***/ "./resources/js/Components/ResponsiveNavLink.js":
 /*!******************************************************!*\
   !*** ./resources/js/Components/ResponsiveNavLink.js ***!
@@ -4380,7 +4272,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_ApplicationLogo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/ApplicationLogo */ "./resources/js/Components/ApplicationLogo.tsx");
 /* harmony import */ var _Components_ApplicationLogo__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Components_ApplicationLogo__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Components_Dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Dropdown */ "./resources/js/Components/Dropdown.js");
-/* harmony import */ var _Components_NavLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/NavLink */ "./resources/js/Components/NavLink.js");
+/* harmony import */ var _Components_NavLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/NavLink */ "./resources/js/Components/NavLink.tsx");
+/* harmony import */ var _Components_NavLink__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Components_NavLink__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _Components_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/ResponsiveNavLink */ "./resources/js/Components/ResponsiveNavLink.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -4434,7 +4327,7 @@ function Authenticated(_ref) {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
               className: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_NavLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((_Components_NavLink__WEBPACK_IMPORTED_MODULE_3___default()), {
                 href: route('dashboard'),
                 active: route().current('dashboard'),
                 children: "Dashboard"
@@ -57516,10 +57409,10 @@ var map = {
 	"./Creator.tsx": "./resources/js/Pages/Creator.tsx",
 	"./Dashboard": "./resources/js/Pages/Dashboard.js",
 	"./Dashboard.js": "./resources/js/Pages/Dashboard.js",
-	"./Hello": "./resources/js/Pages/Hello.tsx",
-	"./Hello.tsx": "./resources/js/Pages/Hello.tsx",
 	"./Printshop": "./resources/js/Pages/Printshop.tsx",
 	"./Printshop.tsx": "./resources/js/Pages/Printshop.tsx",
+	"./Start": "./resources/js/Pages/Start.tsx",
+	"./Start.tsx": "./resources/js/Pages/Start.tsx",
 	"./Welcome": "./resources/js/Pages/Welcome.js",
 	"./Welcome.js": "./resources/js/Pages/Welcome.js"
 };

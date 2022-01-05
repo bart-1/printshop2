@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import Template from "../Layouts/Template";
+import React, { FC } from "react";
+import Template, { RouteProps } from "../Layouts/Template";
 
-const Printshop = () => {
-    const [isAuth, setIsAuth] = useState(false);
+const Printshop: FC<RouteProps> = ({ navRoutes }) => {
     return (
-        <Template auth={isAuth}>
+        <Template navRoutes={navRoutes}>
             <div className="bg-blue-500 justify-center">this is body</div>
-
-
         </Template>
     );
 };

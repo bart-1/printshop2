@@ -1,17 +1,14 @@
-import React, {FC} from 'react'
+import React, { FC } from "react";
+import ApplicationLogo from "./ApplicationLogo";
+import { RouteProps } from "../Layouts/Template";
 
-interface HeaderProps {
-    props?: {};
-    auth: boolean;
-}
-
-const Header: FC<HeaderProps> = ({ auth }) => {
+const Header: FC<RouteProps> = ({ auth }) => {
     return (
         <>
-            <div>LOGO</div>
-            <div>{ auth ? `hello user`: `hello unknown user`}</div>
+            <ApplicationLogo className="" fillColor={`var(--my-foreground)`} />
+            <div>{auth ? `hello user` : `hello unknown user`}</div>
         </>
-     );
-}
+    );
+};
 
 export default Header;
