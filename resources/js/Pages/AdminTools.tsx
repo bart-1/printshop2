@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import Template, { RouteProps } from "../Layouts/Template";
 
-const AdminTools: FC<RouteProps> = ({ navRoutes }) => {
+const AdminTools: FC<RouteProps> = ({ navRoutes, title }) => {
     return (
-        <Template navRoutes={navRoutes}>
+        <Template navRoutes={navRoutes} title={title}>
             <div className="bg-blue-500 justify-center">this is body ADM</div>
         </Template>
     );

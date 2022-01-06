@@ -3411,11 +3411,14 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 var ApplicationLogo_1 = __importDefault(__webpack_require__(/*! ./ApplicationLogo */ "./resources/js/Components/ApplicationLogo.tsx"));
 
 var Header = function Header(_ref) {
-  var auth = _ref.auth;
-  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(ApplicationLogo_1["default"], {
+  var auth = _ref.auth,
+      title = _ref.title;
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "flex flex-row text-7xl"
+  }, react_1["default"].createElement(ApplicationLogo_1["default"], {
     className: "",
     fillColor: "var(--my-foreground)"
-  }), react_1["default"].createElement("div", null, auth ? "hello user" : "hello unknown user"));
+  }), react_1["default"].createElement("div", null, title)), react_1["default"].createElement("div", null, auth ? "hello user" : "hello unknown user"));
 };
 
 exports["default"] = Header;
@@ -3736,14 +3739,16 @@ var Header_1 = __importDefault(__webpack_require__(/*! ../Components/Header */ "
 var Nav_1 = __importDefault(__webpack_require__(/*! ../Components/Nav */ "./resources/js/Components/Nav.tsx"));
 
 var Template = function Template(_ref) {
-  var navRoutes = _ref.navRoutes,
-      auth = _ref.auth,
-      children = _ref.children;
+  var auth = _ref.auth,
+      children = _ref.children,
+      navRoutes = _ref.navRoutes,
+      title = _ref.title;
   return (// <ThemeProvider>
     react_1["default"].createElement("div", {
       className: "container m-auto h-screen p-2"
     }, react_1["default"].createElement(Header_1["default"], {
-      auth: auth
+      auth: auth,
+      title: title
     }), react_1["default"].createElement(Nav_1["default"], {
       navRoutes: navRoutes
     }), children) // </ThemeProvider>
@@ -3779,9 +3784,11 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
 var AdminTools = function AdminTools(_ref) {
-  var navRoutes = _ref.navRoutes;
+  var navRoutes = _ref.navRoutes,
+      title = _ref.title;
   return react_1["default"].createElement(Template_1["default"], {
-    navRoutes: navRoutes
+    navRoutes: navRoutes,
+    title: title
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body ADM"));
@@ -3817,9 +3824,11 @@ var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ 
 var Contact = function Contact(_ref) {
   var auth = _ref.auth,
       errors = _ref.errors,
-      navRoutes = _ref.navRoutes;
+      navRoutes = _ref.navRoutes,
+      title = _ref.title;
   return react_1["default"].createElement(Template_1["default"], {
-    navRoutes: navRoutes
+    navRoutes: navRoutes,
+    title: title
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body"));
@@ -3853,9 +3862,11 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
 var Creator = function Creator(_ref) {
-  var navRoutes = _ref.navRoutes;
+  var navRoutes = _ref.navRoutes,
+      title = _ref.title;
   return react_1["default"].createElement(Template_1["default"], {
-    navRoutes: navRoutes
+    navRoutes: navRoutes,
+    title: title
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body"));
@@ -3889,9 +3900,11 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
 var Printshop = function Printshop(_ref) {
-  var navRoutes = _ref.navRoutes;
+  var navRoutes = _ref.navRoutes,
+      title = _ref.title;
   return react_1["default"].createElement(Template_1["default"], {
-    navRoutes: navRoutes
+    navRoutes: navRoutes,
+    title: title
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body"));
@@ -3971,7 +3984,8 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
 var Start = function Start(_ref) {
-  var navRoutes = _ref.navRoutes;
+  var navRoutes = _ref.navRoutes,
+      title = _ref.title;
 
   var _ref2 = (0, react_1.useState)(false),
       _ref3 = _slicedToArray(_ref2, 2),
@@ -3979,7 +3993,8 @@ var Start = function Start(_ref) {
       setIsAuth = _ref3[1];
 
   return react_1["default"].createElement(Template_1["default"], {
-    navRoutes: navRoutes
+    navRoutes: navRoutes,
+    title: title
   }, react_1["default"].createElement("div", {
     className: "bg-blue-500 justify-center"
   }, "this is body"), react_1["default"].createElement("button", {
@@ -5479,7 +5494,8 @@ var appName = ((_window$document$getE = window.document.getElementsByTagName("ti
   setup: function setup(_ref) {
     var el = _ref.el,
         App = _ref.App,
-        props = _ref.props;
+        props = _ref.props,
+        name = _ref.name;
     return (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)((_Components_ThemeContext__WEBPACK_IMPORTED_MODULE_4___default()), {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(App, _objectSpread({}, props))
     }), el);

@@ -5,20 +5,20 @@ import Nav from "../Components/Nav";
 
 export interface RouteProps {
     auth?: { user: string | null };
+    children?: ReactNode | ReactNode[];
     errors?: object;
     navRoutes?: string[];
-    children?: ReactNode | ReactNode[];
+    title?: SVGStringList;
 }
 
-const Template: FC<RouteProps> = ({ navRoutes, auth, children }) => {
-
+const Template: FC<RouteProps> = ({ auth, children, navRoutes, title }) => {
     return (
         // <ThemeProvider>
-            <div className="container m-auto h-screen p-2">
-                <Header auth={auth} />
-                <Nav navRoutes={navRoutes} />
-                {children}
-            </div>
+        <div className="container m-auto h-screen p-2">
+            <Header auth={auth} title={title} />
+            <Nav navRoutes={navRoutes} />
+            {children}
+        </div>
         // </ThemeProvider>
     );
 };
