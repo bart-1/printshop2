@@ -24,8 +24,9 @@ const Nav: FC<RouteProps> = ({ navRoutes }) => {
             <Button
                 type="button"
                 onClick={() => null}
-                className=""
+                className="mr-3"
                 processing={false}
+                size="m"
             >
                 {route}
             </Button>
@@ -33,12 +34,13 @@ const Nav: FC<RouteProps> = ({ navRoutes }) => {
     ));
 
     return (
-        <div>
+        <div className="mb-3">
             <Button
                 type="button"
                 onClick={() => setColorTheme(!colorTheme)}
-                className="mr-5"
+                className="mr-8 rounded-full"
                 processing={false}
+                size="s"
             >
                 {colorTheme ? "light" : "dark"}
             </Button>

@@ -20,7 +20,7 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHPxx_VERSION,
+        'phpVersion' => PHP_VERSION,
     ]);
 });
 Route::get('/admin-tools', function () {

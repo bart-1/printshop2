@@ -14,7 +14,7 @@ export interface RouteProps {
 const Template: FC<RouteProps> = ({ auth, children, navRoutes, title }) => {
     return (
         // <ThemeProvider>
-        <div className="container m-auto h-screen p-2">
+        <div className="container h-screen max-w-4xl p-2 m-auto">
             <Header auth={auth} title={title} />
             <Nav navRoutes={navRoutes} />
             {children}

@@ -3328,16 +3328,20 @@ Object.defineProperty(exports, "__esModule", ({
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 function Button(_ref) {
-  var children = _ref.children,
+  var backgroundColor = _ref.backgroundColor,
+      children = _ref.children,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? "" : _ref$className,
+      foregroundColor = _ref.foregroundColor,
       onClick = _ref.onClick,
       processing = _ref.processing,
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? "m" : _ref$size,
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? "button" : _ref$type;
   return react_1["default"].createElement("button", {
     type: type,
-    className: "inline-flex items-center px-4 py-2 bg-[color:var(--my-foreground)] border border-transparent rounded-md font-semibold text-xs text-[color:var(--my-background)] uppercase tracking-widest active:bg-[color:var(--my-foreground)] transition ease-in-out duration-150 ".concat(processing && "opacity-25", " ") + className,
+    className: "inline-flex items-center border-transparent rounded-md font-semibold uppercase tracking-widest ".concat(size === "s" && "px-2 py-1 border-2 text-xxs", " ").concat(size === "m" && "px-4 py-2 border-2 text-xs", " ").concat(size === "l" && "px-6 py-4 border-2 text-s", " ").concat(backgroundColor ? "text-".concat(backgroundColor, " hover:bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] hover:bg-[color:var(--my-background)] ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " hover:border-").concat(foregroundColor, " hover:text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] ", "     ").concat(processing && "opacity-25", " ").concat(className),
     disabled: processing,
     onClick: onClick
   }, children);
@@ -3414,11 +3418,19 @@ var Header = function Header(_ref) {
   var auth = _ref.auth,
       title = _ref.title;
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
-    className: "flex flex-row text-7xl"
+    className: "flex flex-row w-full p-2 rounded-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] "
+  }, react_1["default"].createElement("div", {
+    className: "w-1/2 text-left"
+  }, auth ? "hello user" : "hello unknown user"), react_1["default"].createElement("div", {
+    className: "w-1/2 text-right"
+  }, "log in / register")), react_1["default"].createElement("div", {
+    className: "flex flex-row h-24 w-auto"
   }, react_1["default"].createElement(ApplicationLogo_1["default"], {
-    className: "",
+    className: "flex-none h-full align-middle",
     fillColor: "var(--my-foreground)"
-  }), react_1["default"].createElement("div", null, title)), react_1["default"].createElement("div", null, auth ? "hello user" : "hello unknown user"));
+  }), react_1["default"].createElement("div", {
+    className: "flex-auto w-96 h-full text-7xl font-black text-right "
+  }, title)));
 };
 
 exports["default"] = Header;
@@ -3563,17 +3575,21 @@ var Nav = function Nav(_ref) {
       onClick: function onClick() {
         return null;
       },
-      className: "",
-      processing: false
+      className: "mr-3",
+      processing: false,
+      size: "m"
     }, route));
   });
-  return react_1["default"].createElement("div", null, react_1["default"].createElement(Button_1["default"], {
+  return react_1["default"].createElement("div", {
+    className: "mb-3"
+  }, react_1["default"].createElement(Button_1["default"], {
     type: "button",
     onClick: function onClick() {
       return setColorTheme(!colorTheme);
     },
-    className: "mr-5",
-    processing: false
+    className: "mr-8 rounded-full",
+    processing: false,
+    size: "s"
   }, colorTheme ? "light" : "dark"), navButtonFactory);
 };
 
@@ -3609,8 +3625,7 @@ var NavLink = function NavLink(_ref) {
       active = _ref.active,
       children = _ref.children;
   return react_1["default"].createElement(inertia_react_1.Link, {
-    href: href,
-    className: active ? "inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out" : "inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+    href: href
   }, children);
 };
 
@@ -3745,7 +3760,7 @@ var Template = function Template(_ref) {
       title = _ref.title;
   return (// <ThemeProvider>
     react_1["default"].createElement("div", {
-      className: "container m-auto h-screen p-2"
+      className: "container h-screen max-w-4xl p-2 m-auto"
     }, react_1["default"].createElement(Header_1["default"], {
       auth: auth,
       title: title

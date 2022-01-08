@@ -16,6 +16,9 @@ module.exports = {
             fontFamily: {
                 sans: ["Raleway", ...defaultTheme.fontFamily.sans],
             },
+            fontSize: {
+                xxs: "0.5rem",
+            },
             colors: {
                 "my-light": "#a2c4c8",
                 "my-dark": "#222222",
