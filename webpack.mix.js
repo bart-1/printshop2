@@ -23,6 +23,7 @@ mix.ts("resources/js/app.js", "public/js/app.js")
         require("tailwindcss"),
         require("autoprefixer"),
     ])
+    .copyDirectory("resources/img", "public/img")
     .webpackConfig(require("./webpack.config"));
 
 if (mix.inProduction()) {

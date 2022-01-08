@@ -3281,9 +3281,18 @@ function ApplicationLogo(_ref) {
       fillColor = _ref$fillColor === void 0 ? "black" : _ref$fillColor,
       _ref$height = _ref.height,
       height = _ref$height === void 0 ? 38 : _ref$height,
+      _ref$href = _ref.href,
+      href = _ref$href === void 0 ? "/" : _ref$href,
       _ref$width = _ref.width,
-      width = _ref$width === void 0 ? 90 : _ref$width;
-  return react_1["default"].createElement("svg", {
+      width = _ref$width === void 0 ? 90 : _ref$width,
+      yourLogoLink = _ref.yourLogoLink;
+  return react_1["default"].createElement("a", {
+    href: href
+  }, yourLogoLink ? react_1["default"].createElement("img", {
+    src: yourLogoLink,
+    width: width,
+    height: height
+  }) : react_1["default"].createElement("svg", {
     width: width,
     height: height,
     viewBox: "0 0 90 38",
@@ -3299,7 +3308,7 @@ function ApplicationLogo(_ref) {
       fill: fillColor
     },
     d: "m 43.151949,11.906777 v 5.399701 h 7.044789 v 3.286121 h -7.044789 v 5.515279 h 9.053362 v 3.401699 H 38.756605 V 8.5050787 H 52.205311 V 11.906777 Z M 71.184986,8.5050787 62.684823,29.509577 H 58.726126 L 50.225963,8.5050787 h 3.522395 c 0.378197,0 0.688663,0.086855 0.926584,0.2653517 0.237577,0.1784968 0.412235,0.4103376 0.528789,0.690051 l 4.570346,12.1018816 c 0.174658,0.453423 0.349317,0.945828 0.519162,1.481319 0.169845,0.53549 0.324906,1.100047 0.47034,1.688881 0.126181,-0.588834 0.267145,-1.153391 0.417393,-1.688881 0.150248,-0.535491 0.310466,-1.027896 0.485124,-1.481319 L 66.207218,9.4604814 c 0.09696,-0.2410733 0.271615,-0.4633395 0.519162,-0.6609854 0.247548,-0.1979879 0.5532,-0.2944173 0.921771,-0.2944173 z m -2.37233,10.5962843 h 7.684975 v 3.271759 h -7.684975 z m 21.687225,7.469512 v 2.938702 H 78.651982 v -2.938702 h 4.191805 V 15.077319 c 0,-0.25099 0.0048,-0.506767 0.01444,-0.767331 0.01,-0.260564 0.02441,-0.525916 0.04367,-0.796397 l -2.765313,2.28729 c -0.193912,0.144986 -0.383354,0.236628 -0.56764,0.275268 -0.184285,0.0383 -0.358944,0.0383 -0.523975,0.0048 -0.165032,-0.03385 -0.310466,-0.09164 -0.436647,-0.17371 -0.12618,-0.08207 -0.223136,-0.164135 -0.291212,-0.25099 l -1.266274,-1.693668 6.49159,-5.4718521 h 3.304072 V 26.570875 Z"
-  })));
+  }))));
 }
 
 exports["default"] = ApplicationLogo;
@@ -3451,7 +3460,8 @@ var Header = function Header(_ref) {
     className: "flex flex-row w-auto h-24"
   }, react_1["default"].createElement(ApplicationLogo_1["default"], {
     className: "flex-none h-full align-middle",
-    fillColor: "var(--my-foreground)"
+    fillColor: "var(--my-foreground)",
+    yourLogoLink: "img/favicon.svg"
   }), react_1["default"].createElement("div", {
     className: "flex-auto h-full font-black text-right w-96 text-7xl "
   }, title)));
@@ -3589,7 +3599,7 @@ var Nav = function Nav(_ref) {
     }, route));
   });
   return react_1["default"].createElement("div", {
-    className: "mb-3"
+    className: "mt-6 mb-6"
   }, navButtonFactory);
 };
 

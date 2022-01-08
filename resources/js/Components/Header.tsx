@@ -33,6 +33,7 @@ const Header: FC<RouteProps> = ({ auth, title }) => {
                 <ApplicationLogo
                     className="flex-none h-full align-middle"
                     fillColor={`var(--my-foreground)`}
+                    yourLogoLink="img/favicon.svg"
                 />
                 <div className="flex-auto h-full font-black text-right w-96 text-7xl ">
                     {title}

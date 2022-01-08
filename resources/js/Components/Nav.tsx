@@ -19,7 +19,7 @@ const Nav: FC<RouteProps> = ({ navRoutes }) => {
         </NavLink>
     ));
 
-    return <div className="mb-3">{navButtonFactory}</div>;
+    return <div className="mt-6 mb-6">{navButtonFactory}</div>;
 };
 
 export default Nav;
