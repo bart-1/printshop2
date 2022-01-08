@@ -18,7 +18,7 @@ const Header: FC<RouteProps> = ({ auth, title }) => {
                     type="button"
                     onClick={() => setColorTheme(!colorTheme)}
                     className="mr-8 rounded-full"
-                    processing={false}
+                    disabled={false}
                     size="s"
                     revertColor
                 >

@@ -3334,7 +3334,7 @@ function Button(_ref) {
       className = _ref$className === void 0 ? "" : _ref$className,
       foregroundColor = _ref.foregroundColor,
       onClick = _ref.onClick,
-      processing = _ref.processing,
+      disabled = _ref.disabled,
       revertColor = _ref.revertColor,
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? "m" : _ref$size,
@@ -3342,8 +3342,8 @@ function Button(_ref) {
       type = _ref$type === void 0 ? "button" : _ref$type;
   return react_1["default"].createElement("button", {
     type: type,
-    className: "inline-flex items-center border-transparent rounded-md font-semibold uppercase tracking-widest ".concat(size === "s" && "px-2 py-1 border-2 text-xxs", " ").concat(size === "m" && "px-4 py-2 border-2 text-xs", " ").concat(size === "l" && "px-6 py-4 border-2 text-s", " ").concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " hover:bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] hover:bg-[color:var(--my-background)] ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " hover:border-").concat(foregroundColor, " hover:text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " hover:bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] hover:bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " hover:border-").concat(backgroundColor, " hover:text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] hover:border-[color:var(--my-background)] hover:text-[color:var(--my-background)] "), "     ").concat(processing && "opacity-25", " ").concat(className),
-    disabled: processing,
+    className: "inline-flex items-center border-transparent rounded-md font-semibold uppercase tracking-widest ".concat(size === "s" && "px-2 py-1 border-2 text-xxs", " ").concat(size === "m" && "px-4 py-2 border-2 text-xs", " ").concat(size === "l" && "px-6 py-4 border-2 text-s", " ").concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " hover:bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] hover:bg-[color:var(--my-background)] ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " hover:border-").concat(foregroundColor, " hover:text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " hover:bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] hover:bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " hover:border-").concat(backgroundColor, " hover:text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] hover:border-[color:var(--my-background)] hover:text-[color:var(--my-background)] "), "     ").concat(disabled && "opacity-25", " ").concat(className),
+    disabled: disabled,
     onClick: onClick
   }, children);
 }
@@ -3440,7 +3440,7 @@ var Header = function Header(_ref) {
       return setColorTheme(!colorTheme);
     },
     className: "mr-8 rounded-full",
-    processing: false,
+    disabled: false,
     size: "s",
     revertColor: true
   }, colorTheme ? "light" : "dark"), react_1["default"].createElement("div", {
@@ -3584,7 +3584,7 @@ var Nav = function Nav(_ref) {
         return null;
       },
       className: "mr-3",
-      processing: false,
+      disabled: false,
       size: "m"
     }, route));
   });

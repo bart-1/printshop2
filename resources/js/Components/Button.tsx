@@ -6,7 +6,7 @@ export type ButtonType = {
     className: string;
     foregroundColor?: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
-    processing: boolean;
+    disabled: boolean;
     revertColor?: boolean;
     size?: "l" | "m" | "s";
     type: "submit" | "button" | "reset" | undefined;
@@ -18,7 +18,7 @@ function Button({
     className = "",
     foregroundColor,
     onClick,
-    processing,
+    disabled,
     revertColor,
     size = "m",
     type = "button",
@@ -50,8 +50,8 @@ function Button({
                               ? `bg-${backgroundColor} hover:border-${backgroundColor} hover:text-${backgroundColor} `
                               : `bg-[color:var(--my-background)] hover:border-[color:var(--my-background)] hover:text-[color:var(--my-background)] `
                       }`
-            }     ${processing && "opacity-25"} ${className}`}
-            disabled={processing}
+            }     ${disabled && "opacity-25"} ${className}`}
+            disabled={disabled}
             onClick={onClick}
         >
             {children}

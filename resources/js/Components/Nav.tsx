@@ -11,7 +11,7 @@ const Nav: FC<RouteProps> = ({ navRoutes }) => {
                 type="button"
                 onClick={() => null}
                 className="mr-3"
-                processing={false}
+                disabled={false}
                 size="m"
             >
                 {route}
