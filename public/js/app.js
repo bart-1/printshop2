@@ -3442,7 +3442,7 @@ var Header = function Header(_ref) {
       setColorTheme = _ref2.setColorTheme;
 
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
-    className: "flex flex-row w-full p-2 rounded-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] "
+    className: "flex flex-row w-full h-fit p-2 rounded-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] "
   }, react_1["default"].createElement(Button_1["default"], {
     type: "button",
     onClick: function onClick() {
@@ -3457,11 +3457,10 @@ var Header = function Header(_ref) {
   }, auth ? "hello user" : "hello unknown user"), react_1["default"].createElement("div", {
     className: "w-1/2 text-right"
   }, "log in / register")), react_1["default"].createElement("div", {
-    className: "flex flex-row w-auto h-24"
+    className: "flex flex-row w-auto h-fit"
   }, react_1["default"].createElement(ApplicationLogo_1["default"], {
     className: "flex-none h-full align-middle",
-    fillColor: "var(--my-foreground)",
-    yourLogoLink: "img/favicon.svg"
+    fillColor: "var(--my-foreground)"
   }), react_1["default"].createElement("div", {
     className: "flex-auto h-full font-black text-right w-96 text-7xl "
   }, title)));

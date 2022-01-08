@@ -13,7 +13,7 @@ const Header: FC<RouteProps> = ({ auth, title }) => {
     const { colorTheme, setColorTheme } = useThemeContext();
     return (
         <>
-            <div className="flex flex-row w-full p-2 rounded-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] ">
+            <div className="flex flex-row w-full h-fit p-2 rounded-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] ">
                 <Button
                     type="button"
                     onClick={() => setColorTheme(!colorTheme)}
@@ -29,11 +29,13 @@ const Header: FC<RouteProps> = ({ auth, title }) => {
                 </div>
                 <div className="w-1/2 text-right">log in / register</div>
             </div>
-            <div className="flex flex-row w-auto h-24">
+            <div className="flex flex-row w-auto h-fit">
                 <ApplicationLogo
                     className="flex-none h-full align-middle"
                     fillColor={`var(--my-foreground)`}
-                    yourLogoLink="img/favicon.svg"
+                    // yourLogoLink="img/favicon.svg"
+                    // height={300}
+                    // width={150}
                 />
                 <div className="flex-auto h-full font-black text-right w-96 text-7xl ">
                     {title}

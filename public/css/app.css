@@ -755,6 +755,11 @@ select {
 .h-screen {
   height: 100vh;
 }
+.h-fit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
 .min-h-screen {
   min-height: 100vh;
 }
