@@ -3335,13 +3335,14 @@ function Button(_ref) {
       foregroundColor = _ref.foregroundColor,
       onClick = _ref.onClick,
       processing = _ref.processing,
+      revertColor = _ref.revertColor,
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? "m" : _ref$size,
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? "button" : _ref$type;
   return react_1["default"].createElement("button", {
     type: type,
-    className: "inline-flex items-center border-transparent rounded-md font-semibold uppercase tracking-widest ".concat(size === "s" && "px-2 py-1 border-2 text-xxs", " ").concat(size === "m" && "px-4 py-2 border-2 text-xs", " ").concat(size === "l" && "px-6 py-4 border-2 text-s", " ").concat(backgroundColor ? "text-".concat(backgroundColor, " hover:bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] hover:bg-[color:var(--my-background)] ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " hover:border-").concat(foregroundColor, " hover:text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] ", "     ").concat(processing && "opacity-25", " ").concat(className),
+    className: "inline-flex items-center border-transparent rounded-md font-semibold uppercase tracking-widest ".concat(size === "s" && "px-2 py-1 border-2 text-xxs", " ").concat(size === "m" && "px-4 py-2 border-2 text-xs", " ").concat(size === "l" && "px-6 py-4 border-2 text-s", " ").concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " hover:bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] hover:bg-[color:var(--my-background)] ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " hover:border-").concat(foregroundColor, " hover:text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " hover:bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] hover:bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " hover:border-").concat(backgroundColor, " hover:text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] hover:border-[color:var(--my-background)] hover:text-[color:var(--my-background)] "), "     ").concat(processing && "opacity-25", " ").concat(className),
     disabled: processing,
     onClick: onClick
   }, children);
@@ -3414,22 +3415,45 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var ApplicationLogo_1 = __importDefault(__webpack_require__(/*! ./ApplicationLogo */ "./resources/js/Components/ApplicationLogo.tsx"));
 
+var Button_1 = __importDefault(__webpack_require__(/*! ./Button */ "./resources/js/Components/Button.tsx"));
+
+var ThemeContext_1 = __webpack_require__(/*! ./ThemeContext */ "./resources/js/Components/ThemeContext.tsx");
+
 var Header = function Header(_ref) {
   var auth = _ref.auth,
       title = _ref.title;
+
+  /**
+   * toggle to switch CSS light / dark theme with HTML tag attributes
+   * useThemeContext & button (for handle it)
+   *
+   */
+  var _ref2 = (0, ThemeContext_1.useThemeContext)(),
+      colorTheme = _ref2.colorTheme,
+      setColorTheme = _ref2.setColorTheme;
+
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
     className: "flex flex-row w-full p-2 rounded-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] "
-  }, react_1["default"].createElement("div", {
+  }, react_1["default"].createElement(Button_1["default"], {
+    type: "button",
+    onClick: function onClick() {
+      return setColorTheme(!colorTheme);
+    },
+    className: "mr-8 rounded-full",
+    processing: false,
+    size: "s",
+    revertColor: true
+  }, colorTheme ? "light" : "dark"), react_1["default"].createElement("div", {
     className: "w-1/2 text-left"
   }, auth ? "hello user" : "hello unknown user"), react_1["default"].createElement("div", {
     className: "w-1/2 text-right"
   }, "log in / register")), react_1["default"].createElement("div", {
-    className: "flex flex-row h-24 w-auto"
+    className: "flex flex-row w-auto h-24"
   }, react_1["default"].createElement(ApplicationLogo_1["default"], {
     className: "flex-none h-full align-middle",
     fillColor: "var(--my-foreground)"
   }), react_1["default"].createElement("div", {
-    className: "flex-auto w-96 h-full text-7xl font-black text-right "
+    className: "flex-auto h-full font-black text-right w-96 text-7xl "
   }, title)));
 };
 
@@ -3547,24 +3571,8 @@ var Button_1 = __importDefault(__webpack_require__(/*! ./Button */ "./resources/
 
 var NavLink_1 = __importDefault(__webpack_require__(/*! ./NavLink */ "./resources/js/Components/NavLink.tsx"));
 
-var ThemeContext_1 = __webpack_require__(/*! ./ThemeContext */ "./resources/js/Components/ThemeContext.tsx");
-
 var Nav = function Nav(_ref) {
   var navRoutes = _ref.navRoutes;
-
-  /**
-   * switch CSS light / dark theme with HTML tag attributes
-   */
-  // const [colorTheme, setColorTheme] = useState(false);
-  // useEffect(() => {
-  //     colorTheme
-  //         ? document.documentElement.setAttribute("data-theme", "dark")
-  //         : document.documentElement.setAttribute("data-theme", "light");
-  // }, [colorTheme]);
-  var _ref2 = (0, ThemeContext_1.useThemeContext)(),
-      colorTheme = _ref2.colorTheme,
-      setColorTheme = _ref2.setColorTheme;
-
   var navButtonFactory = navRoutes === null || navRoutes === void 0 ? void 0 : navRoutes.map(function (route, index) {
     return react_1["default"].createElement(NavLink_1["default"], {
       key: index,
@@ -3582,15 +3590,7 @@ var Nav = function Nav(_ref) {
   });
   return react_1["default"].createElement("div", {
     className: "mb-3"
-  }, react_1["default"].createElement(Button_1["default"], {
-    type: "button",
-    onClick: function onClick() {
-      return setColorTheme(!colorTheme);
-    },
-    className: "mr-8 rounded-full",
-    processing: false,
-    size: "s"
-  }, colorTheme ? "light" : "dark"), navButtonFactory);
+  }, navButtonFactory);
 };
 
 exports["default"] = Nav;
@@ -3805,7 +3805,7 @@ var AdminTools = function AdminTools(_ref) {
     navRoutes: navRoutes,
     title: title
   }, react_1["default"].createElement("div", {
-    className: "bg-blue-500 justify-center"
+    className: "justify-center bg-blue-500"
   }, "this is body ADM"));
 };
 

@@ -7,6 +7,7 @@ export type ButtonType = {
     foregroundColor?: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     processing: boolean;
+    revertColor?: boolean;
     size?: "l" | "m" | "s";
     type: "submit" | "button" | "reset" | undefined;
 };
@@ -18,6 +19,7 @@ function Button({
     foregroundColor,
     onClick,
     processing,
+    revertColor,
     size = "m",
     type = "button",
 }: ButtonType) {
@@ -29,13 +31,25 @@ function Button({
             } ${size === "m" && "px-4 py-2 border-2 text-xs"} ${
                 size === "l" && "px-6 py-4 border-2 text-s"
             } ${
-                backgroundColor
-                    ? `text-${backgroundColor} hover:bg-${backgroundColor} `
-                    : `text-[color:var(--my-background)] hover:bg-[color:var(--my-background)] `
-            } ${
-                foregroundColor
-                    ? `bg-${foregroundColor} hover:border-${foregroundColor} hover:text-${foregroundColor} `
-                    : `bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] `
+                !revertColor
+                    ? `${
+                          backgroundColor
+                              ? `text-${backgroundColor} hover:bg-${backgroundColor} `
+                              : `text-[color:var(--my-background)] hover:bg-[color:var(--my-background)] `
+                      } ${
+                          foregroundColor
+                              ? `bg-${foregroundColor} hover:border-${foregroundColor} hover:text-${foregroundColor} `
+                              : `bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] `
+                      }`
+                    : `${
+                          foregroundColor
+                              ? `text-${foregroundColor} hover:bg-${foregroundColor} `
+                              : `text-[color:var(--my-foreground)] hover:bg-[color:var(--my-foreground)] `
+                      } ${
+                          backgroundColor
+                              ? `bg-${backgroundColor} hover:border-${backgroundColor} hover:text-${backgroundColor} `
+                              : `bg-[color:var(--my-background)] hover:border-[color:var(--my-background)] hover:text-[color:var(--my-background)] `
+                      }`
             }     ${processing && "opacity-25"} ${className}`}
             disabled={processing}
             onClick={onClick}

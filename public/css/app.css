@@ -964,6 +964,9 @@ select {
 .bg-\[color\:var\(--my-foregroun\)\] {
   background-color: var(--my-foregroun);
 }
+.bg-\[color\:var\(--my-bacground\)\] {
+  background-color: var(--my-bacground);
+}
 .fill-current {
   fill: currentColor;
 }
@@ -1170,6 +1173,12 @@ select {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
 }
+.text-\[color\:var\(--my-foregrou\)\] {
+  color: var(--my-foregrou);
+}
+.text-\[color\:var\(--my-foreground\)\] {
+  color: var(--my-foreground);
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -1292,6 +1301,12 @@ body {
 .hover\:bg-\[color\:var\(--my-background\)\]:hover {
   background-color: var(--my-background);
 }
+.hover\:bg-\[color\:var\(--my-foregroun\)\]:hover {
+  background-color: var(--my-foregroun);
+}
+.hover\:bg-\[color\:var\(--my-foreground\)\]:hover {
+  background-color: var(--my-foreground);
+}
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -1314,6 +1329,9 @@ body {
 }
 .hover\:text-\[color\:var\(--my-foreground\)\]:hover {
   color: var(--my-foreground);
+}
+.hover\:text-\[color\:var\(--my-background\)\]:hover {
+  color: var(--my-background);
 }
 .focus\:z-10:focus {
   z-index: 10;
