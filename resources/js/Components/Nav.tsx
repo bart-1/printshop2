@@ -4,8 +4,14 @@ import NavLink from "./NavLink";
 
 import { RouteProps } from "../Layouts/Template";
 
-const Nav: FC<RouteProps> = ({ navRoutes }) => {
-    const navButtonFactory = navRoutes?.map((route, index) => (
+const Nav: FC<RouteProps> = ({ navRoutes, auth }) => {
+    let adminNav;
+    if (auth && auth.user && auth.user.admin === 1) {
+        adminNav = navRoutes;
+    } else {
+        adminNav = navRoutes?.filter((route) => route !== "admin-tools");
+    }
+    const navButtonFactory = adminNav?.map((route, index) => (
         <NavLink key={index} href={"/" + route} active={true}>
             <Button
                 type="button"

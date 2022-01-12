@@ -1,10 +1,11 @@
+import { InertiaLinkProps } from "@inertiajs/inertia-react";
 import React, { ReactNode, FC, useEffect, useState } from "react";
 import Header from "../Components/Header";
 import Nav from "../Components/Nav";
 // import ThemeProvider from "../Components/ThemeContext";
 
 export interface RouteProps {
-    auth?: { user: string | null };
+    auth?: { user: { admin: number } };
     children?: ReactNode | ReactNode[];
     errors?: object;
     navRoutes?: string[];
@@ -16,7 +17,7 @@ const Template: FC<RouteProps> = ({ auth, children, navRoutes, title }) => {
         // <ThemeProvider>
         <div className="container h-screen max-w-4xl p-2 m-auto">
             <Header auth={auth} title={title} />
-            <Nav navRoutes={navRoutes} />
+            <Nav navRoutes={navRoutes} auth={auth} />
             {children}
         </div>
         // </ThemeProvider>

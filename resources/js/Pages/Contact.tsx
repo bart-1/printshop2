@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import Template, { RouteProps } from "../Layouts/Template";
 
-const Contact:FC<RouteProps> = ({ auth, errors, navRoutes, title}) => {
+const Contact: FC<RouteProps> = (props) => {
     return (
-        <Template navRoutes={navRoutes} title={title}>
+        <Template {...props}>
             <div className="bg-blue-500 justify-center">this is body</div>
         </Template>
     );

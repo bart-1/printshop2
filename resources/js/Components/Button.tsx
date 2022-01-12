@@ -3,7 +3,7 @@ import React, { MouseEventHandler, ReactNode } from "react";
 export type ButtonType = {
     backgroundColor?: string;
     children?: ReactNode | ReactNode[] | undefined;
-    className: string;
+    className?: string;
     foregroundColor?: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     disabled: boolean;

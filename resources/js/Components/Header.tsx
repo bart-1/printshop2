@@ -27,7 +27,10 @@ const Header: FC<RouteProps> = ({ auth, title }) => {
                 <div className="w-1/2 text-left">
                     {auth ? `hello user` : `hello unknown user`}
                 </div>
-                <div className="w-1/2 text-right">log in / register</div>
+                <div className="w-1/2 text-right">
+                    <a href="/login">log in</a> /{" "}
+                    <a href="/register">register</a>
+                </div>
             </div>
             <div className="flex flex-row w-auto h-fit">
                 <ApplicationLogo

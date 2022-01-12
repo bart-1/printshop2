@@ -23,6 +23,9 @@ use Inertia\Inertia;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
+
+
+
 Route::get('/', function () {
     return redirect('/start');
 });
@@ -31,32 +34,32 @@ Route::get('/admin-tools', function () {
        'navRoutes' => ['start', 'printshop', 'creator', 'contact'],
        'title' => 'admin tools'
     ]);
-});
+})->middleware('auth', 'isAdmin');
 
 Route::get('/contact', function () {
     return Inertia::render('Contact', [
-        'navRoutes' => ['start', 'printshop', 'creator'],
+        'navRoutes' => ['start', 'printshop', 'creator', 'admin-tools'],
         'title' => 'contact'
     ]);
 });
 
 Route::get('/creator', function () {
     return Inertia::render('Creator', [
-        'navRoutes' => ['start', 'printshop', 'contact'],
+        'navRoutes' => ['start', 'printshop', 'contact', 'admin-tools'],
         'title' => 'creator'
     ]);
 });
 
 Route::get('/start', function () {
     return Inertia::render('Start', [
-        'navRoutes' => [ 'printshop', 'creator', 'contact'],
+        'navRoutes' => [ 'printshop', 'creator', 'contact', 'admin-tools'],
         'title' => 'start'
       ]);
 });
 
 Route::get('/printshop', function () {
     return Inertia::render('Printshop', [
-        'navRoutes' => ['start', 'creator', 'contact'],
+        'navRoutes' => ['start', 'creator', 'contact', 'admin-tools'],
         'title' => 'printshop'
     ]);
 });
