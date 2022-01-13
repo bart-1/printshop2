@@ -25,7 +25,9 @@ const Header: FC<RouteProps> = ({ auth, title }) => {
                     {colorTheme ? "light" : "dark"}
                 </Button>
                 <div className="w-1/2 text-left">
-                    {auth ? `hello user` : `hello unknown user`}
+                    {auth?.user?.name
+                        ? `hello ${auth.user.name}`
+                        : `hello visitor`}
                 </div>
                 <div className="w-1/2 text-right">
                     <a href="/login">log in</a> /{" "}

@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\PageController;
+
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -29,40 +30,18 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return redirect('/start');
 });
-Route::get('/admin-tools', function () {
-    return Inertia::render('AdminTools', [
-       'navRoutes' => ['start', 'printshop', 'creator', 'contact'],
-       'title' => 'admin tools'
-    ]);
-})->middleware('auth', 'isAdmin');
 
-Route::get('/contact', function () {
-    return Inertia::render('Contact', [
-        'navRoutes' => ['start', 'printshop', 'creator', 'admin-tools'],
-        'title' => 'contact'
-    ]);
-});
+Route::get('/admin-tools', [PageController::class, 'index'])->middleware('auth', 'isAdmin', 'verified')->name('AdminTools');
 
-Route::get('/creator', function () {
-    return Inertia::render('Creator', [
-        'navRoutes' => ['start', 'printshop', 'contact', 'admin-tools'],
-        'title' => 'creator'
-    ]);
-});
+Route::get('/contact', [PageController::class, 'index'])->name('Contact');
 
-Route::get('/start', function () {
-    return Inertia::render('Start', [
-        'navRoutes' => [ 'printshop', 'creator', 'contact', 'admin-tools'],
-        'title' => 'start'
-      ]);
-});
+    Route::get('/creator', [PageController::class, 'index'])->name('Creator');
 
-Route::get('/printshop', function () {
-    return Inertia::render('Printshop', [
-        'navRoutes' => ['start', 'creator', 'contact', 'admin-tools'],
-        'title' => 'printshop'
-    ]);
-});
+    Route::get('/printshop', [PageController::class, 'index'])->name('Printshop');
+
+    Route::get('/start', [PageController::class, 'index'])->name('Start');
+
+
 
 
 Route::get('/dashboard', function () {

@@ -3432,11 +3432,14 @@ var Header = function Header(_ref) {
   var auth = _ref.auth,
       title = _ref.title;
 
+  var _a;
   /**
    * toggle to switch CSS light / dark theme with HTML tag attributes
    * useThemeContext & button (for handle it)
    *
    */
+
+
   var _ref2 = (0, ThemeContext_1.useThemeContext)(),
       colorTheme = _ref2.colorTheme,
       setColorTheme = _ref2.setColorTheme;
@@ -3454,7 +3457,7 @@ var Header = function Header(_ref) {
     revertColor: true
   }, colorTheme ? "light" : "dark"), react_1["default"].createElement("div", {
     className: "w-1/2 text-left"
-  }, auth ? "hello user" : "hello unknown user"), react_1["default"].createElement("div", {
+  }, ((_a = auth === null || auth === void 0 ? void 0 : auth.user) === null || _a === void 0 ? void 0 : _a.name) ? "hello ".concat(auth.user.name) : "hello visitor"), react_1["default"].createElement("div", {
     className: "w-1/2 text-right"
   }, react_1["default"].createElement("a", {
     href: "/login"
@@ -3635,7 +3638,7 @@ var Nav = function Nav(_ref) {
     });
   }
 
-  var navButtonFactory = adminNav === null || adminNav === void 0 ? void 0 : adminNav.map(function (route, index) {
+  var navButtonFactory = navRoutes === null || navRoutes === void 0 ? void 0 : navRoutes.map(function (route, index) {
     return react_1["default"].createElement(NavLink_1["default"], {
       key: index,
       href: "/" + route,
@@ -3860,18 +3863,15 @@ var Template = function Template(_ref) {
       children = _ref.children,
       navRoutes = _ref.navRoutes,
       title = _ref.title;
-  return (// <ThemeProvider>
-    react_1["default"].createElement("div", {
-      className: "container h-screen max-w-4xl p-2 m-auto"
-    }, react_1["default"].createElement(Header_1["default"], {
-      auth: auth,
-      title: title
-    }), react_1["default"].createElement(Nav_1["default"], {
-      navRoutes: navRoutes,
-      auth: auth
-    }), children) // </ThemeProvider>
-
-  );
+  return react_1["default"].createElement("div", {
+    className: "container h-screen max-w-4xl p-2 m-auto"
+  }, react_1["default"].createElement(Header_1["default"], {
+    auth: auth,
+    title: title
+  }), react_1["default"].createElement(Nav_1["default"], {
+    navRoutes: navRoutes,
+    auth: auth
+  }), children);
 };
 
 exports["default"] = Template;

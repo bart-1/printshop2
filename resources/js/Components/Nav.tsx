@@ -11,7 +11,7 @@ const Nav: FC<RouteProps> = ({ navRoutes, auth }) => {
     } else {
         adminNav = navRoutes?.filter((route) => route !== "admin-tools");
     }
-    const navButtonFactory = adminNav?.map((route, index) => (
+    const navButtonFactory = navRoutes?.map((route, index) => (
         <NavLink key={index} href={"/" + route} active={true}>
             <Button
                 type="button"
