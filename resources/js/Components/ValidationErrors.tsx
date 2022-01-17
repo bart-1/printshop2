@@ -3,7 +3,7 @@ import React from "react";
 export default function ValidationErrors({
     errors,
 }: {
-    errors: Record<"email" | "password" | "remember", string | number> | any;
+    errors: { [key: string]: string };
 }) {
     return (
         <div>

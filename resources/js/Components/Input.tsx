@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from "react";
 
 export type InputType = {
-    autoComplete: string | undefined;
+    autoComplete?: string | undefined;
     className: string;
     handleChange: CallableFunction;
-    isFocused: boolean;
+    isFocused?: boolean;
     name: string;
-    required: boolean;
+    required?: boolean;
     type: string;
     value: string;
 };
+
 
 function Input({
     autoComplete,

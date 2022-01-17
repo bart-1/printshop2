@@ -936,6 +936,12 @@ select {
 .border-transparent {
   border-color: transparent;
 }
+.border-\[color\:var\(--my-foreground\)\] {
+  border-color: var(--my-foreground);
+}
+.border-\[color\:var\(--my-background\)\] {
+  border-color: var(--my-background);
+}
 .border-indigo-400 {
   --tw-border-opacity: 1;
   border-color: rgb(129 140 248 / var(--tw-border-opacity));
@@ -943,12 +949,6 @@ select {
 .border-gray-100 {
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
-}
-.border-\[color\:var\(--my-foreground\)\] {
-  border-color: var(--my-foreground);
-}
-.border-\[color\:var\(--my-background\)\] {
-  border-color: var(--my-background);
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -1387,9 +1387,6 @@ body {
 }
 .focus\:ring-opacity-50:focus {
   --tw-ring-opacity: 0.5;
-}
-.active\:border-\[color\:var\(--my-foreground\)\]:active {
-  border-color: var(--my-foreground);
 }
 .active\:bg-gray-100:active {
   --tw-bg-opacity: 1;

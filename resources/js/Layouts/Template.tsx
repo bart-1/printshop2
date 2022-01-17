@@ -4,10 +4,11 @@ import Nav from "../Components/Nav";
 // import ThemeProvider from "../Components/ThemeContext";
 
 export interface RouteProps {
-    auth?: { user: { admin: number; name: string } };
+    auth?: { user: { admin: number; name: string; email?: string } };
     children?: ReactNode | ReactNode[];
     errors?: object;
     navRoutes?: string[];
+    header?: string;
     title?: SVGStringList;
 }
 

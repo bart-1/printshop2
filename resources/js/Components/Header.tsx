@@ -3,7 +3,7 @@ import ApplicationLogo from "./ApplicationLogo";
 import { RouteProps } from "../Layouts/Template";
 import Button from "./Button";
 import { useThemeContext } from "./ThemeContext";
-
+import NavLink from "./NavLink";
 const Header: FC<RouteProps> = ({ auth, title }) => {
     /**
      * toggle to switch CSS light / dark theme with HTML tag attributes
@@ -30,8 +30,23 @@ const Header: FC<RouteProps> = ({ auth, title }) => {
                         : `hello visitor`}
                 </div>
                 <div className="w-1/2 text-right">
-                    <a href="/login">log in</a> /{" "}
-                    <a href="/register">register</a>
+                    {!auth?.user?.name && (
+                        <>
+                            <NavLink href={"/login"} method="get">
+                                log in / {""}
+                            </NavLink>
+
+                            <NavLink href="/register" method="get">
+                                register {""}
+                            </NavLink>
+                        </>
+                    )}
+
+                    {auth?.user?.name && (
+                        <NavLink href={"/logout"} method="post">
+                            logout
+                        </NavLink>
+                    )}
                 </div>
             </div>
             <div className="flex flex-row w-auto h-fit">

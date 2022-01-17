@@ -4,7 +4,7 @@ export type ButtonType = {
     backgroundColor?: string;
     children?: ReactNode | ReactNode[] | undefined;
     className?: string;
-    disabled: boolean;
+    disabled?: boolean;
     foregroundColor?: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     revertColor?: boolean;

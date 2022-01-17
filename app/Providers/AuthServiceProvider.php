@@ -34,8 +34,6 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('isAdminRoute', function (User $user) {
             return $user->admin == 1;
-            //    ? Response::allow(array('start', 'printshop', 'creator', 'contact', 'admin-tools'))
-        //    : Response::deny(array('start', 'printshop', 'creator', 'contact'));
         });
 
         //
