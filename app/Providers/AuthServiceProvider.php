@@ -33,7 +33,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('isAdminRoute', function (User $user) {
-            return $user->admin == 1;
+            return $user->role === 'admin';
         });
 
         //
