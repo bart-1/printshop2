@@ -18,7 +18,7 @@ class AddNewUser extends Seeder
         DB::table('users')->insert([
             'name' => 'bart-1',
             'email' => 'studio@dziwnykot.pl',
-            'password' => bcrypt('AGMAG7723'),
+            'password' => bcrypt('1111'),
             'phone' => '504399023',
             'account_type' => 'business',
             'company' => 'Dziwny Kot',
@@ -28,13 +28,13 @@ class AddNewUser extends Seeder
             'apartment_number' => '45',
             'zip_code' => '00-119',
             'city' => 'Warszawa',
-           'admin' => 1
+          'role' => 'admin'
 
         ]);
         DB::table('users')->insert([
             'name' => 'Jan Kowalski',
             'email' => 'dom@dziwnykot.pl',
-            'password' => bcrypt('AGMAG7723'),
+            'password' => bcrypt('1111'),
             'phone' => '666123123',
             'account_type' => 'private',
             'street' => 'Karowa',
@@ -42,6 +42,7 @@ class AddNewUser extends Seeder
             'apartment_number' => '435',
             'zip_code' => '00-077',
             'city' => 'Warszawa',
+            'role' => 'customer'
 
         ]);
         //
