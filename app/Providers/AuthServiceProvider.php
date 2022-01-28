@@ -20,7 +20,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-    //    User::class => UserPolicy::class,
+       User::class => UserPolicy::class,
     ];
 
     /**
@@ -35,6 +35,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isAdminRoute', function (User $user) {
             return $user->role === 'admin';
         });
+        Gate::define('isEmployeeRoute', function (User $user) {
+            return $user->role === 'employee' || $user->role === 'admin' ;
+        });
+
 
         //
     }
