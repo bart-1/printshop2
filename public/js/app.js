@@ -9081,14 +9081,7 @@ var Button_1 = __importDefault(__webpack_require__(/*! ./Button */ "./resources/
 var NavLink_1 = __importDefault(__webpack_require__(/*! ./NavLink */ "./resources/js/Components/NavLink.tsx"));
 
 var Nav = function Nav(_ref) {
-  var navRoutes = _ref.navRoutes,
-      auth = _ref.auth;
-  // let adminNav;
-  // if (auth && auth.user && auth.user.admin === 1) {
-  //     adminNav = navRoutes;
-  // } else {
-  //     adminNav = navRoutes?.filter((route) => route !== "admin-tools");
-  // }
+  var navRoutes = _ref.navRoutes;
   var navButtonFactory = navRoutes === null || navRoutes === void 0 ? void 0 : navRoutes.map(function (route, index) {
     return react_1["default"].createElement(NavLink_1["default"], {
       key: index,
