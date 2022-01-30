@@ -5,6 +5,8 @@ import Button from "./Button";
 import { useThemeContext } from "./ThemeContext";
 import NavLink from "./NavLink";
 import Nav from "../Components/Nav";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
+import { IconContext } from "react-icons";
 
 const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
     /**
@@ -22,16 +24,20 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
                 />
 
                 <div className="flex flex-wrap sm:flex-nowrap w-fit h-20 sm:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center">
-                    <Button
-                        type="button"
-                        onClick={() => setColorTheme(!colorTheme)}
-                        className="flex-none w-8 h-8 mr-1 rounded-full"
-                        disabled={false}
-                        size="xs"
-                        revertColor
+                    <IconContext.Provider
+                        value={{ className: "w-4 h-4 ml-px text-black" }}
                     >
-                        {colorTheme ? "light" : "dark"}
-                    </Button>
+                        <Button
+                            type="button"
+                            onClick={() => setColorTheme(!colorTheme)}
+                            className="flex-none w-8 h-8 mr-1 rounded-full"
+                            disabled={false}
+                            size="xs"
+                            foregroundColor="amber-400"
+                        >
+                            {colorTheme ? <BsSunFill /> : <BsMoonFill />}
+                        </Button>
+                    </IconContext.Provider>
                     <div className="flex-none h-8 px-2 mb-2 rounded-md max-w-xxs sm:mb-0 bg-amber-400 sm:order-last">
                         <span className="flex-none inline-block text-xs text-center text-black align-middle">
                             {auth?.user?.name

@@ -714,6 +714,12 @@ select {
 .mt-1 {
   margin-top: 0.25rem;
 }
+.mr-px {
+  margin-right: 1px;
+}
+.ml-px {
+  margin-left: 1px;
+}
 .block {
   display: block;
 }
@@ -1098,6 +1104,9 @@ select {
 .pt-6 {
   padding-top: 1.5rem;
 }
+.pr-px {
+  padding-right: 1px;
+}
 .text-left {
   text-align: left;
 }
@@ -1230,6 +1239,10 @@ select {
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+.text-amber-400 {
+  --tw-text-opacity: 1;
+  color: rgb(251 191 36 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;

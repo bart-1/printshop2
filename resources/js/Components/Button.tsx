@@ -1,8 +1,9 @@
 import React, { MouseEventHandler, ReactNode } from "react";
+import { IconType } from "react-icons";
 
 export type ButtonType = {
     backgroundColor?: string;
-    children?: ReactNode | ReactNode[] | undefined;
+    children?: ReactNode | ReactNode[] | IconType |undefined;
     className?: string;
     disabled?: boolean;
     foregroundColor?: string;
