@@ -12,6 +12,12 @@ module.exports = {
     ],
 
     theme: {
+        screens: {
+            xxs: "380px",
+            xs: "470px",
+            ...defaultTheme.screens,
+        },
+
         extend: {
             fontFamily: {
                 sans: ["Raleway", ...defaultTheme.fontFamily.sans],
@@ -23,8 +29,10 @@ module.exports = {
                 "my-light": "#a2c4c8",
                 "my-dark": "#222222",
             },
+            maxWidth: {
+                xxs: "180px",
+            },
         },
     },
-
     plugins: [require("@tailwindcss/forms")],
 };

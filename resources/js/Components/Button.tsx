@@ -8,7 +8,7 @@ export type ButtonType = {
     foregroundColor?: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     revertColor?: boolean;
-    size?: "l" | "m" | "s";
+    size?: "l" | "m" | "s" | "xs";
     type: "submit" | "button" | "reset" | undefined;
 };
 
@@ -29,11 +29,11 @@ function Button({
     return (
         <button
             type={type}
-            className={`inline-flex items-center border-transparent rounded-md font-semibold uppercase tracking-widest ${
-                size === "s" && "px-2 py-1 border-2 text-xxs"
-            } ${size === "m" && "px-4 py-2 border-2 text-xs"} ${
-                size === "l" && "px-6 py-4 border-2 text-s"
-            } ${
+            className={`inline-flex items-center border-transparent rounded-md font-normal ${
+                size === "xs" && "px-1.5 py-1 border text-xxs"
+            } ${size === "s" && "px-2 py-1.5 border text-xs"} ${
+                size === "m" && "px-4 py-2 border text-xs"
+            } ${size === "l" && "px-6 py-4 border text-s"} ${
                 !pressed
                     ? ` ${
                           !revertColor

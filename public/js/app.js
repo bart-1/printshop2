@@ -8614,7 +8614,7 @@ function Button(_ref) {
   if (currentURL == "/" + children) pressed = true;
   return react_1["default"].createElement("button", {
     type: type,
-    className: "inline-flex items-center border-transparent rounded-md font-semibold uppercase tracking-widest ".concat(size === "s" && "px-2 py-1 border-2 text-xxs", " ").concat(size === "m" && "px-4 py-2 border-2 text-xs", " ").concat(size === "l" && "px-6 py-4 border-2 text-s", " ").concat(!pressed ? " ".concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " hover:bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] hover:bg-[color:var(--my-background)]  ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " hover:border-").concat(foregroundColor, " hover:text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " hover:bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] hover:bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " hover:border-").concat(backgroundColor, " hover:text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] hover:border-[color:var(--my-background)] hover:text-[color:var(--my-background)] ")) : "".concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] bg-[color:var(--my-background)]  ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " border-").concat(foregroundColor, " text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] border-[color:var(--my-foreground)] text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " border-").concat(backgroundColor, " text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] border-[color:var(--my-background)] text-[color:var(--my-background)] ")), "    ").concat(disabled && "opacity-25", " ").concat(className),
+    className: "inline-flex items-center border-transparent rounded-md font-normal ".concat(size === "xs" && "px-1.5 py-1 border text-xxs", " ").concat(size === "s" && "px-2 py-1.5 border text-xs", " ").concat(size === "m" && "px-4 py-2 border text-xs", " ").concat(size === "l" && "px-6 py-4 border text-s", " ").concat(!pressed ? " ".concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " hover:bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] hover:bg-[color:var(--my-background)]  ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " hover:border-").concat(foregroundColor, " hover:text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " hover:bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] hover:bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " hover:border-").concat(backgroundColor, " hover:text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] hover:border-[color:var(--my-background)] hover:text-[color:var(--my-background)] ")) : "".concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] bg-[color:var(--my-background)]  ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " border-").concat(foregroundColor, " text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] border-[color:var(--my-foreground)] text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " border-").concat(backgroundColor, " text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] border-[color:var(--my-background)] text-[color:var(--my-background)] ")), "    ").concat(disabled && "opacity-25", " ").concat(className),
     disabled: disabled,
     onClick: onClick
   }, children);
@@ -8661,6 +8661,155 @@ function Checkbox(_ref) {
 }
 
 exports["default"] = Checkbox;
+
+/***/ }),
+
+/***/ "./resources/js/Components/Creator/CreatorCanvas.tsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/Components/Creator/CreatorCanvas.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CreatorCanvas = function CreatorCanvas() {
+  return React.createElement("div", {
+    className: "w-2/3 h-screen bg-amber-400"
+  }, React.createElement("canvas", null));
+};
+
+exports["default"] = CreatorCanvas;
+
+/***/ }),
+
+/***/ "./resources/js/Components/Creator/CreatorMainToolbox.tsx":
+/*!****************************************************************!*\
+  !*** ./resources/js/Components/Creator/CreatorMainToolbox.tsx ***!
+  \****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CreatorMainToolbox = function CreatorMainToolbox() {
+  return React.createElement("div", {
+    className: "flex w-1/3 h-screen bg-orange-400 "
+  }, " Main toolbox panel");
+};
+
+exports["default"] = CreatorMainToolbox;
+
+/***/ }),
+
+/***/ "./resources/js/Components/Creator/CreatorNav.tsx":
+/*!********************************************************!*\
+  !*** ./resources/js/Components/Creator/CreatorNav.tsx ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CreatorNav = function CreatorNav() {
+  return react_1["default"].createElement("div", {
+    className: "fixed bottom-0 w-full h-6 max-w-4xl bg-red-600 hover:h-36"
+  }, " ", "Creator Navigation Panel");
+};
+
+exports["default"] = CreatorNav;
 
 /***/ }),
 
@@ -8878,9 +9027,12 @@ var ThemeContext_1 = __webpack_require__(/*! ./ThemeContext */ "./resources/js/C
 
 var NavLink_1 = __importDefault(__webpack_require__(/*! ./NavLink */ "./resources/js/Components/NavLink.tsx"));
 
+var Nav_1 = __importDefault(__webpack_require__(/*! ../Components/Nav */ "./resources/js/Components/Nav.tsx"));
+
 var Header = function Header(_ref) {
   var auth = _ref.auth,
-      title = _ref.title;
+      title = _ref.title,
+      navRoutes = _ref.navRoutes;
 
   var _a, _b, _c;
   /**
@@ -8895,37 +9047,42 @@ var Header = function Header(_ref) {
       setColorTheme = _ref2.setColorTheme;
 
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
-    className: "flex flex-row w-full h-fit p-2 rounded-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] "
+    className: "fixed top-0 flex"
+  }, react_1["default"].createElement(ApplicationLogo_1["default"], {
+    className: "justify-center flex-none hidden p-1 mr-1 sm:mr-3 xs:block",
+    fillColor: "var(--my-foreground)"
+  }), react_1["default"].createElement("div", {
+    className: "flex flex-wrap sm:flex-nowrap w-fit h-20 sm:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center"
   }, react_1["default"].createElement(Button_1["default"], {
     type: "button",
     onClick: function onClick() {
       return setColorTheme(!colorTheme);
     },
-    className: "mr-8 rounded-full",
+    className: "flex-none w-8 h-8 mr-1 rounded-full",
     disabled: false,
-    size: "s",
+    size: "xs",
     revertColor: true
   }, colorTheme ? "light" : "dark"), react_1["default"].createElement("div", {
-    className: "w-1/2 text-left"
-  }, ((_a = auth === null || auth === void 0 ? void 0 : auth.user) === null || _a === void 0 ? void 0 : _a.name) ? "hello ".concat(auth.user.name) : "hello visitor"), react_1["default"].createElement("div", {
-    className: "w-1/2 text-right"
-  }, !((_b = auth === null || auth === void 0 ? void 0 : auth.user) === null || _b === void 0 ? void 0 : _b.name) && react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(NavLink_1["default"], {
+    className: "flex-none h-8 px-2 mb-2 rounded-md max-w-xxs sm:mb-0 bg-amber-400 sm:order-last"
+  }, react_1["default"].createElement("span", {
+    className: "flex-none inline-block text-xs text-center text-black align-middle"
+  }, ((_a = auth === null || auth === void 0 ? void 0 : auth.user) === null || _a === void 0 ? void 0 : _a.name) ? "user: ".concat(auth.user.name, "\n                                 ") : "hello visitor, You can ", !((_b = auth === null || auth === void 0 ? void 0 : auth.user) === null || _b === void 0 ? void 0 : _b.name) && react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(NavLink_1["default"], {
     href: "/login",
-    method: "get"
-  }, "log in / ", ""), react_1["default"].createElement(NavLink_1["default"], {
+    method: "get",
+    className: "font-extrabold text-black hover:underline"
+  }, "log in"), " or ", react_1["default"].createElement(NavLink_1["default"], {
     href: "/register",
-    method: "get"
-  }, "register ", "")), ((_c = auth === null || auth === void 0 ? void 0 : auth.user) === null || _c === void 0 ? void 0 : _c.name) && react_1["default"].createElement(NavLink_1["default"], {
+    method: "get",
+    className: "font-extrabold text-black hover:underline"
+  }, "register")), ((_c = auth === null || auth === void 0 ? void 0 : auth.user) === null || _c === void 0 ? void 0 : _c.name) && react_1["default"].createElement(NavLink_1["default"], {
     href: "/logout",
-    method: "post"
-  }, "logout"))), react_1["default"].createElement("div", {
-    className: "flex flex-row w-auto h-fit"
-  }, react_1["default"].createElement(ApplicationLogo_1["default"], {
-    className: "flex-none h-full align-middle",
-    fillColor: "var(--my-foreground)"
-  }), react_1["default"].createElement("div", {
-    className: "flex-auto h-full font-black text-right w-96 text-7xl "
-  }, title)));
+    method: "post",
+    className: "font-extrabold text-black hover:underline"
+  }, "logout"))), react_1["default"].createElement(Nav_1["default"], {
+    navRoutes: navRoutes,
+    auth: auth,
+    classNameDiv: "mr-2 whitespace-nowrap"
+  }))));
 };
 
 exports["default"] = Header;
@@ -9081,7 +9238,9 @@ var Button_1 = __importDefault(__webpack_require__(/*! ./Button */ "./resources/
 var NavLink_1 = __importDefault(__webpack_require__(/*! ./NavLink */ "./resources/js/Components/NavLink.tsx"));
 
 var Nav = function Nav(_ref) {
-  var navRoutes = _ref.navRoutes;
+  var navRoutes = _ref.navRoutes,
+      classNameDiv = _ref.classNameDiv,
+      classNameBtn = _ref.classNameBtn;
   var navButtonFactory = navRoutes === null || navRoutes === void 0 ? void 0 : navRoutes.map(function (route, index) {
     return react_1["default"].createElement(NavLink_1["default"], {
       key: index,
@@ -9092,13 +9251,13 @@ var Nav = function Nav(_ref) {
       onClick: function onClick() {
         return null;
       },
-      className: "mr-3",
+      className: "".concat(classNameBtn),
       disabled: false,
-      size: "m"
+      size: "s"
     }, route));
   });
   return react_1["default"].createElement("div", {
-    className: "mt-6 mb-6"
+    className: classNameDiv
   }, navButtonFactory);
 };
 
@@ -9134,11 +9293,12 @@ var NavLink = function NavLink(_ref) {
       active = _ref.active,
       children = _ref.children,
       _ref$method = _ref.method,
-      method = _ref$method === void 0 ? "get" : _ref$method;
+      method = _ref$method === void 0 ? "get" : _ref$method,
+      className = _ref.className;
   return react_1["default"].createElement(inertia_react_1.Link, {
     href: href,
     method: method,
-    className: active ? "" : "text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+    className: active ? "" : "".concat(className ? "".concat(className, " transition duration-150 ease-in-out") : "text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out")
   }, children);
 };
 
@@ -9578,22 +9738,22 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var Header_1 = __importDefault(__webpack_require__(/*! ../Components/Header */ "./resources/js/Components/Header.tsx"));
 
-var Nav_1 = __importDefault(__webpack_require__(/*! ../Components/Nav */ "./resources/js/Components/Nav.tsx"));
-
 var Template = function Template(_ref) {
   var auth = _ref.auth,
       children = _ref.children,
       navRoutes = _ref.navRoutes,
       title = _ref.title;
   return react_1["default"].createElement("div", {
-    className: "container h-screen max-w-4xl p-2 m-auto"
+    className: "px-0 mx-0 xs:mx-auto"
   }, react_1["default"].createElement(Header_1["default"], {
     auth: auth,
-    title: title
-  }), react_1["default"].createElement(Nav_1["default"], {
-    navRoutes: navRoutes,
-    auth: auth
-  }), children);
+    title: title,
+    navRoutes: navRoutes
+  }), react_1["default"].createElement("div", {
+    className: "h-24 sm:h-16"
+  }), react_1["default"].createElement("div", {
+    className: "p-2 xs:p-4 sm:p-6"
+  }, children));
 };
 
 exports["default"] = Template;
@@ -10433,12 +10593,20 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var CreatorCanvas_1 = __importDefault(__webpack_require__(/*! ../Components/Creator/CreatorCanvas */ "./resources/js/Components/Creator/CreatorCanvas.tsx"));
+
+var CreatorNav_1 = __importDefault(__webpack_require__(/*! ../Components/Creator/CreatorNav */ "./resources/js/Components/Creator/CreatorNav.tsx"));
+
+var CreatorMainToolbox_1 = __importDefault(__webpack_require__(/*! ../Components/Creator/CreatorMainToolbox */ "./resources/js/Components/Creator/CreatorMainToolbox.tsx"));
+
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
 var Creator = function Creator(props) {
   return react_1["default"].createElement(Template_1["default"], Object.assign({}, props), react_1["default"].createElement("div", {
-    className: "bg-blue-500 justify-center"
-  }, "this is body"));
+    className: "container bg-blue-500 "
+  }, react_1["default"].createElement("div", {
+    className: "flex"
+  }, react_1["default"].createElement(CreatorMainToolbox_1["default"], null), react_1["default"].createElement(CreatorCanvas_1["default"], null), react_1["default"].createElement(CreatorNav_1["default"], null))));
 };
 
 exports["default"] = Creator;

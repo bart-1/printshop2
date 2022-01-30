@@ -1,6 +1,5 @@
 import React, { ReactNode, FC, useEffect, useState } from "react";
 import Header from "../Components/Header";
-import Nav from "../Components/Nav";
 // import ThemeProvider from "../Components/ThemeContext";
 
 export interface RouteProps {
@@ -10,14 +9,16 @@ export interface RouteProps {
     navRoutes?: string[];
     header?: string;
     title?: SVGStringList;
+    classNameBtn?: string;
+    classNameDiv?: string;
 }
 
 const Template: FC<RouteProps> = ({ auth, children, navRoutes, title }) => {
     return (
-        <div className="container h-screen max-w-4xl p-2 m-auto">
-            <Header auth={auth} title={title} />
-            <Nav navRoutes={navRoutes} auth={auth} />
-            {children}
+        <div className="px-0 mx-0 xs:mx-auto">
+            <Header auth={auth} title={title} navRoutes={navRoutes} />
+            <div className="h-24 sm:h-16"></div>
+            <div className="p-2 xs:p-4 sm:p-6">{children}</div>
         </div>
     );
 };

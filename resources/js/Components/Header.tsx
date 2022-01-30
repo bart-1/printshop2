@@ -4,7 +4,9 @@ import { RouteProps } from "../Layouts/Template";
 import Button from "./Button";
 import { useThemeContext } from "./ThemeContext";
 import NavLink from "./NavLink";
-const Header: FC<RouteProps> = ({ auth, title }) => {
+import Nav from "../Components/Nav";
+
+const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
     /**
      * toggle to switch CSS light / dark theme with HTML tag attributes
      * useThemeContext & button (for handle it)
@@ -13,52 +15,64 @@ const Header: FC<RouteProps> = ({ auth, title }) => {
     const { colorTheme, setColorTheme } = useThemeContext();
     return (
         <>
-            <div className="flex flex-row w-full h-fit p-2 rounded-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] ">
-                <Button
-                    type="button"
-                    onClick={() => setColorTheme(!colorTheme)}
-                    className="mr-8 rounded-full"
-                    disabled={false}
-                    size="s"
-                    revertColor
-                >
-                    {colorTheme ? "light" : "dark"}
-                </Button>
-                <div className="w-1/2 text-left">
-                    {auth?.user?.name
-                        ? `hello ${auth.user.name}`
-                        : `hello visitor`}
-                </div>
-                <div className="w-1/2 text-right">
-                    {!auth?.user?.name && (
-                        <>
-                            <NavLink href={"/login"} method="get">
-                                log in / {""}
-                            </NavLink>
-
-                            <NavLink href="/register" method="get">
-                                register {""}
-                            </NavLink>
-                        </>
-                    )}
-
-                    {auth?.user?.name && (
-                        <NavLink href={"/logout"} method="post">
-                            logout
-                        </NavLink>
-                    )}
-                </div>
-            </div>
-            <div className="flex flex-row w-auto h-fit">
+            <div className="fixed top-0 flex">
                 <ApplicationLogo
-                    className="flex-none h-full align-middle"
+                    className="justify-center flex-none hidden p-1 mr-1 sm:mr-3 xs:block"
                     fillColor={`var(--my-foreground)`}
-                    // yourLogoLink="img/favicon.svg"
-                    // height={300}
-                    // width={150}
                 />
-                <div className="flex-auto h-full font-black text-right w-96 text-7xl ">
-                    {title}
+
+                <div className="flex flex-wrap sm:flex-nowrap w-fit h-20 sm:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center">
+                    <Button
+                        type="button"
+                        onClick={() => setColorTheme(!colorTheme)}
+                        className="flex-none w-8 h-8 mr-1 rounded-full"
+                        disabled={false}
+                        size="xs"
+                        revertColor
+                    >
+                        {colorTheme ? "light" : "dark"}
+                    </Button>
+                    <div className="flex-none h-8 px-2 mb-2 rounded-md max-w-xxs sm:mb-0 bg-amber-400 sm:order-last">
+                        <span className="flex-none inline-block text-xs text-center text-black align-middle">
+                            {auth?.user?.name
+                                ? `user: ${auth.user.name}
+                                 `
+                                : `hello visitor, You can `}
+                            {!auth?.user?.name && (
+                                <>
+                                    <NavLink
+                                        href={"/login"}
+                                        method="get"
+                                        className="font-extrabold text-black hover:underline"
+                                    >
+                                        log in
+                                    </NavLink>
+                                    {` or `}
+                                    <NavLink
+                                        href="/register"
+                                        method="get"
+                                        className="font-extrabold text-black hover:underline"
+                                    >
+                                        register
+                                    </NavLink>
+                                </>
+                            )}
+                            {auth?.user?.name && (
+                                <NavLink
+                                    href={"/logout"}
+                                    method="post"
+                                    className="font-extrabold text-black hover:underline"
+                                >
+                                    logout
+                                </NavLink>
+                            )}
+                        </span>
+                    </div>
+                    <Nav
+                        navRoutes={navRoutes}
+                        auth={auth}
+                        classNameDiv="mr-2 whitespace-nowrap"
+                    />
                 </div>
             </div>
         </>

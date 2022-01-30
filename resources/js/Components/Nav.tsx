@@ -4,22 +4,22 @@ import NavLink from "./NavLink";
 
 import { RouteProps } from "../Layouts/Template";
 
-const Nav: FC<RouteProps> = ({ navRoutes }) => {
+const Nav: FC<RouteProps> = ({ navRoutes, classNameDiv, classNameBtn }) => {
     const navButtonFactory = navRoutes?.map((route, index) => (
         <NavLink key={index} href={"/" + route} active={true}>
             <Button
                 type="button"
                 onClick={() => null}
-                className="mr-3"
+                className={`${classNameBtn}`}
                 disabled={false}
-                size="m"
+                size="s"
             >
                 {route}
             </Button>
         </NavLink>
     ));
 
-    return <div className="mt-6 mb-6">{navButtonFactory}</div>;
+    return <div className={classNameDiv}>{navButtonFactory}</div>;
 };
 
 export default Nav;
