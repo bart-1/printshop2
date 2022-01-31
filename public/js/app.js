@@ -8774,8 +8774,8 @@ var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/
 
 var CreatorMainToolbox = function CreatorMainToolbox() {
   return React.createElement("div", {
-    className: "flex w-1/3 h-screen bg-orange-400 "
-  }, " Main toolbox panel");
+    className: "flex w-1/3 h-screen font-sans font-normal bg-orange-400"
+  }, " Main toolbox panel W a\u0105e\u0119z\u017Ac\u0107z\u017Cz\u017Ao\xF3l\u0142");
 };
 
 exports["default"] = CreatorMainToolbox;
