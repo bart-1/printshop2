@@ -8715,7 +8715,7 @@ var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/
 
 var CreatorCanvas = function CreatorCanvas() {
   return React.createElement("div", {
-    className: "w-2/3 h-screen bg-amber-400"
+    className: "z-10 w-full h-screen min-h-screen bg-amber-400"
   }, React.createElement("canvas", null));
 };
 
@@ -8723,9 +8723,9 @@ exports["default"] = CreatorCanvas;
 
 /***/ }),
 
-/***/ "./resources/js/Components/Creator/CreatorMainToolbox.tsx":
+/***/ "./resources/js/Components/Creator/CreatorLeftToolbox.tsx":
 /*!****************************************************************!*\
-  !*** ./resources/js/Components/Creator/CreatorMainToolbox.tsx ***!
+  !*** ./resources/js/Components/Creator/CreatorLeftToolbox.tsx ***!
   \****************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -8772,20 +8772,22 @@ Object.defineProperty(exports, "__esModule", ({
 
 var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var CreatorMainToolbox = function CreatorMainToolbox() {
+var CreatorLeftToolbox = function CreatorLeftToolbox() {
   return React.createElement("div", {
-    className: "flex w-1/3 h-screen font-sans font-normal bg-orange-400"
-  }, " Main toolbox panel W a\u0105e\u0119z\u017Ac\u0107z\u017Cz\u017Ao\xF3l\u0142");
+    className: "absolute left-0 z-20 w-8 min-h-screen overflow-hidden bg-[color:var(--my-foreground)] hover:w-72 rounded-tr-xl rounded-br-xl"
+  }, React.createElement("div", {
+    className: "overflow-hidden whitespace-nowrap"
+  }, "left panel"));
 };
 
-exports["default"] = CreatorMainToolbox;
+exports["default"] = CreatorLeftToolbox;
 
 /***/ }),
 
-/***/ "./resources/js/Components/Creator/CreatorNav.tsx":
-/*!********************************************************!*\
-  !*** ./resources/js/Components/Creator/CreatorNav.tsx ***!
-  \********************************************************/
+/***/ "./resources/js/Components/Creator/CreatorRightToolbox.tsx":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Components/Creator/CreatorRightToolbox.tsx ***!
+  \*****************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -8803,13 +8805,13 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var CreatorNav = function CreatorNav() {
+var CreatorRightToolbox = function CreatorRightToolbox() {
   return react_1["default"].createElement("div", {
-    className: "fixed bottom-0 w-full h-6 max-w-4xl bg-red-600 hover:h-36"
+    className: "absolute right-0 z-20 w-8 min-h-screen bg-[color:var(--my-foreground)] hover:w-72 rounded-tl-xl rounded-bl-xl"
   }, " ", "Creator Navigation Panel");
 };
 
-exports["default"] = CreatorNav;
+exports["default"] = CreatorRightToolbox;
 
 /***/ }),
 
@@ -9039,24 +9041,18 @@ var Header = function Header(_ref) {
       navRoutes = _ref.navRoutes;
 
   var _a, _b, _c;
-  /**
-   * toggle to switch CSS light / dark theme with HTML tag attributes
-   * useThemeContext & button (for handle it)
-   *
-   */
-
 
   var _ref2 = (0, ThemeContext_1.useThemeContext)(),
       colorTheme = _ref2.colorTheme,
       setColorTheme = _ref2.setColorTheme;
 
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
-    className: "fixed top-0 flex"
+    className: "fixed top-0 z-40 flex w-full"
   }, react_1["default"].createElement(ApplicationLogo_1["default"], {
-    className: "justify-center flex-none hidden p-1 mr-1 sm:mr-3 xs:block",
+    className: "justify-center hidden w-24 p-1 grow-0 xs:block right-2",
     fillColor: "var(--my-foreground)"
   }), react_1["default"].createElement("div", {
-    className: "flex flex-wrap sm:flex-nowrap w-fit h-20 sm:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center"
+    className: "flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center grow"
   }, react_1["default"].createElement(react_icons_1.IconContext.Provider, {
     value: {
       className: "w-4 h-4 ml-px text-black"
@@ -9071,7 +9067,7 @@ var Header = function Header(_ref) {
     size: "xs",
     foregroundColor: "amber-400"
   }, colorTheme ? react_1["default"].createElement(bs_1.BsSunFill, null) : react_1["default"].createElement(bs_1.BsMoonFill, null))), react_1["default"].createElement("div", {
-    className: "flex-none h-8 px-2 mb-2 rounded-md max-w-xxs sm:mb-0 bg-amber-400 sm:order-last"
+    className: "flex-none h-8 px-2 mb-2 rounded-md max-w-xxs md:mb-0 bg-amber-400 md:order-last"
   }, react_1["default"].createElement("span", {
     className: "flex-none inline-block text-xs text-center text-black align-middle"
   }, ((_a = auth === null || auth === void 0 ? void 0 : auth.user) === null || _a === void 0 ? void 0 : _a.name) ? "user: ".concat(auth.user.name, "\n                                 ") : "hello visitor, You can ", !((_b = auth === null || auth === void 0 ? void 0 : auth.user) === null || _b === void 0 ? void 0 : _b.name) && react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(NavLink_1["default"], {
@@ -9090,7 +9086,10 @@ var Header = function Header(_ref) {
     navRoutes: navRoutes,
     auth: auth,
     classNameDiv: "mr-2 whitespace-nowrap"
-  }))));
+  })), react_1["default"].createElement(ApplicationLogo_1["default"], {
+    className: "justify-center hidden w-24 p-1 xs:block xs:invisible grow-0 left-2",
+    fillColor: "var(--my-foreground)"
+  })));
 };
 
 exports["default"] = Header;
@@ -9758,7 +9757,7 @@ var Template = function Template(_ref) {
     title: title,
     navRoutes: navRoutes
   }), react_1["default"].createElement("div", {
-    className: "h-24 sm:h-16"
+    className: "h-12 md:h-8"
   }), react_1["default"].createElement("div", {
     className: "p-2 xs:p-4 sm:p-6"
   }, children));
@@ -10603,18 +10602,18 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var CreatorCanvas_1 = __importDefault(__webpack_require__(/*! ../Components/Creator/CreatorCanvas */ "./resources/js/Components/Creator/CreatorCanvas.tsx"));
 
-var CreatorNav_1 = __importDefault(__webpack_require__(/*! ../Components/Creator/CreatorNav */ "./resources/js/Components/Creator/CreatorNav.tsx"));
+var CreatorRightToolbox_1 = __importDefault(__webpack_require__(/*! ../Components/Creator/CreatorRightToolbox */ "./resources/js/Components/Creator/CreatorRightToolbox.tsx"));
 
-var CreatorMainToolbox_1 = __importDefault(__webpack_require__(/*! ../Components/Creator/CreatorMainToolbox */ "./resources/js/Components/Creator/CreatorMainToolbox.tsx"));
+var CreatorLeftToolbox_1 = __importDefault(__webpack_require__(/*! ../Components/Creator/CreatorLeftToolbox */ "./resources/js/Components/Creator/CreatorLeftToolbox.tsx"));
 
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
 var Creator = function Creator(props) {
   return react_1["default"].createElement(Template_1["default"], Object.assign({}, props), react_1["default"].createElement("div", {
-    className: "container bg-blue-500 "
+    className: ""
   }, react_1["default"].createElement("div", {
     className: "flex"
-  }, react_1["default"].createElement(CreatorMainToolbox_1["default"], null), react_1["default"].createElement(CreatorCanvas_1["default"], null), react_1["default"].createElement(CreatorNav_1["default"], null))));
+  }, react_1["default"].createElement(CreatorLeftToolbox_1["default"], null), react_1["default"].createElement(CreatorCanvas_1["default"], null), react_1["default"].createElement(CreatorRightToolbox_1["default"], null))));
 };
 
 exports["default"] = Creator;

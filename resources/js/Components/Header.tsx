@@ -9,21 +9,17 @@ import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
 const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
-    /**
-     * toggle to switch CSS light / dark theme with HTML tag attributes
-     * useThemeContext & button (for handle it)
-     *
-     */
+
     const { colorTheme, setColorTheme } = useThemeContext();
     return (
         <>
-            <div className="fixed top-0 flex">
+            <div className="fixed top-0 z-40 flex w-full">
                 <ApplicationLogo
-                    className="justify-center flex-none hidden p-1 mr-1 sm:mr-3 xs:block"
+                    className="justify-center hidden w-24 p-1 grow-0 xs:block right-2"
                     fillColor={`var(--my-foreground)`}
                 />
 
-                <div className="flex flex-wrap sm:flex-nowrap w-fit h-20 sm:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center">
+                <div className="flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center grow">
                     <IconContext.Provider
                         value={{ className: "w-4 h-4 ml-px text-black" }}
                     >
@@ -38,7 +34,7 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
                             {colorTheme ? <BsSunFill /> : <BsMoonFill />}
                         </Button>
                     </IconContext.Provider>
-                    <div className="flex-none h-8 px-2 mb-2 rounded-md max-w-xxs sm:mb-0 bg-amber-400 sm:order-last">
+                    <div className="flex-none h-8 px-2 mb-2 rounded-md max-w-xxs md:mb-0 bg-amber-400 md:order-last">
                         <span className="flex-none inline-block text-xs text-center text-black align-middle">
                             {auth?.user?.name
                                 ? `user: ${auth.user.name}
@@ -80,6 +76,10 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
                         classNameDiv="mr-2 whitespace-nowrap"
                     />
                 </div>
+                <ApplicationLogo
+                    className="justify-center hidden w-24 p-1 xs:block xs:invisible grow-0 left-2"
+                    fillColor={`var(--my-foreground)`}
+                />
             </div>
         </>
     );

@@ -1,17 +1,17 @@
 import React, { FC } from "react";
 import CreatorCanvas from "../Components/Creator/CreatorCanvas";
-import CreatorNav from "../Components/Creator/CreatorNav";
-import CreatorMainToolbox from "../Components/Creator/CreatorMainToolbox";
+import CreatorRightToolbox from "../Components/Creator/CreatorRightToolbox";
+import CreatorLeftToolbox from "../Components/Creator/CreatorLeftToolbox";
 import Template, { RouteProps } from "../Layouts/Template";
 
 const Creator: FC<RouteProps> = (props) => {
     return (
         <Template {...props}>
-            <div className="container bg-blue-500 ">
+            <div className="">
                 <div className="flex">
-                    <CreatorMainToolbox />
+                    <CreatorLeftToolbox />
                     <CreatorCanvas />
-                    <CreatorNav />
+                    <CreatorRightToolbox />
                 </div>
             </div>
         </Template>
