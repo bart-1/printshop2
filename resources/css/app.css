@@ -4,12 +4,22 @@
 :root {
     --my-foreground: #222222;
     --my-background: #a2c4c8;
-    --my-test: red;
+
+    --background: #dfebed;
+    --text: #233142;
+    --elements: #455d7a;
+    --accent: #f95959;
+    --button-txt: #ffff;
+    --button-bg: #233142;
+    --button-hov: #ffc93c;
+
 }
 
 html[data-theme="light"] {
     --my-background: #a2c4c8;
     --my-foreground: #222222;
+
+    
 }
 
 html[data-theme="dark"] {

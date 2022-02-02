@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\UserRole;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IsEmployee
 {
@@ -16,7 +18,7 @@ class IsEmployee
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::user()->role === 'employee' || !Auth::user()->role === 'admin') {
+        if (!Auth::user()->role === UserRole::EMPLOYEE || !Auth::user()->role === UserRole::ADMIN) {
             return \redirect('/login');
         }
 

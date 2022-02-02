@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +15,7 @@ class AddDefaultValueToRoleColumn extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', ['customer', 'employee', 'admin'])->default('customer');
+            $table->enum('role', UserRole::TYPES)->default(UserRole::USER)->after('email');
         });
     }
 
@@ -30,7 +28,6 @@ class AddDefaultValueToRoleColumn extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
-            $table->enum('role', ['customer', 'employee', 'admin']);
         });
     }
 }

@@ -13,7 +13,7 @@ class PageController extends Controller
     {
         $routeName = $request->route()->getName();
 
-        if (Gate::allows('isAdminRoute')) {
+        if (Gate::allows('isAdmin')) {
             $routeList = ['start', 'printshop', 'creator', 'contact', 'admin-tools'];
         } else {
             $routeList = ['start', 'printshop', 'creator', 'contact'];
