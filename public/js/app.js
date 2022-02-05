@@ -8584,37 +8584,87 @@ exports["default"] = ApplicationLogo;
 "use strict";
 
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
 };
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 function Button(_ref) {
-  var backgroundColor = _ref.backgroundColor,
+  var _ref$bgColor = _ref.bgColor,
+      bgColor = _ref$bgColor === void 0 ? "bg-[color:var(--btn-bg)]" : _ref$bgColor,
       children = _ref.children,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? "" : _ref$className,
       disabled = _ref.disabled,
-      foregroundColor = _ref.foregroundColor,
+      _ref$hoverColor = _ref.hoverColor,
+      hoverColor = _ref$hoverColor === void 0 ? "bg-[color:var(--btn-hov)]" : _ref$hoverColor,
       onClick = _ref.onClick,
-      revertColor = _ref.revertColor,
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? "m" : _ref$size,
       _ref$type = _ref.type,
-      type = _ref$type === void 0 ? "button" : _ref$type;
-  var pressed;
-  var currentURL = window.location.pathname;
-  if (currentURL == "/" + children) pressed = true;
+      type = _ref$type === void 0 ? "button" : _ref$type,
+      _ref$txtColor = _ref.txtColor,
+      txtColor = _ref$txtColor === void 0 ? "text-[color:var(--btn-txt)]" : _ref$txtColor;
+
+  var _ref2 = (0, react_1.useState)(false),
+      _ref3 = _slicedToArray(_ref2, 2),
+      isPressed = _ref3[0],
+      setIsPressed = _ref3[1];
+
+  0;
+  (0, react_1.useEffect)(function () {
+    if (window.location.pathname == "/" + children) setIsPressed(true);
+  }, [window.location.pathname]);
   return react_1["default"].createElement("button", {
     type: type,
-    className: "inline-flex items-center border-transparent rounded-md font-normal ".concat(size === "xs" && "px-1.5 py-1 border text-xxs", " ").concat(size === "s" && "px-2 py-1.5 border text-xs", " ").concat(size === "m" && "px-4 py-2 border text-xs", " ").concat(size === "l" && "px-6 py-4 border text-s", " ").concat(!pressed ? " ".concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " hover:bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] hover:bg-[color:var(--my-background)]  ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " hover:border-").concat(foregroundColor, " hover:text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] hover:border-[color:var(--my-foreground)] hover:text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " hover:bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] hover:bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " hover:border-").concat(backgroundColor, " hover:text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] hover:border-[color:var(--my-background)] hover:text-[color:var(--my-background)] ")) : "".concat(!revertColor ? "".concat(backgroundColor ? "text-".concat(backgroundColor, " bg-").concat(backgroundColor, " ") : "text-[color:var(--my-background)] bg-[color:var(--my-background)]  ", " ").concat(foregroundColor ? "bg-".concat(foregroundColor, " border-").concat(foregroundColor, " text-").concat(foregroundColor, " ") : "bg-[color:var(--my-foreground)] border-[color:var(--my-foreground)] text-[color:var(--my-foreground)] ") : "".concat(foregroundColor ? "text-".concat(foregroundColor, " bg-").concat(foregroundColor, " ") : "text-[color:var(--my-foreground)] bg-[color:var(--my-foreground)] ", " ").concat(backgroundColor ? "bg-".concat(backgroundColor, " border-").concat(backgroundColor, " text-").concat(backgroundColor, " ") : "bg-[color:var(--my-background)] border-[color:var(--my-background)] text-[color:var(--my-background)] ")), "    ").concat(disabled && "opacity-25", " ").concat(className),
+    className: "inline-flex items-center border-transparent rounded-md font-normal ".concat(size === "xs" && "px-1.5 py-1 border text-xxs", " ").concat(size === "s" && "px-2 py-1.5 border text-xs", " ").concat(size === "m" && "px-4 py-2 border text-xs", " ").concat(size === "l" && "px-6 py-4 border text-s", " ").concat(!isPressed ? "".concat(txtColor, " ").concat(bgColor, " hover:").concat(hoverColor) : "".concat(txtColor, " ").concat(hoverColor, " hover:").concat(bgColor, " "), " ").concat(disabled && "opacity-25", " ").concat(className),
     disabled: disabled,
     onClick: onClick
   }, children);
@@ -8715,7 +8765,7 @@ var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/
 
 var CreatorCanvas = function CreatorCanvas() {
   return React.createElement("div", {
-    className: "z-10 w-full h-screen min-h-screen bg-amber-400"
+    className: "z-10 w-full h-screen min-h-screen"
   }, React.createElement("canvas", null));
 };
 
@@ -8774,7 +8824,7 @@ var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/
 
 var CreatorLeftToolbox = function CreatorLeftToolbox() {
   return React.createElement("div", {
-    className: "absolute left-0 z-20 w-8 min-h-screen overflow-hidden bg-[color:var(--my-foreground)] hover:w-72 rounded-tr-xl rounded-br-xl"
+    className: "absolute left-0 z-20 w-8 min-h-screen overflow-hidden bg-[color:var(--side-elements)] hover:w-72 rounded-tr-xl rounded-br-xl"
   }, React.createElement("div", {
     className: "overflow-hidden whitespace-nowrap"
   }, "left panel"));
@@ -8807,7 +8857,7 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var CreatorRightToolbox = function CreatorRightToolbox() {
   return react_1["default"].createElement("div", {
-    className: "absolute right-0 z-20 w-8 min-h-screen bg-[color:var(--my-foreground)] hover:w-72 rounded-tl-xl rounded-bl-xl"
+    className: "absolute right-0 z-20 w-8 min-h-screen bg-[color:var(--side-elements)] hover:w-72 rounded-tl-xl rounded-bl-xl"
   }, " ", "Creator Navigation Panel");
 };
 
@@ -9050,45 +9100,46 @@ var Header = function Header(_ref) {
     className: "fixed top-0 z-40 flex w-full"
   }, react_1["default"].createElement(ApplicationLogo_1["default"], {
     className: "justify-center hidden w-24 p-1 grow-0 xs:block right-2",
-    fillColor: "var(--my-foreground)"
+    fillColor: "var(--text-dark)"
   }), react_1["default"].createElement("div", {
-    className: "flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center grow"
+    className: "flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--text-dark)] text-right bg-[color:var(--side-elements)] items-center justify-center grow"
   }, react_1["default"].createElement(react_icons_1.IconContext.Provider, {
     value: {
-      className: "w-4 h-4 ml-px text-black"
+      className: "w-4 h-4 ml-px text-[color:var(--text-dark)] "
     }
   }, react_1["default"].createElement(Button_1["default"], {
     type: "button",
     onClick: function onClick() {
       return setColorTheme(!colorTheme);
     },
-    className: "flex-none w-8 h-8 mr-1 rounded-full",
+    className: "flex-none w-8 h-8 mr-10 rounded-full",
     disabled: false,
     size: "xs",
-    foregroundColor: "amber-400"
+    txtColor: "amber-400"
   }, colorTheme ? react_1["default"].createElement(bs_1.BsSunFill, null) : react_1["default"].createElement(bs_1.BsMoonFill, null))), react_1["default"].createElement("div", {
-    className: "flex-none h-8 px-2 mb-2 rounded-md max-w-xxs md:mb-0 bg-amber-400 md:order-last"
+    className: "flex-none h-8 px-2 mb-2 rounded-md max-w-xxs md:mb-0 text-[color:var(--btn-hov)]  md:order-last"
   }, react_1["default"].createElement("span", {
-    className: "flex-none inline-block text-xs text-center text-black align-middle"
+    className: "flex-none inline-block text-xs text-center text-[color:var(--text-dark)] align-middle"
   }, ((_a = auth === null || auth === void 0 ? void 0 : auth.user) === null || _a === void 0 ? void 0 : _a.name) ? "user: ".concat(auth.user.name, "\n                                 ") : "hello visitor, You can ", !((_b = auth === null || auth === void 0 ? void 0 : auth.user) === null || _b === void 0 ? void 0 : _b.name) && react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(NavLink_1["default"], {
     href: "/login",
     method: "get",
-    className: "font-extrabold text-black hover:underline"
+    className: "font-extrabold text-[color:var(--text-dark)] hover:underline"
   }, "log in"), " or ", react_1["default"].createElement(NavLink_1["default"], {
     href: "/register",
     method: "get",
-    className: "font-extrabold text-black hover:underline"
+    className: "font-extrabold text-[color:var(--text-dark)] hover:underline"
   }, "register")), ((_c = auth === null || auth === void 0 ? void 0 : auth.user) === null || _c === void 0 ? void 0 : _c.name) && react_1["default"].createElement(NavLink_1["default"], {
     href: "/logout",
     method: "post",
-    className: "font-extrabold text-black hover:underline"
+    className: "font-extrabold text-[color:var(--text-dark)] hover:underline"
   }, "logout"))), react_1["default"].createElement(Nav_1["default"], {
     navRoutes: navRoutes,
     auth: auth,
-    classNameDiv: "mr-2 whitespace-nowrap"
+    classNameDiv: "mr-2 whitespace-nowrap",
+    classNameBtn: "mr-2"
   })), react_1["default"].createElement(ApplicationLogo_1["default"], {
     className: "justify-center hidden w-24 p-1 xs:block xs:invisible grow-0 left-2",
-    fillColor: "var(--my-foreground)"
+    fillColor: "var(--text-dark)"
   })));
 };
 

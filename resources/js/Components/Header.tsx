@@ -16,26 +16,29 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
             <div className="fixed top-0 z-40 flex w-full">
                 <ApplicationLogo
                     className="justify-center hidden w-24 p-1 grow-0 xs:block right-2"
-                    fillColor={`var(--my-foreground)`}
+                    fillColor={`var(--text-dark)`}
                 />
 
-                <div className="flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--my-background)] text-right bg-[color:var(--my-foreground)] items-center justify-center grow">
+                <div className="flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--text-dark)] text-right bg-[color:var(--side-elements)] items-center justify-center grow">
                     <IconContext.Provider
-                        value={{ className: "w-4 h-4 ml-px text-black" }}
+                        value={{
+                            className:
+                                "w-4 h-4 ml-px text-[color:var(--text-dark)] ",
+                        }}
                     >
                         <Button
                             type="button"
                             onClick={() => setColorTheme(!colorTheme)}
-                            className="flex-none w-8 h-8 mr-1 rounded-full"
+                            className="flex-none w-8 h-8 mr-10 rounded-full"
                             disabled={false}
                             size="xs"
-                            foregroundColor="amber-400"
+                            txtColor="amber-400"
                         >
                             {colorTheme ? <BsSunFill /> : <BsMoonFill />}
                         </Button>
                     </IconContext.Provider>
-                    <div className="flex-none h-8 px-2 mb-2 rounded-md max-w-xxs md:mb-0 bg-amber-400 md:order-last">
-                        <span className="flex-none inline-block text-xs text-center text-black align-middle">
+                    <div className="flex-none h-8 px-2 mb-2 rounded-md max-w-xxs md:mb-0 text-[color:var(--btn-hov)]  md:order-last">
+                        <span className="flex-none inline-block text-xs text-center text-[color:var(--text-dark)] align-middle">
                             {auth?.user?.name
                                 ? `user: ${auth.user.name}
                                  `
@@ -45,7 +48,7 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
                                     <NavLink
                                         href={"/login"}
                                         method="get"
-                                        className="font-extrabold text-black hover:underline"
+                                        className="font-extrabold text-[color:var(--text-dark)] hover:underline"
                                     >
                                         log in
                                     </NavLink>
@@ -53,7 +56,7 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
                                     <NavLink
                                         href="/register"
                                         method="get"
-                                        className="font-extrabold text-black hover:underline"
+                                        className="font-extrabold text-[color:var(--text-dark)] hover:underline"
                                     >
                                         register
                                     </NavLink>
@@ -63,7 +66,7 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
                                 <NavLink
                                     href={"/logout"}
                                     method="post"
-                                    className="font-extrabold text-black hover:underline"
+                                    className="font-extrabold text-[color:var(--text-dark)] hover:underline"
                                 >
                                     logout
                                 </NavLink>
@@ -74,11 +77,12 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
                         navRoutes={navRoutes}
                         auth={auth}
                         classNameDiv="mr-2 whitespace-nowrap"
+                        classNameBtn="mr-2"
                     />
                 </div>
                 <ApplicationLogo
                     className="justify-center hidden w-24 p-1 xs:block xs:invisible grow-0 left-2"
-                    fillColor={`var(--my-foreground)`}
+                    fillColor={`var(--text-dark)`}
                 />
             </div>
         </>

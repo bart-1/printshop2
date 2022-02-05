@@ -681,6 +681,9 @@ select {
 .mt-1 {
   margin-top: 0.25rem;
 }
+.mr-10 {
+  margin-right: 2.5rem;
+}
 .block {
   display: block;
 }
@@ -945,9 +948,8 @@ select {
 .bg-\[color\:var\(--my-background\)\] {
   background-color: var(--my-background);
 }
-.bg-amber-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 191 36 / var(--tw-bg-opacity));
+.bg-\[color\:var\(--side-elements\)\] {
+  background-color: var(--side-elements);
 }
 .bg-indigo-50 {
   --tw-bg-opacity: 1;
@@ -960,6 +962,21 @@ select {
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+.bg-\[color\:var\] {
+  background-color: var;
+}
+.bg-\[color\:var\(\)\] {
+  background-color: var();
+}
+.bg-\[color\:var\(--btn\)\] {
+  background-color: var(--btn);
+}
+.bg-\[color\:var\(--btn-bg\)\] {
+  background-color: var(--btn-bg);
+}
+.bg-\[color\:var\(--btn-hov\)\] {
+  background-color: var(--btn-hov);
 }
 .fill-current {
   fill: currentColor;
@@ -1152,19 +1169,24 @@ select {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
-.text-\[color\:var\(--my-background\)\] {
-  color: var(--my-background);
+.text-\[color\:var\(--my-btn-color\)\] {
+  color: var(--my-btn-color);
 }
 .text-\[color\:var\(--my-foreground\)\] {
   color: var(--my-foreground);
+}
+.text-\[color\:var\(--my-background\)\] {
+  color: var(--my-background);
 }
 .text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+.text-\[color\:var\(--text-dark\)\] {
+  color: var(--text-dark);
+}
+.text-\[color\:var\(--btn-hov\)\] {
+  color: var(--btn-hov);
 }
 .text-indigo-700 {
   --tw-text-opacity: 1;
@@ -1181,6 +1203,12 @@ select {
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+.text-\[color\:var\(--btn-color\)\] {
+  color: var(--btn-color);
+}
+.text-\[color\:var\(--btn-txt\)\] {
+  color: var(--btn-txt);
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -1260,6 +1288,18 @@ select {
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+.\[color\:var\(--btn-bg\)\] {
+  color: var(--btn-bg);
+}
+.\[color\:var\(--btn-hoov\)\] {
+  color: var(--btn-hoov);
+}
+.\[color\:var\(--btn-hov\)\] {
+  color: var(--btn-hov);
+}
+.\[color\:var\(--btn-txt\)\] {
+  color: var(--btn-txt);
+}
 :root {
     --my-foreground: #222222;
     --my-background: #a2c4c8;
@@ -1268,24 +1308,39 @@ select {
     --text: #233142;
     --elements: #455d7a;
     --accent: #f95959;
-    --button-txt: #ffff;
-    --button-bg: #233142;
-    --button-hov: #ffc93c;
-
+    --btn-txt: #ffff;
+    --btn-bg: #233142;
+    --btn-hov: #ffc93c;
 }
 html[data-theme="light"] {
-    --my-background: #a2c4c8;
-    --my-foreground: #222222;
+    --my-background: #d6d1cd;
+    --my-foreground: #969a97;
 
-    
+    --background: #d6d1cd;
+    --text-light: #e5ece9;
+    --text-dark: #0e0029;
+    --side-elements: #858786;
+    --accent: #ab0d69;
+    --btn-bg: #c87da9;
+    --btn-txt: #0e0029;
+    --btn-hov: #ffa21f;
 }
 html[data-theme="dark"] {
     --my-background: #222222;
-    --my-foreground: #a2c4c8;
+    --my-foreground: #602080;
+
+    --background: #0e0029;
+    --text-light: #0e0029;
+    --text-dark: #d6d1cd;
+    --side-elements: #602080;
+    --accent: #ffa21f;
+    --btn-bg: #858786;
+    --btn-txt: #0e0029;
+    --btn-hov: #ab0d69;
 }
 body {
-    background-color: var(--my-background);
-    color: var(--my-foreground);
+    background-color: var(--background);
+    color: var(--elements);
 }
 .hover\:w-72:hover {
   width: 18rem;
@@ -1313,6 +1368,12 @@ body {
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+.hover\:bg-\[color\:var\(--btn-\)\]:hover {
+  background-color: var(--btn-);
+}
+.hover\:bg-\[color\:var\(--btn-hov\)\]:hover {
+  background-color: var(--btn-hov);
 }
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;

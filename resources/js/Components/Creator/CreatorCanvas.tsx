@@ -5,7 +5,7 @@ interface CreatorCanvasProps {}
 
 const CreatorCanvas: FC<CreatorCanvasProps> = () => {
     return (
-        <div className="z-10 w-full h-screen min-h-screen bg-amber-400">
+        <div className="z-10 w-full h-screen min-h-screen">
             <canvas></canvas>
         </div>
     );
