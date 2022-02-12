@@ -19,9 +19,8 @@ class PageController extends Controller
             $routeList = ['start', 'printshop', 'creator', 'contact'];
         }
         return Inertia::render($routeName, [
-
-        'navRoutes' => $routeList,
-        'title' => $routeName,
-                ]);
+            'navRoutes' => $routeList,
+            'title' => $routeName,
+        ]);
     }
 }

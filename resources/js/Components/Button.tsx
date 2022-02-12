@@ -29,7 +29,7 @@ function Button({
     type = "button",
     txtColor = `text-[color:var(--btn-txt)]`,
 }: ButtonType) {
-    const [isPressed, setIsPressed] = useState(false);0;
+    const [isPressed, setIsPressed] = useState(false);
 
     useEffect(() => {
         if (window.location.pathname == "/" + children) setIsPressed(true);
@@ -44,7 +44,7 @@ function Button({
             } ${size === "l" && "px-6 py-4 border text-s"} ${
                 !isPressed
                     ? `${txtColor} ${bgColor} hover:${hoverColor}`
-                    : `${txtColor} ${hoverColor} hover:${bgColor} `
+                    : `${txtColor} ${hoverColor} hover:${bgColor}`
             } ${disabled && "opacity-25"} ${className}`}
             disabled={disabled}
             onClick={onClick}

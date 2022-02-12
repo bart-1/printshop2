@@ -8514,6 +8514,420 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/Components/AdminTools/ColorTools/ColorModifyToolGUI.tsx":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Components/AdminTools/ColorTools/ColorModifyToolGUI.tsx ***!
+  \******************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var InputRangeAndNumber_1 = __importDefault(__webpack_require__(/*! ../../InputRangeAndNumber */ "./resources/js/Components/InputRangeAndNumber.tsx"));
+
+var HEXAtoRGBA_1 = __webpack_require__(/*! ./HEXAtoRGBA */ "./resources/js/Components/AdminTools/ColorTools/HEXAtoRGBA.ts");
+
+var HSLAtoRGBA_1 = __webpack_require__(/*! ./HSLAtoRGBA */ "./resources/js/Components/AdminTools/ColorTools/HSLAtoRGBA.ts");
+
+var RGBAtoHEXA_1 = __webpack_require__(/*! ./RGBAtoHEXA */ "./resources/js/Components/AdminTools/ColorTools/RGBAtoHEXA.ts");
+
+var RGBAtoHSLA_1 = __webpack_require__(/*! ./RGBAtoHSLA */ "./resources/js/Components/AdminTools/ColorTools/RGBAtoHSLA.ts");
+
+var ColorModifyToolGUI = function ColorModifyToolGUI(_ref) {
+  var colorCSSVar = _ref.colorCSSVar,
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? "m" : _ref$size;
+
+  var _ref2 = (0, react_1.useState)(0),
+      _ref3 = _slicedToArray(_ref2, 2),
+      h = _ref3[0],
+      setH = _ref3[1];
+
+  var _ref4 = (0, react_1.useState)(100),
+      _ref5 = _slicedToArray(_ref4, 2),
+      s = _ref5[0],
+      setS = _ref5[1];
+
+  var _ref6 = (0, react_1.useState)(50),
+      _ref7 = _slicedToArray(_ref6, 2),
+      l = _ref7[0],
+      setL = _ref7[1];
+
+  var _ref8 = (0, react_1.useState)(100),
+      _ref9 = _slicedToArray(_ref8, 2),
+      a = _ref9[0],
+      setA = _ref9[1];
+
+  var _ref10 = (0, react_1.useState)({
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 100
+  }),
+      _ref11 = _slicedToArray(_ref10, 2),
+      rgba = _ref11[0],
+      setRgba = _ref11[1];
+
+  var _ref12 = (0, react_1.useState)(""),
+      _ref13 = _slicedToArray(_ref12, 2),
+      hex = _ref13[0],
+      setHex = _ref13[1];
+
+  (0, react_1.useEffect)(function () {
+    var getColorFromCSSVar = getComputedStyle(document.documentElement).getPropertyValue(colorCSSVar);
+    var rgbaColor = (0, HEXAtoRGBA_1.hexaToRgbaConvert)(getColorFromCSSVar);
+    var hslaColor = (0, RGBAtoHSLA_1.rgbaToHslaConvert)(rgbaColor);
+    setH(hslaColor.h);
+    setS(hslaColor.s);
+    setL(hslaColor.l);
+    setA(hslaColor.a);
+  }, []);
+  (0, react_1.useEffect)(function () {
+    console.log(h);
+    console.log(s);
+    console.log(l);
+    console.log(a);
+    var color = {
+      h: h,
+      s: s,
+      l: l,
+      a: a
+    };
+    setRgba((0, HSLAtoRGBA_1.hslaToRgbaConvert)(color));
+  }, [h, s, l, a]);
+  (0, react_1.useEffect)(function () {
+    setHex((0, RGBAtoHEXA_1.rgbaToHexaConvert)(rgba));
+    document.documentElement.style.setProperty("".concat(colorCSSVar), hex);
+  }, [rgba]);
+  var inputs = [{
+    name: "hue",
+    value: h,
+    min: 0,
+    max: 360,
+    inputChange: setH
+  }, {
+    name: "saturation",
+    value: s,
+    min: 0,
+    max: 100,
+    inputChange: setS
+  }, {
+    name: "lightness ",
+    value: l,
+    min: 0,
+    max: 100,
+    inputChange: setL
+  }, {
+    name: "transparency ",
+    value: a,
+    min: 0,
+    max: 100,
+    inputChange: setA
+  }];
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: ""
+  }, react_1["default"].createElement(InputRangeAndNumber_1["default"], {
+    inputsParam: inputs,
+    title: colorCSSVar,
+    size: size
+  })));
+};
+
+exports["default"] = ColorModifyToolGUI;
+
+/***/ }),
+
+/***/ "./resources/js/Components/AdminTools/ColorTools/HEXAtoRGBA.ts":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Components/AdminTools/ColorTools/HEXAtoRGBA.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.hexaToRgbaConvert = void 0;
+
+var hexaToRgbaConvert = function hexaToRgbaConvert(hexa) {
+  var r = 0,
+      b = 0,
+      g = 0,
+      a = 0;
+
+  if (hexa.length === 9) {
+    r = Number("0x" + hexa[1] + hexa[2]);
+    g = Number("0x" + hexa[3] + hexa[4]);
+    b = Number("0x" + hexa[5] + hexa[6]);
+    a = Number("0x" + hexa[7] + hexa[8]);
+  } else if (hexa.length === 7) {
+    r = Number("0x" + hexa[1] + hexa[2]);
+    g = Number("0x" + hexa[3] + hexa[4]);
+    b = Number("0x" + hexa[5] + hexa[6]);
+    a = 100;
+  }
+
+  return {
+    r: r,
+    g: g,
+    b: b,
+    a: a
+  };
+};
+
+exports.hexaToRgbaConvert = hexaToRgbaConvert;
+
+/***/ }),
+
+/***/ "./resources/js/Components/AdminTools/ColorTools/HSLAtoRGBA.ts":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Components/AdminTools/ColorTools/HSLAtoRGBA.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.hslaToRgbaConvert = void 0;
+
+var hslaToRgbaConvert = function hslaToRgbaConvert(color) {
+  var h = color.h,
+      s = color.s,
+      l = color.l,
+      a = color.a;
+  if (h >= 360 || s > 100 || l > 100 || a > 100) return {
+    r: 255,
+    g: 255,
+    b: 255,
+    a: 100
+  };
+  if (h < 0 || s < 0 || l < 0 || a < 0) return {
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 100
+  };
+  var c = (1 - Math.abs(2 * (l / 100) - 1)) * (s / 100);
+  var x = c * (1 - Math.abs(h / 60 % 2 - 1));
+  var m = l / 100 - c / 2;
+
+  function calcFinalRgb(val) {
+    return Math.round((val + m) * 255);
+  }
+
+  switch (true) {
+    case h >= 0 && h < 60:
+      return {
+        r: calcFinalRgb(c),
+        g: calcFinalRgb(x),
+        b: 0,
+        a: a
+      };
+
+    case h >= 60 && h < 120:
+      return {
+        r: calcFinalRgb(x),
+        g: calcFinalRgb(c),
+        b: 0,
+        a: a
+      };
+
+    case h >= 120 && h < 180:
+      return {
+        r: 0,
+        g: calcFinalRgb(c),
+        b: calcFinalRgb(x),
+        a: a
+      };
+
+    case h >= 180 && h < 240:
+      return {
+        r: 0,
+        g: calcFinalRgb(x),
+        b: calcFinalRgb(c),
+        a: a
+      };
+
+    case h >= 240 && h < 300:
+      return {
+        r: calcFinalRgb(x),
+        g: 0,
+        b: calcFinalRgb(c),
+        a: a
+      };
+
+    case h >= 300 && h < 360:
+      return {
+        r: calcFinalRgb(c),
+        g: 0,
+        b: calcFinalRgb(x),
+        a: a
+      };
+
+    default:
+      return {
+        r: 0,
+        g: 0,
+        b: 0,
+        a: 100
+      };
+  }
+};
+
+exports.hslaToRgbaConvert = hslaToRgbaConvert;
+
+/***/ }),
+
+/***/ "./resources/js/Components/AdminTools/ColorTools/RGBAtoHEXA.ts":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Components/AdminTools/ColorTools/RGBAtoHEXA.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.rgbaToHexaConvert = void 0;
+
+var rgbaToHexaConvert = function rgbaToHexaConvert(rgba) {
+  var r = rgba.r,
+      g = rgba.g,
+      b = rgba.b,
+      a = rgba.a;
+
+  function prepareHex(n) {
+    return n.toString(16).padStart(2, "0").toUpperCase();
+  }
+
+  return "#".concat(prepareHex(r)).concat(prepareHex(g)).concat(prepareHex(b)).concat(prepareHex(a));
+};
+
+exports.rgbaToHexaConvert = rgbaToHexaConvert;
+
+/***/ }),
+
+/***/ "./resources/js/Components/AdminTools/ColorTools/RGBAtoHSLA.ts":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Components/AdminTools/ColorTools/RGBAtoHSLA.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.rgbaToHslaConvert = void 0;
+
+var rgbaToHslaConvert = function rgbaToHslaConvert(rgba) {
+  var r = rgba.r,
+      g = rgba.g,
+      b = rgba.b,
+      a = rgba.a;
+  var R = r / 255,
+      G = g / 255,
+      B = b / 255,
+      cMax = Math.max(R, G, B),
+      cMin = Math.min(R, B, G),
+      delta = cMax - cMin;
+  var H = 0,
+      L = (cMax + cMin) / 2 * 100,
+      S = 0;
+
+  switch (true) {
+    case delta === 0:
+      H = 0;
+
+    case cMax === R:
+      H = Math.round(60 * ((G - B) / delta % 6));
+
+    case cMax === G:
+      H = Math.round(60 * ((B - R) / delta + 2));
+
+    case cMax === B:
+      H = Math.round(60 * ((R - G) / delta + 4));
+  }
+
+  delta === 0 ? S = 0 : S = delta / (1 - Math.abs(2 * L / 100 - 1)) * 100;
+  return {
+    h: H,
+    s: Number(S.toFixed(1)),
+    l: Number(L.toFixed(1)),
+    a: a
+  };
+};
+
+exports.rgbaToHslaConvert = rgbaToHslaConvert;
+
+/***/ }),
+
 /***/ "./resources/js/Components/ApplicationLogo.tsx":
 /*!*****************************************************!*\
   !*** ./resources/js/Components/ApplicationLogo.tsx ***!
@@ -8658,13 +9072,12 @@ function Button(_ref) {
       isPressed = _ref3[0],
       setIsPressed = _ref3[1];
 
-  0;
   (0, react_1.useEffect)(function () {
     if (window.location.pathname == "/" + children) setIsPressed(true);
   }, [window.location.pathname]);
   return react_1["default"].createElement("button", {
     type: type,
-    className: "inline-flex items-center border-transparent rounded-md font-normal ".concat(size === "xs" && "px-1.5 py-1 border text-xxs", " ").concat(size === "s" && "px-2 py-1.5 border text-xs", " ").concat(size === "m" && "px-4 py-2 border text-xs", " ").concat(size === "l" && "px-6 py-4 border text-s", " ").concat(!isPressed ? "".concat(txtColor, " ").concat(bgColor, " hover:").concat(hoverColor) : "".concat(txtColor, " ").concat(hoverColor, " hover:").concat(bgColor, " "), " ").concat(disabled && "opacity-25", " ").concat(className),
+    className: "inline-flex items-center border-transparent rounded-md font-normal ".concat(size === "xs" && "px-1.5 py-1 border text-xxs", " ").concat(size === "s" && "px-2 py-1.5 border text-xs", " ").concat(size === "m" && "px-4 py-2 border text-xs", " ").concat(size === "l" && "px-6 py-4 border text-s", " ").concat(!isPressed ? "".concat(txtColor, " ").concat(bgColor, " hover:").concat(hoverColor) : "".concat(txtColor, " ").concat(hoverColor, " hover:").concat(bgColor), " ").concat(disabled && "opacity-25", " ").concat(className),
     disabled: disabled,
     onClick: onClick
   }, children);
@@ -9112,7 +9525,7 @@ var Header = function Header(_ref) {
     onClick: function onClick() {
       return setColorTheme(!colorTheme);
     },
-    className: "flex-none w-8 h-8 mr-10 rounded-full",
+    className: "flex-none w-8 h-8 mr-5 rounded-full",
     disabled: false,
     size: "xs",
     txtColor: "amber-400"
@@ -9229,6 +9642,189 @@ function Input(_ref) {
 }
 
 exports["default"] = Input;
+
+/***/ }),
+
+/***/ "./resources/js/Components/InputRangeAndNumber.tsx":
+/*!*********************************************************!*\
+  !*** ./resources/js/Components/InputRangeAndNumber.tsx ***!
+  \*********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var InputRangeAndNumber = function InputRangeAndNumber(_ref) {
+  var inputsParam = _ref.inputsParam,
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? "m" : _ref$size,
+      _ref$growDirection = _ref.growDirection,
+      growDirection = _ref$growDirection === void 0 ? "rows" : _ref$growDirection,
+      _ref$bodyBgColor = _ref.bodyBgColor,
+      bodyBgColor = _ref$bodyBgColor === void 0 ? "bg-[color:var(--background)]" : _ref$bodyBgColor,
+      _ref$bodyTxtColor = _ref.bodyTxtColor,
+      bodyTxtColor = _ref$bodyTxtColor === void 0 ? "text-[color:var(--text-dark)]" : _ref$bodyTxtColor,
+      _ref$titleBgColor = _ref.titleBgColor,
+      titleBgColor = _ref$titleBgColor === void 0 ? "bg-[color:var(--side-elements)]" : _ref$titleBgColor,
+      _ref$borderColor = _ref.borderColor,
+      borderColor = _ref$borderColor === void 0 ? "border-[color:var(--side-elements)]" : _ref$borderColor,
+      _ref$titleTxtColor = _ref.titleTxtColor,
+      titleTxtColor = _ref$titleTxtColor === void 0 ? "text-[color:var(--text-light)]" : _ref$titleTxtColor,
+      _ref$title = _ref.title,
+      title = _ref$title === void 0 ? "title" : _ref$title;
+  var twClassesInitialValue = {
+    mainDiv: "relative flex flex-col gap-2 p-2 rounded-md w-80 drop-shadow-lg ".concat(bodyBgColor),
+    inputsSection: "flex flex-col mt-8 gap-2",
+    titleSection: "absolute top-0 left-0 justify-center w-full h-8 p-1 text-center text-sm font-bold rounded-t-md border-2 border-[color:var(--btn-hov)] ".concat(titleTxtColor, " ").concat(titleBgColor),
+    inputsSet: "flex flex-row w-full gap-2",
+    inputsLabel: "w-24 text-sm items-center",
+    inputRange: "flex w-full",
+    inputRangeDiv: "flex flex-1 items-center",
+    inputTxt: "flex-none w-14 p-1 text-xs border-0 rounded-md"
+  };
+
+  var _ref2 = (0, react_1.useState)(twClassesInitialValue),
+      _ref3 = _slicedToArray(_ref2, 2),
+      twClasses = _ref3[0],
+      setTwClasses = _ref3[1];
+
+  (0, react_1.useEffect)(function () {
+    switch (true) {
+      case size === "s":
+        return setTwClasses({
+          mainDiv: "relative flex flex-col gap-1 p-2 rounded-md w-56 drop-shadow-lg ".concat(bodyBgColor),
+          inputsSection: "flex flex-col mt-6 gap-1",
+          titleSection: "absolute top-0 left-0 justify-center w-full h-6 p-1 text-center text-xs font-bold rounded-t-md border-2 border-[color:var(--btn-hov)] ".concat(titleTxtColor, " ").concat(titleBgColor),
+          inputsSet: "flex flex-row w-full gap-2",
+          inputsLabel: "flex w-20 text-xs items-center",
+          inputRange: "flex w-full",
+          inputRangeDiv: "flex flex-1 items-center",
+          inputTxt: "flex-none w-10 p-px text-xxs border-0 rounded-md"
+        });
+
+      case size === "m":
+        return setTwClasses(twClassesInitialValue);
+
+      case size === "l":
+        return setTwClasses({
+          mainDiv: "relative flex flex-col gap-2 p-4 rounded-md w-96 drop-shadow-lg ".concat(bodyBgColor),
+          inputsSection: "flex flex-col mt-12 gap-4",
+          titleSection: "absolute top-0 left-0 justify-center w-full h-12 p-2 text-center text-lg font-bold rounded-t-md border-2 border-[color:var(--btn-hov)] ".concat(titleTxtColor, " ").concat(titleBgColor),
+          inputsSet: "flex flex-row w-full gap-4",
+          inputsLabel: "flex w-24 items-center",
+          inputRange: "flex w-full",
+          inputRangeDiv: "flex flex-1 items-center",
+          inputTxt: "flex-none w-18 p-1 text-s border-0 rounded-md"
+        });
+    }
+  }, [size]);
+  var mainDiv = twClasses.mainDiv,
+      inputsSection = twClasses.inputsSection,
+      titleSection = twClasses.titleSection,
+      inputsSet = twClasses.inputsSet,
+      inputsLabel = twClasses.inputsLabel,
+      inputRange = twClasses.inputRange,
+      inputRangeDiv = twClasses.inputRangeDiv,
+      inputTxt = twClasses.inputTxt;
+  var inputFactory = inputsParam.map(function (input, index) {
+    return react_1["default"].createElement("div", {
+      key: index,
+      id: "iran-inputs-set",
+      className: inputsSet
+    }, react_1["default"].createElement("div", {
+      id: "iran-inputs-label",
+      className: inputsLabel
+    }, react_1["default"].createElement("span", null, input.name)), react_1["default"].createElement("div", {
+      className: inputRangeDiv
+    }, react_1["default"].createElement("input", {
+      className: inputRange,
+      id: "iran-range-input",
+      name: input.name,
+      type: "range",
+      min: input.min,
+      max: input.max,
+      value: input.value,
+      onChange: function onChange(e) {
+        return input.inputChange(Number(e.currentTarget.value));
+      }
+    })), react_1["default"].createElement("div", null, react_1["default"].createElement("input", {
+      id: "iran-txt-input",
+      className: inputTxt,
+      name: input.name,
+      type: "number",
+      min: input.min,
+      max: input.max,
+      value: input.value,
+      onChange: function onChange(e) {
+        return input.inputChange(Number(e.currentTarget.value));
+      }
+    })));
+  });
+  return react_1["default"].createElement("div", {
+    id: "iran-main-div",
+    className: mainDiv
+  }, react_1["default"].createElement("div", {
+    id: "iran-title-section",
+    className: titleSection
+  }, title), react_1["default"].createElement("div", {
+    id: "iran-inputs-section",
+    className: inputsSection
+  }, inputFactory));
+};
+
+exports["default"] = InputRangeAndNumber;
 
 /***/ }),
 
@@ -9800,7 +10396,9 @@ var Template = function Template(_ref) {
   var auth = _ref.auth,
       children = _ref.children,
       navRoutes = _ref.navRoutes,
-      title = _ref.title;
+      title = _ref.title,
+      css = _ref.css;
+  console.log(css);
   return react_1["default"].createElement("div", {
     className: "px-0 mx-0 xs:mx-auto"
   }, react_1["default"].createElement(Header_1["default"], {
@@ -9808,7 +10406,7 @@ var Template = function Template(_ref) {
     title: title,
     navRoutes: navRoutes
   }), react_1["default"].createElement("div", {
-    className: "h-12 md:h-8"
+    className: "h-24 md:h-12"
   }), react_1["default"].createElement("div", {
     className: "p-2 xs:p-4 sm:p-6"
   }, children));
@@ -9839,12 +10437,17 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var ColorModifyToolGUI_1 = __importDefault(__webpack_require__(/*! ../Components/AdminTools/ColorTools/ColorModifyToolGUI */ "./resources/js/Components/AdminTools/ColorTools/ColorModifyToolGUI.tsx"));
+
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
 var AdminTools = function AdminTools(props) {
   return react_1["default"].createElement(Template_1["default"], Object.assign({}, props), react_1["default"].createElement("div", {
-    className: "justify-center bg-blue-500"
-  }, "this is body ADM"));
+    className: "flex flex-wrap w-screen"
+  }, react_1["default"].createElement(ColorModifyToolGUI_1["default"], {
+    colorCSSVar: "--background",
+    size: "m"
+  })));
 };
 
 exports["default"] = AdminTools;

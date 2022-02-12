@@ -16,8 +16,7 @@ createInertiaApp({
         return render(
             <ThemeProvider>
                 <App {...props} />
-            </ThemeProvider>,
-            el
+            </ThemeProvider>, el
         );
     },
 });

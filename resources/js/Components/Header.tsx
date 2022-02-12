@@ -29,7 +29,7 @@ const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
                         <Button
                             type="button"
                             onClick={() => setColorTheme(!colorTheme)}
-                            className="flex-none w-8 h-8 mr-10 rounded-full"
+                            className="flex-none w-8 h-8 mr-5 rounded-full"
                             disabled={false}
                             size="xs"
                             txtColor="amber-400"
