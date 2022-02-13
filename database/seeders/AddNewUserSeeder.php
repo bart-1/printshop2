@@ -42,7 +42,7 @@ class AddNewUser extends Seeder
             'apartment_number' => '435',
             'zip_code' => '00-077',
             'city' => 'Warszawa',
-            'role' => 'customer'
+            'role' => 'user'
 
         ]);
         //
