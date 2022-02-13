@@ -17,7 +17,7 @@ class IsRegisteredCustomer
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::user()->role === 'user') {
+        if (!Auth::user()->role === 'customer') {
             return \redirect('/login');
         }
 

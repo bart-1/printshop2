@@ -14,7 +14,7 @@ class AddColumnRoleToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', ['user', 'employee', 'admin']);
+            $table->enum('role', ['customer', 'employee', 'admin']);
         });
     }
 

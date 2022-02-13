@@ -7,11 +7,11 @@ class UserRole
 {
     const ADMIN = 'admin';
     const EMPLOYEE = 'employee';
-    const USER = 'user';
+    const CUSTOMER = 'customer';
 
     const TYPES = [
         self::ADMIN,
         self::EMPLOYEE,
-        self::USER
+        self::CUSTOMER
     ];
 }

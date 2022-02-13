@@ -35,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->defineGateForUserRole('isAdmin', UserRole::ADMIN);
         $this->defineGateForUserRole('isEmployee', UserRole::EMPLOYEE);
-        $this->defineGateForUserRole('isRegisteredUser', UserRole::USER);
+        $this->defineGateForUserRole('isRegisteredUser', UserRole::CUSTOMER);
     }
 
     private function defineGateForUserRole(string $name, string $role)
