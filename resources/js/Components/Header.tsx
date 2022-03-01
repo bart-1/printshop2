@@ -9,7 +9,6 @@ import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
 const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
-
     const { colorTheme, setColorTheme } = useThemeContext();
     return (
         <>

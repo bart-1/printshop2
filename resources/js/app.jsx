@@ -8,6 +8,8 @@ import ThemeProvider from "./Components/ThemeContext";
 
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Printshop2";
+document.documentElement.setAttribute("data-theme", "light");
+document.documentElement.setAttribute("style", "");
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -15,8 +17,9 @@ createInertiaApp({
     setup({ el, App, props, name }) {
         return render(
             <ThemeProvider>
-                <App {...props} />
-            </ThemeProvider>, el
+            <App {...props} />
+            </ThemeProvider>,
+            el
         );
     },
 });

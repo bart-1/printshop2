@@ -8514,420 +8514,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/Components/AdminTools/ColorTools/ColorModifyToolGUI.tsx":
-/*!******************************************************************************!*\
-  !*** ./resources/js/Components/AdminTools/ColorTools/ColorModifyToolGUI.tsx ***!
-  \******************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var InputRangeAndNumber_1 = __importDefault(__webpack_require__(/*! ../../InputRangeAndNumber */ "./resources/js/Components/InputRangeAndNumber.tsx"));
-
-var HEXAtoRGBA_1 = __webpack_require__(/*! ./HEXAtoRGBA */ "./resources/js/Components/AdminTools/ColorTools/HEXAtoRGBA.ts");
-
-var HSLAtoRGBA_1 = __webpack_require__(/*! ./HSLAtoRGBA */ "./resources/js/Components/AdminTools/ColorTools/HSLAtoRGBA.ts");
-
-var RGBAtoHEXA_1 = __webpack_require__(/*! ./RGBAtoHEXA */ "./resources/js/Components/AdminTools/ColorTools/RGBAtoHEXA.ts");
-
-var RGBAtoHSLA_1 = __webpack_require__(/*! ./RGBAtoHSLA */ "./resources/js/Components/AdminTools/ColorTools/RGBAtoHSLA.ts");
-
-var ColorModifyToolGUI = function ColorModifyToolGUI(_ref) {
-  var colorCSSVar = _ref.colorCSSVar,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? "m" : _ref$size;
-
-  var _ref2 = (0, react_1.useState)(0),
-      _ref3 = _slicedToArray(_ref2, 2),
-      h = _ref3[0],
-      setH = _ref3[1];
-
-  var _ref4 = (0, react_1.useState)(100),
-      _ref5 = _slicedToArray(_ref4, 2),
-      s = _ref5[0],
-      setS = _ref5[1];
-
-  var _ref6 = (0, react_1.useState)(50),
-      _ref7 = _slicedToArray(_ref6, 2),
-      l = _ref7[0],
-      setL = _ref7[1];
-
-  var _ref8 = (0, react_1.useState)(100),
-      _ref9 = _slicedToArray(_ref8, 2),
-      a = _ref9[0],
-      setA = _ref9[1];
-
-  var _ref10 = (0, react_1.useState)({
-    r: 0,
-    g: 0,
-    b: 0,
-    a: 100
-  }),
-      _ref11 = _slicedToArray(_ref10, 2),
-      rgba = _ref11[0],
-      setRgba = _ref11[1];
-
-  var _ref12 = (0, react_1.useState)(""),
-      _ref13 = _slicedToArray(_ref12, 2),
-      hex = _ref13[0],
-      setHex = _ref13[1];
-
-  (0, react_1.useEffect)(function () {
-    var getColorFromCSSVar = getComputedStyle(document.documentElement).getPropertyValue(colorCSSVar);
-    var rgbaColor = (0, HEXAtoRGBA_1.hexaToRgbaConvert)(getColorFromCSSVar);
-    var hslaColor = (0, RGBAtoHSLA_1.rgbaToHslaConvert)(rgbaColor);
-    setH(hslaColor.h);
-    setS(hslaColor.s);
-    setL(hslaColor.l);
-    setA(hslaColor.a);
-  }, []);
-  (0, react_1.useEffect)(function () {
-    console.log(h);
-    console.log(s);
-    console.log(l);
-    console.log(a);
-    var color = {
-      h: h,
-      s: s,
-      l: l,
-      a: a
-    };
-    setRgba((0, HSLAtoRGBA_1.hslaToRgbaConvert)(color));
-  }, [h, s, l, a]);
-  (0, react_1.useEffect)(function () {
-    setHex((0, RGBAtoHEXA_1.rgbaToHexaConvert)(rgba));
-    document.documentElement.style.setProperty("".concat(colorCSSVar), hex);
-  }, [rgba]);
-  var inputs = [{
-    name: "hue",
-    value: h,
-    min: 0,
-    max: 360,
-    inputChange: setH
-  }, {
-    name: "saturation",
-    value: s,
-    min: 0,
-    max: 100,
-    inputChange: setS
-  }, {
-    name: "lightness ",
-    value: l,
-    min: 0,
-    max: 100,
-    inputChange: setL
-  }, {
-    name: "transparency ",
-    value: a,
-    min: 0,
-    max: 100,
-    inputChange: setA
-  }];
-  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
-    className: ""
-  }, react_1["default"].createElement(InputRangeAndNumber_1["default"], {
-    inputsParam: inputs,
-    title: colorCSSVar,
-    size: size
-  })));
-};
-
-exports["default"] = ColorModifyToolGUI;
-
-/***/ }),
-
-/***/ "./resources/js/Components/AdminTools/ColorTools/HEXAtoRGBA.ts":
-/*!*********************************************************************!*\
-  !*** ./resources/js/Components/AdminTools/ColorTools/HEXAtoRGBA.ts ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.hexaToRgbaConvert = void 0;
-
-var hexaToRgbaConvert = function hexaToRgbaConvert(hexa) {
-  var r = 0,
-      b = 0,
-      g = 0,
-      a = 0;
-
-  if (hexa.length === 9) {
-    r = Number("0x" + hexa[1] + hexa[2]);
-    g = Number("0x" + hexa[3] + hexa[4]);
-    b = Number("0x" + hexa[5] + hexa[6]);
-    a = Number("0x" + hexa[7] + hexa[8]);
-  } else if (hexa.length === 7) {
-    r = Number("0x" + hexa[1] + hexa[2]);
-    g = Number("0x" + hexa[3] + hexa[4]);
-    b = Number("0x" + hexa[5] + hexa[6]);
-    a = 100;
-  }
-
-  return {
-    r: r,
-    g: g,
-    b: b,
-    a: a
-  };
-};
-
-exports.hexaToRgbaConvert = hexaToRgbaConvert;
-
-/***/ }),
-
-/***/ "./resources/js/Components/AdminTools/ColorTools/HSLAtoRGBA.ts":
-/*!*********************************************************************!*\
-  !*** ./resources/js/Components/AdminTools/ColorTools/HSLAtoRGBA.ts ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.hslaToRgbaConvert = void 0;
-
-var hslaToRgbaConvert = function hslaToRgbaConvert(color) {
-  var h = color.h,
-      s = color.s,
-      l = color.l,
-      a = color.a;
-  if (h >= 360 || s > 100 || l > 100 || a > 100) return {
-    r: 255,
-    g: 255,
-    b: 255,
-    a: 100
-  };
-  if (h < 0 || s < 0 || l < 0 || a < 0) return {
-    r: 0,
-    g: 0,
-    b: 0,
-    a: 100
-  };
-  var c = (1 - Math.abs(2 * (l / 100) - 1)) * (s / 100);
-  var x = c * (1 - Math.abs(h / 60 % 2 - 1));
-  var m = l / 100 - c / 2;
-
-  function calcFinalRgb(val) {
-    return Math.round((val + m) * 255);
-  }
-
-  switch (true) {
-    case h >= 0 && h < 60:
-      return {
-        r: calcFinalRgb(c),
-        g: calcFinalRgb(x),
-        b: 0,
-        a: a
-      };
-
-    case h >= 60 && h < 120:
-      return {
-        r: calcFinalRgb(x),
-        g: calcFinalRgb(c),
-        b: 0,
-        a: a
-      };
-
-    case h >= 120 && h < 180:
-      return {
-        r: 0,
-        g: calcFinalRgb(c),
-        b: calcFinalRgb(x),
-        a: a
-      };
-
-    case h >= 180 && h < 240:
-      return {
-        r: 0,
-        g: calcFinalRgb(x),
-        b: calcFinalRgb(c),
-        a: a
-      };
-
-    case h >= 240 && h < 300:
-      return {
-        r: calcFinalRgb(x),
-        g: 0,
-        b: calcFinalRgb(c),
-        a: a
-      };
-
-    case h >= 300 && h < 360:
-      return {
-        r: calcFinalRgb(c),
-        g: 0,
-        b: calcFinalRgb(x),
-        a: a
-      };
-
-    default:
-      return {
-        r: 0,
-        g: 0,
-        b: 0,
-        a: 100
-      };
-  }
-};
-
-exports.hslaToRgbaConvert = hslaToRgbaConvert;
-
-/***/ }),
-
-/***/ "./resources/js/Components/AdminTools/ColorTools/RGBAtoHEXA.ts":
-/*!*********************************************************************!*\
-  !*** ./resources/js/Components/AdminTools/ColorTools/RGBAtoHEXA.ts ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.rgbaToHexaConvert = void 0;
-
-var rgbaToHexaConvert = function rgbaToHexaConvert(rgba) {
-  var r = rgba.r,
-      g = rgba.g,
-      b = rgba.b,
-      a = rgba.a;
-
-  function prepareHex(n) {
-    return n.toString(16).padStart(2, "0").toUpperCase();
-  }
-
-  return "#".concat(prepareHex(r)).concat(prepareHex(g)).concat(prepareHex(b)).concat(prepareHex(a));
-};
-
-exports.rgbaToHexaConvert = rgbaToHexaConvert;
-
-/***/ }),
-
-/***/ "./resources/js/Components/AdminTools/ColorTools/RGBAtoHSLA.ts":
-/*!*********************************************************************!*\
-  !*** ./resources/js/Components/AdminTools/ColorTools/RGBAtoHSLA.ts ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.rgbaToHslaConvert = void 0;
-
-var rgbaToHslaConvert = function rgbaToHslaConvert(rgba) {
-  var r = rgba.r,
-      g = rgba.g,
-      b = rgba.b,
-      a = rgba.a;
-  var R = r / 255,
-      G = g / 255,
-      B = b / 255,
-      cMax = Math.max(R, G, B),
-      cMin = Math.min(R, B, G),
-      delta = cMax - cMin;
-  var H = 0,
-      L = (cMax + cMin) / 2 * 100,
-      S = 0;
-
-  switch (true) {
-    case delta === 0:
-      H = 0;
-
-    case cMax === R:
-      H = Math.round(60 * ((G - B) / delta % 6));
-
-    case cMax === G:
-      H = Math.round(60 * ((B - R) / delta + 2));
-
-    case cMax === B:
-      H = Math.round(60 * ((R - G) / delta + 4));
-  }
-
-  delta === 0 ? S = 0 : S = delta / (1 - Math.abs(2 * L / 100 - 1)) * 100;
-  return {
-    h: H,
-    s: Number(S.toFixed(1)),
-    l: Number(L.toFixed(1)),
-    a: a
-  };
-};
-
-exports.rgbaToHslaConvert = rgbaToHslaConvert;
-
-/***/ }),
-
 /***/ "./resources/js/Components/ApplicationLogo.tsx":
 /*!*****************************************************!*\
   !*** ./resources/js/Components/ApplicationLogo.tsx ***!
@@ -10397,8 +9983,11 @@ var Template = function Template(_ref) {
       children = _ref.children,
       navRoutes = _ref.navRoutes,
       title = _ref.title,
-      css = _ref.css;
-  console.log(css);
+      cssStoredData = _ref.cssStoredData;
+  // const childrenWithProps = Children.map(children, (child) => {
+  //     if (isValidElement(child)) cloneElement(child, { cssStoredData });
+  //     else return child;
+  // });
   return react_1["default"].createElement("div", {
     className: "px-0 mx-0 xs:mx-auto"
   }, react_1["default"].createElement(Header_1["default"], {
@@ -10437,20 +10026,789 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var ColorModifyToolGUI_1 = __importDefault(__webpack_require__(/*! ../Components/AdminTools/ColorTools/ColorModifyToolGUI */ "./resources/js/Components/AdminTools/ColorTools/ColorModifyToolGUI.tsx"));
-
 var Template_1 = __importDefault(__webpack_require__(/*! ../Layouts/Template */ "./resources/js/Layouts/Template.tsx"));
 
+var ColorAdminTools_1 = __importDefault(__webpack_require__(/*! ./AdminTools/ColorAdminTools */ "./resources/js/Pages/AdminTools/ColorAdminTools.tsx"));
+
 var AdminTools = function AdminTools(props) {
-  return react_1["default"].createElement(Template_1["default"], Object.assign({}, props), react_1["default"].createElement("div", {
-    className: "flex flex-wrap w-screen"
-  }, react_1["default"].createElement(ColorModifyToolGUI_1["default"], {
-    colorCSSVar: "--background",
-    size: "m"
-  })));
+  return react_1["default"].createElement(Template_1["default"], Object.assign({}, props), react_1["default"].createElement(ColorAdminTools_1["default"], {
+    cssInputData: props.cssStoredData
+  }));
 };
 
 exports["default"] = AdminTools;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/ColorAdminTools.tsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/ColorAdminTools.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var manageCssStoredColorData_1 = __webpack_require__(/*! ./colorHelpers/manageCssStoredColorData */ "./resources/js/Pages/AdminTools/colorHelpers/manageCssStoredColorData.ts");
+
+var manageCssStoredData_1 = __webpack_require__(/*! ./manageCssStoredData */ "./resources/js/Pages/AdminTools/manageCssStoredData.ts");
+
+var ColorModifyToolHslGUI_1 = __importDefault(__webpack_require__(/*! ./ColorModifyToolHslGUI */ "./resources/js/Pages/AdminTools/ColorModifyToolHslGUI.tsx"));
+
+var ColorAdminTools = function ColorAdminTools(_ref) {
+  var cssInputData = _ref.cssInputData;
+
+  var _ref2 = (0, react_1.useState)([]),
+      _ref3 = _slicedToArray(_ref2, 2),
+      cssDataToMerge = _ref3[0],
+      setCssDataToMerge = _ref3[1];
+
+  var _ref4 = (0, react_1.useState)([]),
+      _ref5 = _slicedToArray(_ref4, 2),
+      editableCssData = _ref5[0],
+      setEditableCssData = _ref5[1];
+
+  (0, react_1.useEffect)(function () {
+    (0, manageCssStoredData_1.mergeCssStoredDataWithStyles)((0, manageCssStoredColorData_1.prepareCssColorDataToMergeAndStore)(cssDataToMerge));
+  }, [cssDataToMerge]);
+  (0, react_1.useEffect)(function () {
+    setEditableCssData((0, manageCssStoredColorData_1.prepareCssColorDataToEdit)(cssInputData));
+  }, []);
+  var colorTools = editableCssData.map(function (colorToEdit, index) {
+    return react_1["default"].createElement(ColorModifyToolHslGUI_1["default"], {
+      key: index,
+      inputColor: colorToEdit,
+      size: "m",
+      outputColor: function outputColor(data) {
+        return setCssDataToMerge(function (prevState) {
+          return prevState.concat(data);
+        });
+      }
+    });
+  });
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "flex flex-wrap w-screen"
+  }, colorTools));
+};
+
+exports["default"] = ColorAdminTools;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/ColorModifyToolHslGUI.tsx":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/ColorModifyToolHslGUI.tsx ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var InputRangeAndNumber_1 = __importDefault(__webpack_require__(/*! ../../Components/InputRangeAndNumber */ "./resources/js/Components/InputRangeAndNumber.tsx"));
+
+var hslaObjectToRgbaObject_1 = __webpack_require__(/*! ./colorHelpers/hslaObjectToRgbaObject */ "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToRgbaObject.ts");
+
+var rgbaObjectToHslaObject_1 = __webpack_require__(/*! ./colorHelpers/rgbaObjectToHslaObject */ "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHslaObject.ts");
+
+var ColorModifyToolHslGUI = function ColorModifyToolHslGUI(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? "m" : _ref$size,
+      inputColor = _ref.inputColor,
+      outputColor = _ref.outputColor;
+
+  var _ref2 = (0, react_1.useState)(0),
+      _ref3 = _slicedToArray(_ref2, 2),
+      h = _ref3[0],
+      setH = _ref3[1];
+
+  var _ref4 = (0, react_1.useState)(100),
+      _ref5 = _slicedToArray(_ref4, 2),
+      s = _ref5[0],
+      setS = _ref5[1];
+
+  var _ref6 = (0, react_1.useState)(50),
+      _ref7 = _slicedToArray(_ref6, 2),
+      l = _ref7[0],
+      setL = _ref7[1];
+
+  var _ref8 = (0, react_1.useState)(100),
+      _ref9 = _slicedToArray(_ref8, 2),
+      a = _ref9[0],
+      setA = _ref9[1];
+
+  var _ref10 = (0, react_1.useState)({
+    id: inputColor.id,
+    property: inputColor.property,
+    theme: inputColor.theme,
+    value: inputColor.value,
+    scope: inputColor.scope
+  }),
+      _ref11 = _slicedToArray(_ref10, 2),
+      cssDataToStore = _ref11[0],
+      setCssDataToStore = _ref11[1];
+
+  (0, react_1.useEffect)(function () {
+    var hslaColor = (0, rgbaObjectToHslaObject_1.rgbaObjectToHslaObject)(inputColor.value);
+    setH(hslaColor.h);
+    setS(hslaColor.s);
+    setL(hslaColor.l);
+    setA(hslaColor.a);
+  }, []);
+  (0, react_1.useEffect)(function () {
+    setCssDataToStore({
+      id: inputColor.id,
+      property: inputColor.property,
+      theme: inputColor.theme,
+      value: (0, hslaObjectToRgbaObject_1.hslaObjectToRgbaObject)({
+        h: h,
+        s: s,
+        l: l,
+        a: a
+      }),
+      scope: inputColor.scope
+    });
+  }, [h, s, l, a]);
+  (0, react_1.useEffect)(function () {
+    outputColor(cssDataToStore);
+  }, [cssDataToStore]);
+  var inputs = [{
+    name: "hue",
+    value: h,
+    min: 0,
+    max: 360,
+    inputChange: setH
+  }, {
+    name: "saturation",
+    value: s,
+    min: 0,
+    max: 100,
+    inputChange: setS
+  }, {
+    name: "lightness ",
+    value: l,
+    min: 0,
+    max: 100,
+    inputChange: setL
+  }, {
+    name: "transparency ",
+    value: a,
+    min: 0,
+    max: 100,
+    inputChange: setA
+  }];
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: ""
+  }, react_1["default"].createElement(InputRangeAndNumber_1["default"], {
+    inputsParam: inputs,
+    title: inputColor.property,
+    size: size
+  })));
+};
+
+exports["default"] = ColorModifyToolHslGUI;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/colorObjectsInterfaces.ts":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/colorObjectsInterfaces.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/hexaObjectToHexaString.ts":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/hexaObjectToHexaString.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.hexaObjectToHexaString = void 0;
+/**
+ *@param {objectHexa} objectHexa color as objectRgba
+ *@return {string} color as hex string (with alpha)
+ */
+
+var hexaObjectToHexaString = function hexaObjectToHexaString(objectHexa) {
+  var hr = objectHexa.hr,
+      hg = objectHexa.hg,
+      hb = objectHexa.hb,
+      ha = objectHexa.ha;
+  return "#".concat(hr).concat(hg).concat(hb).concat(ha);
+};
+
+exports.hexaObjectToHexaString = hexaObjectToHexaString;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/hexaStringToRgbaObject.ts":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/hexaStringToRgbaObject.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.hexaStringToRgbaObject = void 0;
+
+function validateHexaString(stringHexa, hexRegex) {
+  return stringHexa.search(hexRegex);
+}
+/**
+ *@param {String} hexa color as hex string (with alpha too)
+ *@return {objectRgba} color as objectRgba
+ */
+
+
+function hexaStringToRgbaObject(hexa) {
+  var hexRegex = /^#([\da-f]{3}){1,2}$/i;
+  var hexaRegex = /^#([\da-f]{4}){1,2}$/i;
+  var r = 0,
+      b = 0,
+      g = 0,
+      a = 0;
+
+  if (validateHexaString(hexa, hexRegex) !== -1) {
+    r = Number("0x" + hexa[1] + hexa[2]);
+    g = Number("0x" + hexa[3] + hexa[4]);
+    b = Number("0x" + hexa[5] + hexa[6]); // a = (Number("0x" + hexa[7] + hexa[8]) * 100) / 255;
+
+    a = 100;
+  } else if (validateHexaString(hexa, hexaRegex) !== -1) {
+    r = Number("0x" + hexa[1] + hexa[2]);
+    g = Number("0x" + hexa[3] + hexa[4]);
+    b = Number("0x" + hexa[5] + hexa[6]);
+    a = 100;
+  } else {
+    return {
+      r: 0,
+      g: 0,
+      b: 0,
+      a: 100
+    };
+  }
+
+  console.log({
+    r: r,
+    g: g,
+    b: b,
+    a: a
+  });
+  return {
+    r: r,
+    g: g,
+    b: b,
+    a: a
+  };
+}
+
+exports.hexaStringToRgbaObject = hexaStringToRgbaObject;
+;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToHexaString.ts":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToHexaString.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.hslaObjectToHexaString = void 0;
+
+var hslaObjectToRgbaObject_1 = __webpack_require__(/*! ./hslaObjectToRgbaObject */ "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToRgbaObject.ts");
+
+var rgbaObjectToHexaString_1 = __webpack_require__(/*! ./rgbaObjectToHexaString */ "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts");
+/**
+ *@param {objectHsla} colorHsla color as objectHsla
+ *@return {string} color as hex string (with alpha)
+ *@see /hslaObjectToRgbaObject()
+ *@see /rgbaObjectToHexaString()
+ */
+
+
+function hslaObjectToHexaString(colorHsla) {
+  var rgbaColor = (0, hslaObjectToRgbaObject_1.hslaObjectToRgbaObject)(colorHsla);
+  return (0, rgbaObjectToHexaString_1.rgbaObjectToHexaString)(rgbaColor);
+}
+
+exports.hslaObjectToHexaString = hslaObjectToHexaString;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToRgbaObject.ts":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToRgbaObject.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.hslaObjectToRgbaObject = void 0;
+
+function validateColorParameters(param, min, max) {
+  if (min > param) return param = min;else if (param > max) return param = max;else return param;
+}
+/**
+ *
+ *@param {objectHsla} colorHsla color as objectHsla
+ *@return {objectRgba} color as RGBA object
+ */
+
+
+function hslaObjectToRgbaObject(colorHsla) {
+  var h = colorHsla.h,
+      s = colorHsla.s,
+      l = colorHsla.l,
+      a = colorHsla.a;
+  if (0 > h || h >= 360) h = Math.abs(h) % 360;
+  s = validateColorParameters(s, 0, 100);
+  l = validateColorParameters(l, 0, 100);
+  a = validateColorParameters(a, 0, 100);
+  var c = (1 - Math.abs(2 * (l / 100) - 1)) * (s / 100);
+  var x = c * (1 - Math.abs(h / 60 % 2 - 1));
+  var m = l / 100 - c / 2;
+
+  function calcFinalRgb(value) {
+    return Math.round((value + m) * 255);
+  }
+
+  var rgbaColor = {
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 0
+  };
+
+  switch (true) {
+    case 0 <= h && h < 60:
+      rgbaColor = {
+        r: calcFinalRgb(c),
+        g: calcFinalRgb(x),
+        b: calcFinalRgb(0),
+        a: a
+      };
+      break;
+
+    case 60 <= h && h < 120:
+      rgbaColor = {
+        r: calcFinalRgb(x),
+        g: calcFinalRgb(c),
+        b: calcFinalRgb(0),
+        a: a
+      };
+      break;
+
+    case 120 <= h && h < 180:
+      rgbaColor = {
+        r: calcFinalRgb(0),
+        g: calcFinalRgb(c),
+        b: calcFinalRgb(x),
+        a: a
+      };
+      break;
+
+    case 180 <= h && h < 240:
+      rgbaColor = {
+        r: calcFinalRgb(0),
+        g: calcFinalRgb(x),
+        b: calcFinalRgb(c),
+        a: a
+      };
+      break;
+
+    case 240 <= h && h < 300:
+      rgbaColor = {
+        r: calcFinalRgb(x),
+        g: calcFinalRgb(0),
+        b: calcFinalRgb(c),
+        a: a
+      };
+      break;
+
+    case 300 <= h && h < 360:
+      rgbaColor = {
+        r: calcFinalRgb(c),
+        g: calcFinalRgb(0),
+        b: calcFinalRgb(x),
+        a: a
+      };
+      break;
+  }
+
+  return rgbaColor;
+}
+
+exports.hslaObjectToRgbaObject = hslaObjectToRgbaObject;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/manageCssStoredColorData.ts":
+/*!********************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/manageCssStoredColorData.ts ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.prepareCssColorDataToMergeAndStore = exports.prepareCssColorDataToEdit = void 0;
+
+var hexaObjectToHexaString_1 = __webpack_require__(/*! ./hexaObjectToHexaString */ "./resources/js/Pages/AdminTools/colorHelpers/hexaObjectToHexaString.ts");
+
+var hexaStringToRgbaObject_1 = __webpack_require__(/*! ./hexaStringToRgbaObject */ "./resources/js/Pages/AdminTools/colorHelpers/hexaStringToRgbaObject.ts");
+
+var hslaObjectToHexaString_1 = __webpack_require__(/*! ./hslaObjectToHexaString */ "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToHexaString.ts");
+
+var rgbaObjectToHexaString_1 = __webpack_require__(/*! ./rgbaObjectToHexaString */ "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts");
+
+function prepareCssColorDataToEdit(cssStoredData) {
+  var colorData = cssStoredData.filter(function (data) {
+    return data.scope === "color";
+  });
+  return colorData.map(function (color) {
+    return {
+      id: color.id,
+      property: color.property,
+      value: (0, hexaStringToRgbaObject_1.hexaStringToRgbaObject)(color.value),
+      theme: color.theme,
+      scope: color.scope
+    };
+  });
+}
+
+exports.prepareCssColorDataToEdit = prepareCssColorDataToEdit;
+
+function prepareCssColorDataToMergeAndStore(cssStoredData) {
+  var colorData = cssStoredData.filter(function (data) {
+    return data.scope === "color";
+  });
+  return colorData.map(function (color) {
+    return {
+      id: color.id,
+      property: color.property,
+      value: convertColorValueToString(color.value),
+      theme: color.theme,
+      scope: color.scope
+    };
+  });
+}
+
+exports.prepareCssColorDataToMergeAndStore = prepareCssColorDataToMergeAndStore;
+
+function convertColorValueToString(colorValueEditForm) {
+  if (typeof colorValueEditForm === "string") return colorValueEditForm;else if ("r" in colorValueEditForm) {
+    return (0, rgbaObjectToHexaString_1.rgbaObjectToHexaString)(colorValueEditForm);
+  } else if ("h" in colorValueEditForm) {
+    return (0, hslaObjectToHexaString_1.hslaObjectToHexaString)(colorValueEditForm);
+  } else if ("hr" in colorValueEditForm) {
+    return (0, hexaObjectToHexaString_1.hexaObjectToHexaString)(colorValueEditForm);
+  } else {
+    return "";
+  }
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.rgbaObjectToHexaString = void 0;
+/**
+ *@param {objectRgba} colorRgba color as objectRgba
+ *@return {string} color as hex string (with alpha)
+ */
+
+function rgbaObjectToHexaString(colorRgba) {
+  var r = colorRgba.r,
+      g = colorRgba.g,
+      b = colorRgba.b,
+      a = colorRgba.a;
+
+  function prepareHex(n) {
+    return n.toString(16).padStart(2, "0").toUpperCase();
+  }
+
+  return "#".concat(prepareHex(r)).concat(prepareHex(g)).concat(prepareHex(b)).concat(prepareHex(Math.round(a * 255 / 100)));
+}
+
+exports.rgbaObjectToHexaString = rgbaObjectToHexaString;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHslaObject.ts":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHslaObject.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.rgbaObjectToHslaObject = void 0;
+/**
+ *
+ *@param {objectRgba} objectRgba color as objectRgba
+ *@return {objectHsla} color as objectHsla
+ */
+
+var rgbaObjectToHslaObject = function rgbaObjectToHslaObject(objectRgba) {
+  var r = objectRgba.r,
+      g = objectRgba.g,
+      b = objectRgba.b,
+      a = objectRgba.a;
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  var cMax = Math.max(r, g, b),
+      cMin = Math.min(r, g, b),
+      delta = cMax - cMin;
+  var H = 0,
+      L = (cMax + cMin) / 2 * 100,
+      S = 0;
+
+  switch (true) {
+    case delta === 0:
+      H = 0;
+      break;
+
+    case cMax === r:
+      H = Math.round(60 * ((g - b) / delta % 6));
+      break;
+
+    case cMax === g:
+      H = Math.round(60 * ((b - r) / delta + 2));
+      break;
+
+    case cMax === b:
+      H = Math.round(60 * ((r - g) / delta + 4));
+      break;
+  }
+
+  delta === 0 ? S = 0 : S = delta / (1 - Math.abs(2 * L / 100 - 1)) * 100;
+  return {
+    h: H,
+    s: Math.round(S),
+    l: Math.round(L),
+    a: a
+  };
+};
+
+exports.rgbaObjectToHslaObject = rgbaObjectToHslaObject;
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AdminTools/manageCssStoredData.ts":
+/*!**************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/manageCssStoredData.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.mergeCssStoredDataWithStyles = exports.addCssDataStringToElementStyles = exports.convertCssDataToString = exports.filterCssDataByActualTheme = void 0;
+var mainHtmlElement = document.getElementsByTagName("html");
+
+function filterCssDataByActualTheme(cssStoredData) {
+  var theme = mainHtmlElement[0].attributes[0].value;
+
+  if (theme === "light" && cssStoredData) {
+    return cssStoredData.filter(function (el) {
+      return el.theme !== "dark";
+    });
+  } else if (theme === "dark" && cssStoredData) return cssStoredData.filter(function (el) {
+    return el.theme !== "light";
+  });else {
+    return cssStoredData;
+  }
+}
+
+exports.filterCssDataByActualTheme = filterCssDataByActualTheme;
+
+function convertCssDataToString(cssStoredData) {
+  var cssStoredDataString = "";
+  cssStoredData.forEach(function (el) {
+    cssStoredDataString += "".concat(el.property, ": ").concat(el.value, "; ");
+  });
+  return cssStoredDataString;
+}
+
+exports.convertCssDataToString = convertCssDataToString;
+
+function addCssDataStringToElementStyles(element, cssStoredDataString) {
+  if (element) element.setAttribute("style", cssStoredDataString);
+}
+
+exports.addCssDataStringToElementStyles = addCssDataStringToElementStyles;
+
+function mergeCssStoredDataWithStyles(cssStoredData) {
+  var filterTheme = filterCssDataByActualTheme(cssStoredData);
+  var cssString = convertCssDataToString(filterTheme);
+  addCssDataStringToElementStyles(mainHtmlElement[0], cssString);
+}
+
+exports.mergeCssStoredDataWithStyles = mergeCssStoredDataWithStyles;
 
 /***/ }),
 
@@ -11715,10 +12073,10 @@ function Welcome(props) {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/js/app.jsx":
+/*!******************************!*\
+  !*** ./resources/js/app.jsx ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11747,6 +12105,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 var appName = ((_window$document$getE = window.document.getElementsByTagName("title")[0]) === null || _window$document$getE === void 0 ? void 0 : _window$document$getE.innerText) || "Printshop2";
+document.documentElement.setAttribute("data-theme", "light");
+document.documentElement.setAttribute("style", "");
 (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.createInertiaApp)({
   title: function title(_title) {
     return "".concat(_title, " - ").concat(appName);
@@ -71375,6 +71735,28 @@ if (false) {} else {
 var map = {
 	"./AdminTools": "./resources/js/Pages/AdminTools.tsx",
 	"./AdminTools.tsx": "./resources/js/Pages/AdminTools.tsx",
+	"./AdminTools/ColorAdminTools": "./resources/js/Pages/AdminTools/ColorAdminTools.tsx",
+	"./AdminTools/ColorAdminTools.tsx": "./resources/js/Pages/AdminTools/ColorAdminTools.tsx",
+	"./AdminTools/ColorModifyToolHslGUI": "./resources/js/Pages/AdminTools/ColorModifyToolHslGUI.tsx",
+	"./AdminTools/ColorModifyToolHslGUI.tsx": "./resources/js/Pages/AdminTools/ColorModifyToolHslGUI.tsx",
+	"./AdminTools/colorHelpers/colorObjectsInterfaces": "./resources/js/Pages/AdminTools/colorHelpers/colorObjectsInterfaces.ts",
+	"./AdminTools/colorHelpers/colorObjectsInterfaces.ts": "./resources/js/Pages/AdminTools/colorHelpers/colorObjectsInterfaces.ts",
+	"./AdminTools/colorHelpers/hexaObjectToHexaString": "./resources/js/Pages/AdminTools/colorHelpers/hexaObjectToHexaString.ts",
+	"./AdminTools/colorHelpers/hexaObjectToHexaString.ts": "./resources/js/Pages/AdminTools/colorHelpers/hexaObjectToHexaString.ts",
+	"./AdminTools/colorHelpers/hexaStringToRgbaObject": "./resources/js/Pages/AdminTools/colorHelpers/hexaStringToRgbaObject.ts",
+	"./AdminTools/colorHelpers/hexaStringToRgbaObject.ts": "./resources/js/Pages/AdminTools/colorHelpers/hexaStringToRgbaObject.ts",
+	"./AdminTools/colorHelpers/hslaObjectToHexaString": "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToHexaString.ts",
+	"./AdminTools/colorHelpers/hslaObjectToHexaString.ts": "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToHexaString.ts",
+	"./AdminTools/colorHelpers/hslaObjectToRgbaObject": "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToRgbaObject.ts",
+	"./AdminTools/colorHelpers/hslaObjectToRgbaObject.ts": "./resources/js/Pages/AdminTools/colorHelpers/hslaObjectToRgbaObject.ts",
+	"./AdminTools/colorHelpers/manageCssStoredColorData": "./resources/js/Pages/AdminTools/colorHelpers/manageCssStoredColorData.ts",
+	"./AdminTools/colorHelpers/manageCssStoredColorData.ts": "./resources/js/Pages/AdminTools/colorHelpers/manageCssStoredColorData.ts",
+	"./AdminTools/colorHelpers/rgbaObjectToHexaString": "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts",
+	"./AdminTools/colorHelpers/rgbaObjectToHexaString.ts": "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts",
+	"./AdminTools/colorHelpers/rgbaObjectToHslaObject": "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHslaObject.ts",
+	"./AdminTools/colorHelpers/rgbaObjectToHslaObject.ts": "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHslaObject.ts",
+	"./AdminTools/manageCssStoredData": "./resources/js/Pages/AdminTools/manageCssStoredData.ts",
+	"./AdminTools/manageCssStoredData.ts": "./resources/js/Pages/AdminTools/manageCssStoredData.ts",
 	"./Auth/ConfirmPassword": "./resources/js/Pages/Auth/ConfirmPassword.tsx",
 	"./Auth/ConfirmPassword.tsx": "./resources/js/Pages/Auth/ConfirmPassword.tsx",
 	"./Auth/ForgotPassword": "./resources/js/Pages/Auth/ForgotPassword.tsx",
@@ -71620,7 +72002,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/fonts","css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/fonts","css/app"], () => (__webpack_require__("./resources/js/app.jsx")))
 /******/ 	__webpack_require__.O(undefined, ["css/fonts","css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/fonts","css/app"], () => (__webpack_require__("./resources/css/fonts.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);

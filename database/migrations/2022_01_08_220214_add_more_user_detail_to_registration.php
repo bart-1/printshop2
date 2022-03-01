@@ -14,10 +14,10 @@ class AddMoreUserDetailToRegistration extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->char('phone', 14);
+            $table->char('phone', 20);
             $table->enum('account_type', ['business', 'private']);
             $table->string('company')->nullable();
-            $table->decimal('nip', $precision = 10, $scale=0)->nullable();
+            $table->decimal('nip', $precision = 10, $scale = 0)->nullable();
             $table->string('street');
             $table->char('house_number', 10);
             $table->string('apartment_number')->nullable();

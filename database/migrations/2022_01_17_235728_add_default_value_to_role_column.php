@@ -22,7 +22,7 @@ class AddDefaultValueToRoleColumn extends Migration
         });
     }
 
-    /**
+    /**s
      * Reverse the migrations.
      *
      * @return void

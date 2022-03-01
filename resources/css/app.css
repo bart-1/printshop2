@@ -16,7 +16,7 @@
 }
 
 html[data-theme="light"] {
-    --my-background: #d6d1cd;
+    --my-background: #d6d1cd80;
     --my-foreground: #969a97;
 
     --background: #d6d1cd;

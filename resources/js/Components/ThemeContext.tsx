@@ -1,6 +1,5 @@
 import React, {
     createContext,
-    FC,
     ReactElement,
     ReactNode,
     useContext,
@@ -8,16 +7,20 @@ import React, {
     useState,
 } from "react";
 
-export interface ThemesContextI {
+export interface ThemeContext {
     colorTheme: boolean;
     setColorTheme: (prevState: boolean) => void;
 }
-export const ThemeContext = createContext<ThemesContextI>({
+export const ThemeContext = createContext<ThemeContext>({
     colorTheme: false,
     setColorTheme: () => {},
 });
 
-const ThemeProvider = ({children}: {children: ReactNode | ReactNode[] | ReactElement}) => {
+interface ThemeProviderProps {
+    children: ReactNode | ReactNode[] | ReactElement;
+}
+
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const [colorTheme, setColorTheme] = useState(false);
 
     useEffect(() => {
