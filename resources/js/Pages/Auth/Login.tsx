@@ -50,7 +50,7 @@ export default function Login({ status, canResetPassword }: LoginI) {
     return (
         <Guest>
             {status && (
-                <div className="mb-4 font-medium text-sm text-green-600">
+                <div className="mb-4 text-sm font-medium text-green-600">
                     {status}
                 </div>
             )}
@@ -59,13 +59,12 @@ export default function Login({ status, canResetPassword }: LoginI) {
 
             <form onSubmit={submit}>
                 <div>
-                    <Label forInput="email" value="Email" />
 
                     <Input
                         type="text"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="username"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -73,20 +72,18 @@ export default function Login({ status, canResetPassword }: LoginI) {
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="password" value="Password" />
 
                     <Input
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="current-password"
                         handleChange={onHandleChange}
                     />
                 </div>
 
                 <div className="block mt-4">
-                    <label className="flex items-center">
                         <Checkbox
                             name="remember"
                             value={data.remember}
@@ -96,14 +93,13 @@ export default function Login({ status, canResetPassword }: LoginI) {
                         <span className="ml-2 text-sm text-gray-600">
                             Remember me
                         </span>
-                    </label>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
                     {canResetPassword && (
                         <Link
                             href={"/password.request"}
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
+                            className="text-sm text-gray-600 underline hover:text-gray-900"
                         >
                             Forgot your password?
                         </Link>
@@ -113,6 +109,7 @@ export default function Login({ status, canResetPassword }: LoginI) {
                         className="ml-4"
                         disabled={processing}
                         type="submit"
+                        dataCy="submit"
                     >
                         Log in
                     </Button>

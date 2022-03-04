@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Label from "./Label";
 
 export type InputType = {
     autoComplete?: string | undefined;
@@ -10,7 +11,6 @@ export type InputType = {
     type: string;
     value: string;
 };
-
 
 function Input({
     autoComplete,
@@ -32,7 +32,10 @@ function Input({
 
     return (
         <div className="flex flex-col items-start">
+            <Label forInput={name} value={name} />
             <input
+                data-cy={name}
+                id={`input-${name}`}
                 type={type}
                 name={name}
                 value={value}

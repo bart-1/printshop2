@@ -8651,7 +8651,8 @@ function Button(_ref) {
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? "button" : _ref$type,
       _ref$txtColor = _ref.txtColor,
-      txtColor = _ref$txtColor === void 0 ? "text-[color:var(--btn-txt)]" : _ref$txtColor;
+      txtColor = _ref$txtColor === void 0 ? "text-[color:var(--btn-txt)]" : _ref$txtColor,
+      dataCy = _ref.dataCy;
 
   var _ref2 = (0, react_1.useState)(false),
       _ref3 = _slicedToArray(_ref2, 2),
@@ -8662,6 +8663,7 @@ function Button(_ref) {
     if (window.location.pathname == "/" + children) setIsPressed(true);
   }, [window.location.pathname]);
   return react_1["default"].createElement("button", {
+    "data-cy": dataCy,
     type: type,
     className: "inline-flex items-center border-transparent rounded-md font-normal ".concat(size === "xs" && "px-1.5 py-1 border text-xxs", " ").concat(size === "s" && "px-2 py-1.5 border text-xs", " ").concat(size === "m" && "px-4 py-2 border text-xs", " ").concat(size === "l" && "px-6 py-4 border text-s", " ").concat(!isPressed ? "".concat(txtColor, " ").concat(bgColor, " hover:").concat(hoverColor) : "".concat(txtColor, " ").concat(hoverColor, " hover:").concat(bgColor), " ").concat(disabled && "opacity-25", " ").concat(className),
     disabled: disabled,
@@ -9189,11 +9191,19 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var Label_1 = __importDefault(__webpack_require__(/*! ./Label */ "./resources/js/Components/Label.tsx"));
 
 function Input(_ref) {
   var autoComplete = _ref.autoComplete,
@@ -9213,7 +9223,12 @@ function Input(_ref) {
   }, []);
   return react_1["default"].createElement("div", {
     className: "flex flex-col items-start"
-  }, react_1["default"].createElement("input", {
+  }, react_1["default"].createElement(Label_1["default"], {
+    forInput: name,
+    value: name
+  }), react_1["default"].createElement("input", {
+    "data-cy": name,
+    id: "input-".concat(name),
     type: type,
     name: name,
     value: value,
@@ -9493,7 +9508,8 @@ var Nav = function Nav(_ref) {
       },
       className: "".concat(classNameBtn),
       disabled: false,
-      size: "s"
+      size: "s",
+      dataCy: route
     }, route));
   });
   return react_1["default"].createElement("div", {
@@ -11081,8 +11097,6 @@ var Guest_1 = __importDefault(__webpack_require__(/*! ../../Layouts/Guest */ "./
 
 var Input_1 = __importDefault(__webpack_require__(/*! ../../Components/Input */ "./resources/js/Components/Input.tsx"));
 
-var Label_1 = __importDefault(__webpack_require__(/*! ../../Components/Label */ "./resources/js/Components/Label.tsx"));
-
 var ValidationErrors_1 = __importDefault(__webpack_require__(/*! ../../Components/ValidationErrors */ "./resources/js/Components/ValidationErrors.tsx"));
 
 var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
@@ -11120,53 +11134,46 @@ function Login(_ref) {
   };
 
   return react_1["default"].createElement(Guest_1["default"], null, status && react_1["default"].createElement("div", {
-    className: "mb-4 font-medium text-sm text-green-600"
+    className: "mb-4 text-sm font-medium text-green-600"
   }, status), react_1["default"].createElement(ValidationErrors_1["default"], {
     errors: errors
   }), react_1["default"].createElement("form", {
     onSubmit: submit
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement(Label_1["default"], {
-    forInput: "email",
-    value: "Email"
-  }), react_1["default"].createElement(Input_1["default"], {
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement(Input_1["default"], {
     type: "text",
     name: "email",
     value: data.email,
-    className: "mt-1 block w-full",
+    className: "block w-full mt-1",
     autoComplete: "username",
     isFocused: true,
     handleChange: onHandleChange
   })), react_1["default"].createElement("div", {
     className: "mt-4"
-  }, react_1["default"].createElement(Label_1["default"], {
-    forInput: "password",
-    value: "Password"
-  }), react_1["default"].createElement(Input_1["default"], {
+  }, react_1["default"].createElement(Input_1["default"], {
     type: "password",
     name: "password",
     value: data.password,
-    className: "mt-1 block w-full",
+    className: "block w-full mt-1",
     autoComplete: "current-password",
     handleChange: onHandleChange
   })), react_1["default"].createElement("div", {
     className: "block mt-4"
-  }, react_1["default"].createElement("label", {
-    className: "flex items-center"
   }, react_1["default"].createElement(Checkbox_1["default"], {
     name: "remember",
     value: data.remember,
     handleChange: onHandleChange
   }), react_1["default"].createElement("span", {
     className: "ml-2 text-sm text-gray-600"
-  }, "Remember me"))), react_1["default"].createElement("div", {
+  }, "Remember me")), react_1["default"].createElement("div", {
     className: "flex items-center justify-end mt-4"
   }, canResetPassword && react_1["default"].createElement(inertia_react_1.Link, {
     href: "/password.request",
-    className: "underline text-sm text-gray-600 hover:text-gray-900"
+    className: "text-sm text-gray-600 underline hover:text-gray-900"
   }, "Forgot your password?"), react_1["default"].createElement(Button_1["default"], {
     className: "ml-4",
     disabled: processing,
-    type: "submit"
+    type: "submit",
+    dataCy: "submit"
   }, "Log in"))));
 }
 
@@ -71992,7 +71999,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkprintshop2"] = self["webpackChunkprintshop2"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

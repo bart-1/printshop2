@@ -16,6 +16,7 @@ export type ButtonType = {
     size?: "l" | "m" | "s" | "xs";
     type: "submit" | "button" | "reset" | undefined;
     txtColor?: string;
+    dataCy ?: string;
 };
 
 function Button({
@@ -28,6 +29,7 @@ function Button({
     size = "m",
     type = "button",
     txtColor = `text-[color:var(--btn-txt)]`,
+    dataCy
 }: ButtonType) {
     const [isPressed, setIsPressed] = useState(false);
 
@@ -36,6 +38,7 @@ function Button({
     }, [window.location.pathname]);
     return (
         <button
+            data-cy={dataCy}
             type={type}
             className={`inline-flex items-center border-transparent rounded-md font-normal ${
                 size === "xs" && "px-1.5 py-1 border text-xxs"

@@ -13,6 +13,7 @@ const Nav: FC<RouteProps> = ({ navRoutes, classNameDiv, classNameBtn }) => {
                 className={`${classNameBtn}`}
                 disabled={false}
                 size="s"
+                dataCy={route}
             >
                 {route}
             </Button>
