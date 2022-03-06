@@ -9111,7 +9111,7 @@ var Header = function Header(_ref) {
   }, react_1["default"].createElement(Button_1["default"], {
     type: "button",
     onClick: function onClick() {
-      return setColorTheme(!colorTheme);
+      return setColorTheme(colorTheme === 'dark' ? 'light' : 'dark');
     },
     className: "flex-none w-8 h-8 mr-5 rounded-full",
     disabled: false,
@@ -9669,20 +9669,21 @@ exports.useThemeContext = exports.ThemeContext = void 0;
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 exports.ThemeContext = (0, react_1.createContext)({
-  colorTheme: false,
+  colorTheme: "light",
   setColorTheme: function setColorTheme() {}
 });
 
 var ThemeProvider = function ThemeProvider(_ref) {
   var children = _ref.children;
 
-  var _ref2 = (0, react_1.useState)(false),
+  var _ref2 = (0, react_1.useState)("light"),
       _ref3 = _slicedToArray(_ref2, 2),
       colorTheme = _ref3[0],
       setColorTheme = _ref3[1];
 
   (0, react_1.useEffect)(function () {
-    colorTheme ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
+    console.log(colorTheme);
+    colorTheme === "dark" ? document.documentElement.setAttribute("data-theme", "dark") : document.documentElement.setAttribute("data-theme", "light");
   }, [colorTheme]);
   return react_1["default"].createElement(exports.ThemeContext.Provider, {
     value: {

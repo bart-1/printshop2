@@ -7,12 +7,14 @@ import React, {
     useState,
 } from "react";
 
+export type Theme = "light" | "dark";
+
 export interface ThemeContext {
-    colorTheme: boolean;
-    setColorTheme: (prevState: boolean) => void;
+    colorTheme: Theme;
+    setColorTheme: CallableFunction;
 }
 export const ThemeContext = createContext<ThemeContext>({
-    colorTheme: false,
+    colorTheme: "light",
     setColorTheme: () => {},
 });
 
@@ -21,10 +23,11 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-    const [colorTheme, setColorTheme] = useState(false);
+    const [colorTheme, setColorTheme] = useState<Theme>("light");
 
     useEffect(() => {
-        colorTheme
+        console.log(colorTheme);
+        colorTheme === "dark"
             ? document.documentElement.setAttribute("data-theme", "dark")
             : document.documentElement.setAttribute("data-theme", "light");
     }, [colorTheme]);
