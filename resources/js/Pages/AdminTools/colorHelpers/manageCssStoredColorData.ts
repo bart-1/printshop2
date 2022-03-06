@@ -1,4 +1,4 @@
-import { CssDataStorePattern } from "../manageCssStoredData";
+import { CssDataStorePattern } from "./manageCssStoredData";
 import { hexaObjectToHexaString } from "./hexaObjectToHexaString";
 import { hexaStringToRgbaObject } from "./hexaStringToRgbaObject";
 import { hslaObjectToHexaString } from "./hslaObjectToHexaString";

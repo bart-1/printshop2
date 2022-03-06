@@ -7,9 +7,9 @@ import {
 import {
     CssDataStorePattern,
     mergeCssStoredDataWithStyles,
-} from "./manageCssStoredData";
+} from "./colorHelpers/manageCssStoredData";
 import ColorModifyToolHslGUI from "./ColorModifyToolHslGUI";
-import { useThemeContext } from "../../Components/ThemeContext";
+import { useThemeContext } from "../../Shared/ThemeContext";
 
 interface ColorAdminToolsProps {
     cssInputData: CssDataStorePattern[];

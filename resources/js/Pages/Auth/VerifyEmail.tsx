@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from "react";
-import Button from "../../Components/Button";
+import Button from "../../Shared/Button";
 import Guest from "../../Layouts/Guest";
 import { Link, useForm } from "@inertiajs/inertia-react";
 

@@ -31,6 +31,5 @@ export function hexaStringToRgbaObject (hexa: string): objectRgba {
     } else {
         return { r: 0, g: 0, b: 0, a: 100 };
     }
-    console.log({ r: r, g: g, b: b, a: a });
     return { r: r, g: g, b: b, a: a };
 };

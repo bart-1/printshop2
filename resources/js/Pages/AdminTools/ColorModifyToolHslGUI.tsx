@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import InputRangeAndNumber from "../../Components/InputRangeAndNumber";
+import InputRangeAndNumber from "../../Shared/InputRangeAndNumber";
 import { hslaObjectToRgbaObject } from "./colorHelpers/hslaObjectToRgbaObject";
 import { rgbaObjectToHslaObject } from "./colorHelpers/rgbaObjectToHslaObject";
 import { CssDataEditPattern } from "./colorHelpers/manageCssStoredColorData";

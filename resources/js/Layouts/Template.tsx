@@ -1,14 +1,6 @@
-import React, {
-    ReactNode,
-    FC,
-    useEffect,
-    useState,
-    Children,
-    isValidElement,
-    cloneElement,
-} from "react";
-import Header from "../Components/Header";
-import { CssDataStorePattern } from "../Pages/AdminTools/manageCssStoredData";
+import React, { ReactNode, FC } from "react";
+import Header from "../Shared/Header";
+import { CssDataStorePattern } from "../Pages/AdminTools/colorHelpers/manageCssStoredData";
 
 export interface RouteProps {
     auth?: { user: { admin: number; name: string; email?: string } };
@@ -30,10 +22,6 @@ const Template: FC<RouteProps> = ({
     title,
     cssStoredData,
 }) => {
-    // const childrenWithProps = Children.map(children, (child) => {
-    //     if (isValidElement(child)) cloneElement(child, { cssStoredData });
-    //     else return child;
-    // });
     return (
         <div className="px-0 mx-0 xs:mx-auto">
             <Header auth={auth} title={title} navRoutes={navRoutes} />

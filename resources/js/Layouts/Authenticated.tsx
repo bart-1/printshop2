@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react";
-import ApplicationLogo from "../Components/ApplicationLogo";
-import {Dropdown, DropdownContent, DropDownContext, DropdownLink, DropdownTrigger} from "../Components/Dropdown";
-import NavLink from "../Components/NavLink";
-import ResponsiveNavLink from "../Components/ResponsiveNavLink";
+import ApplicationLogo from "../Shared/ApplicationLogo";
+import {Dropdown, DropdownContent, DropDownContext, DropdownLink, DropdownTrigger} from "../Shared/Dropdown";
+import NavLink from "../Shared/NavLink";
+import ResponsiveNavLink from "../Shared/ResponsiveNavLink";
 import { Link } from "@inertiajs/inertia-react";
 import { RouteProps } from "./Template";
 

@@ -1,9 +1,9 @@
 import React, { SyntheticEvent, useEffect } from "react";
-import Button from "../../Components/Button";
-import Checkbox from "../../Components/Checkbox";
+import Button from "../../Shared/Button";
+import Checkbox from "../../Shared/Checkbox";
 import Guest from "../../Layouts/Guest";
-import Input, { InputType } from "../../Components/Input";
-import ValidationErrors from "../../Components/ValidationErrors";
+import Input, { InputType } from "../../Shared/Input";
+import ValidationErrors from "../../Shared/ValidationErrors";
 import { Link, useForm } from "@inertiajs/inertia-react";
 
 interface LoginProps {

@@ -2,7 +2,7 @@ import {
     objectHexa,
     objectHsla,
     objectRgba,
-} from "./colorHelpers/colorObjectsInterfaces";
+} from "./colorObjectsInterfaces";
 
 export interface CssDataStorePattern {
     id?: number;

@@ -5,7 +5,7 @@ import renderer from "react-test-renderer";
 import { render, fireEvent, screen } from "@testing-library/react";
 // import "@testing-library/jest-dom";
 
-import Nav from "../../resources/js/Components/Nav";
+import Nav from "../../resources/js/Shared/Nav";
 import { findDOMNode } from "react-dom";
 
 const navRoutes = ["route-one", "route-two"];

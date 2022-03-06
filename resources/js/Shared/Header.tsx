@@ -4,7 +4,7 @@ import { RouteProps } from "../Layouts/Template";
 import Button from "./Button";
 import { useThemeContext } from "./ThemeContext";
 import NavLink from "./NavLink";
-import Nav from "../Components/Nav";
+import Nav from "./Nav";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 

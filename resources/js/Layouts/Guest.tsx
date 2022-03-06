@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import ApplicationLogo from "../Components/ApplicationLogo";
+import ApplicationLogo from "../Shared/ApplicationLogo";
 
 export default function Guest({
     children,
