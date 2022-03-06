@@ -5,7 +5,7 @@ export interface NavLinkInterface {
     href: string;
     method?: string;
     active?: boolean;
-    children?: ReactNode | ReactNode[] | undefined;
+    children?: ReactNode | ReactNode[] | string | undefined;
     className?: string;
 }
 
@@ -20,6 +20,7 @@ const NavLink: FC<NavLinkInterface> = ({
         <Link
             href={href}
             method={method}
+            as="button"
             className={
                 active
                     ? ""

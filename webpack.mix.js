@@ -18,13 +18,15 @@ mix.ts("resources/js/app.jsx", "public/js/app.js")
         require("tailwindcss"),
         require("autoprefixer"),
     ])
+    .sourceMaps()
     .postCss("resources/css/fonts.css", "public/css", [
         require("postcss-import"),
         require("tailwindcss"),
         require("autoprefixer"),
     ])
     .copyDirectory("resources/img", "public/img")
-    .webpackConfig(require("./webpack.config"));
+    .webpackConfig(require("./webpack.config"))
+    .sourceMaps();
 
 if (mix.inProduction()) {
     mix.version();

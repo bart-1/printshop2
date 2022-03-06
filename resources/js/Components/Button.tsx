@@ -1,9 +1,4 @@
-import React, {
-    MouseEventHandler,
-    ReactNode,
-    useEffect,
-    useState,
-} from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import { IconType } from "react-icons";
 
 export type ButtonType = {
@@ -16,7 +11,7 @@ export type ButtonType = {
     size?: "l" | "m" | "s" | "xs";
     type: "submit" | "button" | "reset" | undefined;
     txtColor?: string;
-    dataCy ?: string;
+    dataCy?: string;
 };
 
 function Button({
@@ -29,26 +24,20 @@ function Button({
     size = "m",
     type = "button",
     txtColor = `text-[color:var(--btn-txt)]`,
-    dataCy
+    dataCy,
 }: ButtonType) {
-    const [isPressed, setIsPressed] = useState(false);
-
-    useEffect(() => {
-        if (window.location.pathname == "/" + children) setIsPressed(true);
-    }, [window.location.pathname]);
     return (
         <button
             data-cy={dataCy}
             type={type}
-            className={`inline-flex items-center border-transparent rounded-md font-normal ${
+            className={`inline-flex items-center border-transparent rounded-md font-normal
+            hover:${hoverColor} ${txtColor} ${bgColor} ${
                 size === "xs" && "px-1.5 py-1 border text-xxs"
             } ${size === "s" && "px-2 py-1.5 border text-xs"} ${
                 size === "m" && "px-4 py-2 border text-xs"
             } ${size === "l" && "px-6 py-4 border text-s"} ${
-                !isPressed
-                    ? `${txtColor} ${bgColor} hover:${hoverColor}`
-                    : `${txtColor} ${hoverColor} hover:${bgColor}`
-            } ${disabled && "opacity-25"} ${className}`}
+                disabled && "opacity-25"
+            } ${className}`}
             disabled={disabled}
             onClick={onClick}
         >

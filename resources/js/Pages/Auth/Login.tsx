@@ -3,16 +3,15 @@ import Button from "../../Components/Button";
 import Checkbox from "../../Components/Checkbox";
 import Guest from "../../Layouts/Guest";
 import Input, { InputType } from "../../Components/Input";
-import Label from "../../Components/Label";
 import ValidationErrors from "../../Components/ValidationErrors";
 import { Link, useForm } from "@inertiajs/inertia-react";
 
-interface LoginI {
+interface LoginProps {
     status: string;
     canResetPassword: boolean;
 }
 
-export default function Login({ status, canResetPassword }: LoginI) {
+export default function Login({ status, canResetPassword }: LoginProps) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
