@@ -26,7 +26,6 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const [colorTheme, setColorTheme] = useState<Theme>("light");
 
     useEffect(() => {
-        console.log(colorTheme);
         colorTheme === "dark"
             ? document.documentElement.setAttribute("data-theme", "dark")
             : document.documentElement.setAttribute("data-theme", "light");

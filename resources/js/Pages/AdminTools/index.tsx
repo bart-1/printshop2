@@ -6,9 +6,7 @@ const AdminTools: FC<RouteProps> = (props) => {
 
 
     return (
-        <Template {...props}>
             <ColorAdminTools cssInputData={props.cssStoredData! }/>
-        </Template>
     );
 };
 

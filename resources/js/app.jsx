@@ -5,7 +5,7 @@ import { render } from "react-dom";
 import { createInertiaApp } from "@inertiajs/inertia-react";
 import { InertiaProgress } from "@inertiajs/progress";
 import ThemeProvider from "./Shared/ThemeContext";
-
+import Template from "./Layouts/Template";
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Printshop2";
 
@@ -19,7 +19,12 @@ document.documentElement.setAttribute("style", "");
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => require(`./Pages/${name}`),
+    resolve: (name) => {
+        const page = require(`./Pages/${name}`).default;
+        if (page.layout === undefined)
+            page.layout = (page) => <Template>{page}</Template>;
+        return page;
+    },
     setup({ el, App, props, name }) {
         return render(
             <ThemeProvider>

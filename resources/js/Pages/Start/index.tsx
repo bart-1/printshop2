@@ -4,7 +4,7 @@ import Template, { RouteProps } from "../../Layouts/Template";
 const Start: FC<RouteProps> = (props) => {
     const [isAuth, setIsAuth] = useState(false);
     return (
-        <Template {...props}>
+        <>
             <div className="justify-center bg-blue-500">this is body</div>
 
             <button
@@ -13,7 +13,7 @@ const Start: FC<RouteProps> = (props) => {
             >
                 AUTH
             </button>
-        </Template>
+        </>
     );
 };
 

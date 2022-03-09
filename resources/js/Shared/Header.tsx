@@ -8,7 +8,7 @@ import Nav from "./Nav";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const Header: FC<RouteProps> = ({ auth, title, navRoutes }) => {
+const Header = ({ auth, title, navRoutes }:RouteProps) => {
     const { colorTheme, setColorTheme } = useThemeContext();
     return (
         <>

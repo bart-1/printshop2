@@ -6,15 +6,13 @@ import Template, { RouteProps } from "../../Layouts/Template";
 
 const Creator: FC<RouteProps> = (props) => {
     return (
-        <Template {...props}>
-            <div className="">
-                <div className="flex">
-                    <CreatorLeftToolbox />
-                    <CreatorCanvas />
-                    <CreatorRightToolbox />
-                </div>
+        <div className="">
+            <div className="flex">
+                <CreatorLeftToolbox />
+                <CreatorCanvas />
+                <CreatorRightToolbox />
             </div>
-        </Template>
+        </div>
     );
 };
 

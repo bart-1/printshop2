@@ -32,6 +32,7 @@ const NavLinkButton: FC<NavLinkButtonInterface> = ({
 
     useEffect(() => {
         if (window.location.pathname == "/" + children) setIsPressed(true);
+        else setIsPressed(false);
     }, [window.location.pathname]);
     return (
         <Link
