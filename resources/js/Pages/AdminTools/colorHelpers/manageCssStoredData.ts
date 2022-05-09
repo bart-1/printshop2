@@ -1,3 +1,4 @@
+import { Theme, ThemeContext } from "../../../Shared/ThemeContext";
 import {
     objectHexa,
     objectHsla,
@@ -12,15 +13,16 @@ export interface CssDataStorePattern {
     scope: "color" | "text" | "layout";
 }
 const mainHtmlElement = document.getElementsByTagName(`html`);
+const theme = mainHtmlElement[0].attributes[0].value;
+const themeDataSetElement = document.querySelectorAll(`[data-theme=${theme}]`)
 
 export function filterCssDataByActualTheme(
-    cssStoredData: CssDataStorePattern[]
+    cssStoredData: CssDataStorePattern[], colorTheme:Theme
 ): CssDataStorePattern[] {
-    const theme = mainHtmlElement[0].attributes[0].value;
 
-    if (theme === "light" && cssStoredData) {
+    if (colorTheme === "light" && cssStoredData) {
         return cssStoredData.filter((el) => el.theme !== "dark");
-    } else if (theme === "dark" && cssStoredData)
+    } else if (colorTheme === "dark" && cssStoredData)
         return cssStoredData.filter((el) => el.theme !== "light");
     else {
         return cssStoredData;
@@ -38,17 +40,17 @@ export function convertCssDataToString(
 }
 
 export function addCssDataStringToElementStyles(
-    element: HTMLElement | null,
+    element: Element | null,
     cssStoredDataString: string
 ) {
     if (element) element.setAttribute("style", cssStoredDataString);
 }
 
 export function mergeCssStoredDataWithStyles(
-    cssStoredData: CssDataStorePattern[]
+    cssStoredData: CssDataStorePattern[], colorTheme: Theme
 ) {
-    const filterTheme = filterCssDataByActualTheme(cssStoredData);
+    const filterTheme = filterCssDataByActualTheme(cssStoredData, colorTheme);
 
     const cssString = convertCssDataToString(filterTheme);
-    addCssDataStringToElementStyles(mainHtmlElement[0], cssString);
+    addCssDataStringToElementStyles(themeDataSetElement[0], cssString);
 }

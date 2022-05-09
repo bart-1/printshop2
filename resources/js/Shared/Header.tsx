@@ -8,7 +8,7 @@ import Nav from "./Nav";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
-const Header = ({ auth, title, navRoutes }:RouteProps) => {
+const Header = ({ auth, title, navRoutes }: RouteProps) => {
     const { colorTheme, setColorTheme } = useThemeContext();
     return (
         <>
@@ -27,7 +27,11 @@ const Header = ({ auth, title, navRoutes }:RouteProps) => {
                     >
                         <Button
                             type="button"
-                            onClick={() => setColorTheme(colorTheme === 'dark' ? 'light' : 'dark')}
+                            onClick={() =>
+                                setColorTheme(
+                                    colorTheme === "dark" ? "light" : "dark"
+                                )
+                            }
                             className="flex-none w-8 h-8 mr-5 rounded-full"
                             disabled={false}
                             size="xs"

@@ -15,7 +15,9 @@ interface ColorAdminToolsProps {
     cssInputData: CssDataStorePattern[];
 }
 
-const ColorAdminTools: FC<ColorAdminToolsProps> = ({cssInputData}:ColorAdminToolsProps) => {
+const ColorAdminTools: FC<ColorAdminToolsProps> = ({
+    cssInputData,
+}: ColorAdminToolsProps) => {
     const [cssDataToMerge, setCssDataToMerge] = useState<CssDataEditPattern[]>(
         []
     );
@@ -23,9 +25,14 @@ const ColorAdminTools: FC<ColorAdminToolsProps> = ({cssInputData}:ColorAdminTool
         CssDataEditPattern[]
     >([]);
 
+    const { colorTheme } = useThemeContext();
+
     useEffect(() => {
+
+        //PROBLEM
         mergeCssStoredDataWithStyles(
-            prepareCssColorDataToMergeAndStore(cssDataToMerge)
+            prepareCssColorDataToMergeAndStore(cssDataToMerge),
+            colorTheme
         );
     }, [cssDataToMerge]);
 

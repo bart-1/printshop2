@@ -1,11 +1,18 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 :root {
     --my-foreground: #222222;
     --my-background: #a2c4c8;
 
     --background: #dfebed;
+    --window-background: #dfebed;
     --text-light: #e5ece9;
     --text-dark: #0e0029;
     --side-elements: #455d7a;
@@ -20,6 +27,7 @@ html[data-theme="light"] {
     --my-foreground: #969a97;
 
     --background: #d6d1cd;
+    --window-background: #ffffff;
     --text-light: #e5ece9;
     --text-dark: #0e0029;
     --side-elements: #858786;
@@ -34,6 +42,7 @@ html[data-theme="dark"] {
     --my-foreground: #602080;
 
     --background: #0e0029;
+    --window-background: #000000;
     --text-light: #0e0029;
     --text-dark: #d6d1cd;
     --side-elements: #602080;
