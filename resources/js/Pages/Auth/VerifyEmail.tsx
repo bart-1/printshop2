@@ -1,7 +1,8 @@
 import React, { SyntheticEvent } from "react";
 import Button from "../../Shared/Button";
-import Guest from "../../Layouts/Guest";
+import Guest from "../../Layouts/AuthTemplate";
 import { Link, useForm } from "@inertiajs/inertia-react";
+import AuthTemplate from "../../Layouts/AuthTemplate";
 
 export default function VerifyEmail({ status }: { status: string }) {
     const { post, processing } = useForm({
@@ -16,7 +17,7 @@ export default function VerifyEmail({ status }: { status: string }) {
     };
 
     return (
-        <Guest>
+        <AuthTemplate>
             <div className="mb-4 text-sm text-gray-600">
                 Thanks for signing up! Before getting started, could you verify
                 your email address by clicking on the link we just emailed to
@@ -25,14 +26,14 @@ export default function VerifyEmail({ status }: { status: string }) {
             </div>
 
             {status === "verification-link-sent" && (
-                <div className="mb-4 font-medium text-sm text-green-600">
+                <div className="mb-4 text-sm font-medium text-green-600">
                     A new verification link has been sent to the email address
                     you provided during registration.
                 </div>
             )}
 
             <form onSubmit={submit}>
-                <div className="mt-4 flex items-center justify-between">
+                <div className="flex items-center justify-between mt-4">
                     <Button disabled={processing} type="submit">
                         Resend Verification Email
                     </Button>
@@ -41,12 +42,12 @@ export default function VerifyEmail({ status }: { status: string }) {
                         href={"/logout"}
                         method="post"
                         as="button"
-                        className="underline text-sm text-gray-600 hover:text-gray-900"
+                        className="text-sm text-gray-600 underline hover:text-gray-900"
                     >
                         Log Out
                     </Link>
                 </div>
             </form>
-        </Guest>
+        </AuthTemplate>
     );
 }

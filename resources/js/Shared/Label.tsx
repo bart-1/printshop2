@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-export interface LabelI {
+export interface LabelProps {
     forInput: string;
     value: string;
     className?: string;
@@ -12,13 +12,13 @@ export default function Label({
     value,
     className,
     children,
-}: LabelI) {
+}: LabelProps) {
     return (
         <label
             htmlFor={forInput}
             className={`block font-medium text-sm text-gray-700 ` + className}
         >
-            {value ? value : { children }}
+           {value} { children }
         </label>
     );
 }

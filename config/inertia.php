@@ -13,7 +13,7 @@ return [
     | top-level of the page, as it forces you to interact with each
     | (shared) property on the page, or to use the `etc` method.
     |
-    */
+     */
 
     'force_top_level_property_interaction' => false,
 
@@ -27,7 +27,7 @@ return [
     | attempts to locate the component as a file relative to any of the
     | paths AND with any of the extensions specified here.
     |
-    */
+     */
 
     'page' => [
 

@@ -15,19 +15,37 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('symbol', 30);
+            $table->string('acronym', 30);
+            $table->string('slug');
             $table->string('name');
+            $table->string('description', 255)->nullable();
+            $table->string('img')->nullable();
+
+            //TODO category
+            // $table->enum('category', [
+            //     'tshirts',
+            //     'calendars',
+            //     'business-cards',
+            //     'leeflets',
+            //     'invitations',
+            //     'cups',
+            //     'posters',
+            //     'prints',
+            //     'stamps',
+            //     'brochures',
+            //     'stickers',
+            //     'stands',
+            //     ])->nullable();
             $table->smallInteger('width')->unsigned()->nullable();
             $table->smallInteger('height')->unsigned()->nullable();
-            $table->enum('iso_size', ['A7', 'A6', 'A5', 'A4', 'A3', 'A2', 'A1', 'A0', 'B7', 'B6', 'B5', 'B4', 'B3', 'B2', 'B1', 'B0', 'DL'])->nullable();
             $table->smallInteger('thickness')->unsigned()->nullable();
             $table->smallInteger('weight')->unsigned()->nullable();
             $table->tinyInteger('tax')->unsigned()->default(23);
-            $table->decimal('gross_price', 9, 4)->default(0);
-            $table->string('description', 255)->nullable();
-            $table->string('elements')->nullable();
+            $table->decimal('price', 9, 4)->default(0);
+            $table->string('components')->nullable();
             $table->integer('warehouse')->unsigned()->default(0);
+            $table->enum('expose_level', ['hidden', 'normal', '+1', '+2', '+3'])->default('normal');
+            $table->timestamps();
         });
     }
 

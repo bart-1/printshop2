@@ -15,17 +15,19 @@ class Product extends Model
     * @var array<int, string>
     */
     protected $fillable = [
-        'symbol',
+        'acronym',
+        'slug',
         'name',
+        'description',
+        'img',
         'width',
         'height',
-        'iso_size',
         'thickness',
         'weight',
         'tax',
-        'gross_price',
-        'description',
-        'elements',
+        'price',
+        'components',
         'warehouse',
+        'expose_level'
     ];
 }

@@ -4,13 +4,14 @@ import { hslaObjectToRgbaObject } from "./colorHelpers/hslaObjectToRgbaObject";
 import { rgbaObjectToHslaObject } from "./colorHelpers/rgbaObjectToHslaObject";
 import { CssDataEditPattern } from "./colorHelpers/manageCssStoredColorData";
 
-interface ColorModifyToolHslGUIProps {
+interface ColorModifyToolGUIProps {
     size?: "m" | "s" | "l";
     inputColor: CssDataEditPattern;
     outputColor: CallableFunction;
+    colorForm?: "rgba" | "hsla" | "hexa";
 }
 
-const ColorModifyToolHslGUI: FC<ColorModifyToolHslGUIProps> = ({
+const ColorModifyToolGUI: FC<ColorModifyToolGUIProps> = ({
     size = "m",
     inputColor,
     outputColor,
@@ -18,6 +19,9 @@ const ColorModifyToolHslGUI: FC<ColorModifyToolHslGUIProps> = ({
     const [h, setH] = useState(0);
     const [s, setS] = useState(100);
     const [l, setL] = useState(50);
+    const [r, setR] = useState(0);
+    const [g, setG] = useState(0);
+    const [b, setB] = useState(0);
     const [a, setA] = useState(100);
 
     const [cssDataToStore, setCssDataToStore] = useState<CssDataEditPattern>({
@@ -82,4 +86,4 @@ const ColorModifyToolHslGUI: FC<ColorModifyToolHslGUIProps> = ({
     );
 };
 
-export default ColorModifyToolHslGUI;
+export default ColorModifyToolGUI;

@@ -1,24 +1,25 @@
 import React, { FC } from "react";
 import ApplicationLogo from "./ApplicationLogo";
-import { RouteProps } from "../Layouts/Template";
+import { ComponentsRouteProps } from "../Layouts/Template";
 import Button from "./Button";
 import { useThemeContext } from "./ThemeContext";
 import NavLink from "./NavLink";
 import Nav from "./Nav";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import { usePage } from "@inertiajs/inertia-react";
+import { Page } from "@inertiajs/inertia";
 
-const Header = ({ auth, title, navRoutes }: RouteProps) => {
+const Header = ( {auth, title, navRoutes}:ComponentsRouteProps) => {
     const { colorTheme, setColorTheme } = useThemeContext();
     return (
         <>
-            <div className="fixed top-0 z-40 flex w-full">
-                <ApplicationLogo
-                    className="justify-center hidden w-24 p-1 grow-0 xs:block right-2"
-                    fillColor={`var(--text-dark)`}
-                />
-
-                <div className="flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--text-dark)] text-right bg-[color:var(--side-elements)] items-center justify-center grow">
+            <div className="fixed top-0 z-40 flex w-full h-12 align-items-center bg-[color:var(--side-elements)] drop-shadow-md">
+                <div className="flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--text-dark)] text-right items-center justify-center grow">
+                    <ApplicationLogo
+                        className="justify-center hidden w-24 p-1 grow-0 xs:block right-2"
+                        fillColor={`var(--text-dark)`}
+                    />
                     <IconContext.Provider
                         value={{
                             className:
@@ -41,7 +42,7 @@ const Header = ({ auth, title, navRoutes }: RouteProps) => {
                         </Button>
                     </IconContext.Provider>
                     <div className="flex-none h-8 px-2 mb-2 rounded-md max-w-xxs md:mb-0 text-[color:var(--btn-hov)]  md:order-last">
-                        <span className="flex-none inline-block text-xs text-center text-[color:var(--text-dark)] align-middle">
+                        <span className="flex-none inline-block text-xs text-center text-[color:var(--text-body)] align-middle">
                             {auth?.user?.name
                                 ? `user: ${auth.user.name}
                                  `
@@ -51,7 +52,7 @@ const Header = ({ auth, title, navRoutes }: RouteProps) => {
                                     <NavLink
                                         href={"/login"}
                                         method="get"
-                                        className="font-extrabold text-[color:var(--text-dark)] hover:underline"
+                                        className="font-extrabold text-[color:var(--text-strong)] hover:text-[color:var(--btn-hov)]"
                                     >
                                         log in
                                     </NavLink>
@@ -59,7 +60,7 @@ const Header = ({ auth, title, navRoutes }: RouteProps) => {
                                     <NavLink
                                         href="/register"
                                         method="get"
-                                        className="font-extrabold text-[color:var(--text-dark)] hover:underline"
+                                        className="font-extrabold text-[color:var(--text-strong)] hover:text-[color:var(--btn-hov)]"
                                     >
                                         register
                                     </NavLink>
@@ -69,13 +70,17 @@ const Header = ({ auth, title, navRoutes }: RouteProps) => {
                                 <NavLink
                                     href={"/logout"}
                                     method="post"
-                                    className="font-extrabold text-[color:var(--text-dark)] hover:underline"
+                                    className="font-extrabold text-[color:var(--btn-bg)] hover:text-[color:var(--btn-hov)]"
                                 >
                                     logout
                                 </NavLink>
                             )}
                         </span>
                     </div>
+                </div>
+            </div>
+            <div className="fixed z-30 w-full mx-auto text-center top-12">
+                <div className="mx-auto w-96 bg-[color:var(--side-elements)] rounded-b-2xl drop-shadow-md p-1">
                     <Nav
                         navRoutes={navRoutes}
                         auth={auth}
@@ -83,10 +88,6 @@ const Header = ({ auth, title, navRoutes }: RouteProps) => {
                         classNameBtn="mr-2"
                     />
                 </div>
-                <ApplicationLogo
-                    className="justify-center hidden w-24 p-1 xs:block xs:invisible grow-0 left-2"
-                    fillColor={`var(--text-dark)`}
-                />
             </div>
         </>
     );

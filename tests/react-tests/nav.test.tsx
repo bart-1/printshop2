@@ -9,9 +9,13 @@ import Nav from "../../resources/js/Shared/Nav";
 import { findDOMNode } from "react-dom";
 
 const navRoutes = ["route-one", "route-two"];
+const classNameBtn = '';
+const classNameDiv = '';
 
 test("buttons are created based strings array in props", () => {
-    const { getByText, queryByText } = render(<Nav navRoutes={navRoutes} />);
+    const { getByText, queryByText } = render(
+        <Nav navRoutes={navRoutes} classNameBtn={classNameBtn} classNameDiv={classNameDiv} />
+    );
     navRoutes.map((route) => {
         expect(queryByText(route)).toBeTruthy;
         fireEvent.click(screen.getByText(route));
@@ -19,7 +23,9 @@ test("buttons are created based strings array in props", () => {
 });
 
 test("all generated btns have proper route value in a tag href attr", () => {
-    const { container } = render(<Nav navRoutes={navRoutes} />);
+    const { container } = render(
+        <Nav navRoutes={navRoutes} classNameBtn={classNameBtn} classNameDiv={classNameDiv} />
+    );
     const a = container.querySelectorAll("a");
     navRoutes.map((route, index) => {
         const href = a[index].getAttribute("href");

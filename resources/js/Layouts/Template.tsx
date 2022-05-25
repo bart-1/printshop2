@@ -1,16 +1,13 @@
 import React, { ReactNode, FC } from "react";
 import Header from "../Shared/Header";
 import { CssDataStorePattern } from "../Pages/AdminTools/colorHelpers/manageCssStoredData";
-import { InertiaLinkProps, usePage } from "@inertiajs/inertia-react";
-import { Page, PageProps, PageResolver } from "@inertiajs/inertia";
+import { usePage } from "@inertiajs/inertia-react";
+import { Page } from "@inertiajs/inertia";
 
-export interface RouteProps {
-    auth?: { user: { admin: number; name: string; email?: string } };
-    errors?: object;
-    navRoutes?: string[];
-    header?: string;
-    title?: SVGStringList;
-    cssStoredData?: CssDataStorePattern[];
+interface TemplateChildren {
+    children: ReactNode | ReactNode[];
+}
+export interface InertiaRouteProps {
     props?: {
         auth?: { user: { admin: number; name: string; email?: string } };
         errors?: object;
@@ -18,26 +15,50 @@ export interface RouteProps {
         header?: string;
         title?: SVGStringList;
         cssStoredData?: CssDataStorePattern[];
+        products?: {
+            id: number;
+            name: string;
+            description: string;
+            img: string;
+            price: number;
+            tax: number;
+        }[];
     };
 
-    children?: ReactNode | ReactNode[];
+}
+export interface ComponentsRouteProps {
+    auth?: { user: { admin: number; name: string; email?: string } };
+    errors?: object;
+    navRoutes?: string[];
+    header?: string;
+    title?: SVGStringList;
+    cssStoredData?: CssDataStorePattern[];
+    products?: {
+        id: number;
+        name: string;
+        description: string;
+        img: string;
+        price: number;
+        tax: number;
+    }[];
 
-    classNameBtn?: string;
-    classNameDiv?: string;
 }
 
-const Template = ({ children }: RouteProps) => {
-    const { auth, navRoutes, title, cssStoredData } = usePage<
-        Page & RouteProps
+//TODO - search field
+
+const Template = ({ children }: TemplateChildren) => {
+    const { auth, navRoutes, title } = usePage<
+        Page & InertiaRouteProps
     >().props;
+
     return (
-        <div className="">
+        <>
             <Header auth={auth} title={title} navRoutes={navRoutes} />
-            <div className="h-24 md:h-12"></div>
-            <div className="w-9/12 p-2 mx-auto drop-shadow-md rounded-md xs:p-4 sm:p-6 bg-[color:var(--window-background)]">
+            <div className="h-24 md:h-22"></div>
+            <div className="flex flex-wrap gap-6 w-fit max-w-screen-lg p-2 mx-auto drop-shadow-lg rounded-md xs:p-4 sm:p-6 bg-[color:var(--window-background)] justify-center">
                 {children}
             </div>
-        </div>
+        </>
     );
 };
 

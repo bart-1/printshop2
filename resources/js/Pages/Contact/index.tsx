@@ -1,8 +1,10 @@
-import { PageProps } from "@inertiajs/inertia";
+import { Page, PageProps } from "@inertiajs/inertia";
+import { usePage } from "@inertiajs/inertia-react";
 import React, { ReactNode } from "react";
-import Template, { RouteProps } from "../../Layouts/Template";
+import { InertiaRouteProps } from "../../Layouts/Template";
 
-const Contact = (props: RouteProps) => {
+const Contact = () => {
+    const { title} = usePage<Page & InertiaRouteProps>().props;
     return (
         <div className="justify-center bg-blue-500">this is body</div>
     );

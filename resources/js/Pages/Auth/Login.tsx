@@ -1,17 +1,20 @@
-import React, { SyntheticEvent, useEffect } from "react";
+import React, { ReactNode, SyntheticEvent, useEffect } from "react";
 import Button from "../../Shared/Button";
 import Checkbox from "../../Shared/Checkbox";
-import Guest from "../../Layouts/Guest";
+import Guest from "../../Layouts/AuthTemplate";
 import Input, { InputType } from "../../Shared/Input";
 import ValidationErrors from "../../Shared/ValidationErrors";
 import { Link, useForm } from "@inertiajs/inertia-react";
+import Template from "../../Layouts/Template";
+import AuthTemplate from "../../Layouts/AuthTemplate";
+import Label from "../../Shared/Label";
 
 interface LoginProps {
     status: string;
     canResetPassword: boolean;
 }
 
-export default function Login({ status, canResetPassword }: LoginProps) {
+function Login({ status, canResetPassword }: LoginProps) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
@@ -47,7 +50,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
     };
 
     return (
-        <Guest>
+        <AuthTemplate>
             {status && (
                 <div className="mb-4 text-sm font-medium text-green-600">
                     {status}
@@ -58,7 +61,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
 
             <form onSubmit={submit}>
                 <div>
-
+                    <Label forInput="email" value="E-mail" />
                     <Input
                         type="text"
                         name="email"
@@ -71,7 +74,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                 </div>
 
                 <div className="mt-4">
-
+                    <Label forInput="password" value="Password" />
                     <Input
                         type="password"
                         name="password"
@@ -83,21 +86,21 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                 </div>
 
                 <div className="block mt-4">
-                        <Checkbox
-                            name="remember"
-                            value={data.remember}
-                            handleChange={onHandleChange}
-                        />
+                    <Checkbox
+                        name="remember"
+                        value={data.remember}
+                        handleChange={onHandleChange}
+                    />
 
-                        <span className="ml-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
+                    <span className="ml-2 text-sm text-gray-600">
+                        Remember me
+                    </span>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
                     {canResetPassword && (
                         <Link
-                            href={"/password.request"}
+                            href={"/forgot-password"}
                             className="text-sm text-gray-600 underline hover:text-gray-900"
                         >
                             Forgot your password?
@@ -114,6 +117,8 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                     </Button>
                 </div>
             </form>
-        </Guest>
+        </AuthTemplate>
     );
 }
+
+export default Login;

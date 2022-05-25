@@ -17,19 +17,25 @@ class CssStoredDataSeeder extends Seeder
         DB::table('css_stored_data')->insert([
             'property' => '--background',
             'theme' => 'light',
-            'value' => '#d6d1cd',
+            'value' => '#c2bebc',
             'scope' => 'color',
         ]);
         DB::table('css_stored_data')->insert([
-            'property' => '--text-light',
+            'property' => '--window-background',
             'theme' => 'light',
-            'value' => '#e5ece9', 'scope' => 'color',
+            'value' => '#ffffff',
+            'scope' => 'color',
+        ]);
+        DB::table('css_stored_data')->insert([
+            'property' => '--text-body',
+            'theme' => 'light',
+            'value' => '#181818', 'scope' => 'color',
 
         ]);
         DB::table('css_stored_data')->insert([
-            'property' => '--text-dark',
+            'property' => '--text-strong',
             'theme' => 'light',
-            'value' => '#0e0029', 'scope' => 'color',
+            'value' => '#000000', 'scope' => 'color',
 
         ]);
         DB::table('css_stored_data')->insert([
@@ -53,31 +59,37 @@ class CssStoredDataSeeder extends Seeder
         DB::table('css_stored_data')->insert([
             'property' => '--btn-txt',
             'theme' => 'light',
-            'value' => '#0e0029', 'scope' => 'color',
+            'value' => '#000000', 'scope' => 'color',
 
         ]);
         DB::table('css_stored_data')->insert([
             'property' => '--btn-hov',
             'theme' => 'light',
-            'value' => '#ffa21f', 'scope' => 'color',
+            'value' => '#c2e03a', 'scope' => 'color',
 
         ]);
         DB::table('css_stored_data')->insert([
             'property' => '--background',
             'theme' => 'dark',
-            'value' => '#d6d1cd', 'scope' => 'color',
+            'value' => '#242323', 'scope' => 'color',
 
         ]);
         DB::table('css_stored_data')->insert([
-            'property' => '--text-dark',
+            'property' => '--window-background',
             'theme' => 'dark',
-            'value' => '#e5ece9', 'scope' => 'color',
+            'value' => '#0c0c0c', 'scope' => 'color',
 
         ]);
         DB::table('css_stored_data')->insert([
-            'property' => '--text-dark',
+            'property' => '--text-body',
             'theme' => 'dark',
-            'value' => '#0e0029', 'scope' => 'color',
+            'value' => '#cecaca', 'scope' => 'color',
+
+        ]);
+        DB::table('css_stored_data')->insert([
+            'property' => '--text-strong',
+            'theme' => 'dark',
+            'value' => '#ffffff', 'scope' => 'color',
 
         ]);
         DB::table('css_stored_data')->insert([

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,7 +25,7 @@ class AddMoreUserDetailToRegistration extends Migration
             $table->string('zip_code');
             $table->char('city', 90);
             $table->char('country', 70)->default('Polska');
-            $table->boolean('admin')->default(false);
+            $table->enum('role', UserRole::TYPES)->default(UserRole::CUSTOMER)->after('email');
         });
     }
 
@@ -46,7 +47,8 @@ class AddMoreUserDetailToRegistration extends Migration
             $table->dropColumn('zip_code');
             $table->dropColumn('city');
             $table->dropColumn('country');
-            $table->dropColumn('admin');
+            $table->dropColumn('role');
+
         });
     }
 }

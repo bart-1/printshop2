@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -33,10 +34,18 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
+        if (Gate::allows('isAdmin')) {
+            $navRoutes = ['start', 'printshop', 'creator', 'contact', 'admin-tools'];
+        } else {
+            $navRoutes = ['start', 'printshop', 'creator', 'contact'];
+        }
+
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
+
             ],
+            'navRoutes' => $navRoutes,
         ]);
     }
 }

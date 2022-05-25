@@ -1,10 +1,11 @@
 import React, { SyntheticEvent, useEffect } from "react";
 import Button from "../../Shared/Button";
-import Guest from "../../Layouts/Guest";
+import Guest from "../../Layouts/AuthTemplate";
 import Input from "../../Shared/Input";
 import Label from "../../Shared/Label";
 import ValidationErrors from "../../Shared/ValidationErrors";
 import { useForm } from "@inertiajs/inertia-react";
+import AuthTemplate from "../../Layouts/AuthTemplate";
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -33,7 +34,7 @@ export default function ConfirmPassword() {
     };
 
     return (
-        <Guest>
+        <AuthTemplate>
             <div className="mb-4 text-sm text-gray-600">
                 This is a secure area of the application. Please confirm your
                 password before continuing.
@@ -49,7 +50,7 @@ export default function ConfirmPassword() {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         isFocused={true}
                         handleChange={onHandleChange}
                     />
@@ -65,6 +66,6 @@ export default function ConfirmPassword() {
                     </Button>
                 </div>
             </form>
-        </Guest>
+        </AuthTemplate>
     );
 }

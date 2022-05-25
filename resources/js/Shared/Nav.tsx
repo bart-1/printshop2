@@ -1,8 +1,13 @@
 import React, { FC } from "react";
-import { RouteProps } from "../Layouts/Template";
+import { ComponentsRouteProps } from "../Layouts/Template";
 import NavLinkButton from "./NavLinkButton";
 
-const Nav: FC<RouteProps> = ({ navRoutes, classNameDiv, classNameBtn }) => {
+interface NavProps extends ComponentsRouteProps {
+    classNameBtn: string;
+    classNameDiv: string;
+}
+
+const Nav = ({ navRoutes, classNameBtn, classNameDiv }: NavProps) => {
     const navButtonFactory = navRoutes?.map((route, index) => (
         <NavLinkButton
             key={index}

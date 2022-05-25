@@ -12,7 +12,7 @@ import ColorModifyToolHslGUI from "./ColorModifyToolHslGUI";
 import { useThemeContext } from "../../Shared/ThemeContext";
 
 interface ColorAdminToolsProps {
-    cssInputData: CssDataStorePattern[];
+    cssInputData?: CssDataStorePattern[];
 }
 
 const ColorAdminTools: FC<ColorAdminToolsProps> = ({
@@ -28,7 +28,6 @@ const ColorAdminTools: FC<ColorAdminToolsProps> = ({
     const { colorTheme } = useThemeContext();
 
     useEffect(() => {
-
         //PROBLEM
         mergeCssStoredDataWithStyles(
             prepareCssColorDataToMergeAndStore(cssDataToMerge),
@@ -37,7 +36,8 @@ const ColorAdminTools: FC<ColorAdminToolsProps> = ({
     }, [cssDataToMerge]);
 
     useEffect(() => {
-        setEditableCssData(prepareCssColorDataToEdit(cssInputData));
+        cssInputData?.length > 0 &&
+            setEditableCssData(prepareCssColorDataToEdit(cssInputData));
     }, []);
 
     const colorTools = editableCssData.map((colorToEdit, index) => (

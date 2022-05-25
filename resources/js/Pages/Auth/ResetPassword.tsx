@@ -1,10 +1,11 @@
 import React, { SyntheticEvent, useEffect } from "react";
 import Button from "../../Shared/Button";
-import Guest from "../../Layouts/Guest";
+import Guest from "../../Layouts/AuthTemplate";
 import Input from "../../Shared/Input";
 import Label from "../../Shared/Label";
 import ValidationErrors from "../../Shared/ValidationErrors";
 import { useForm } from "@inertiajs/inertia-react";
+import AuthTemplate from "../../Layouts/AuthTemplate";
 
 interface ResetPasswordI {
     token: string;
@@ -41,7 +42,7 @@ export default function ResetPassword({ token, email }: ResetPasswordI) {
     };
 
     return (
-        <Guest>
+        <AuthTemplate>
             <ValidationErrors errors={errors} />
 
             <form onSubmit={submit}>
@@ -52,7 +53,7 @@ export default function ResetPassword({ token, email }: ResetPasswordI) {
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="username"
                         handleChange={onHandleChange}
                     />
@@ -65,7 +66,7 @@ export default function ResetPassword({ token, email }: ResetPasswordI) {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="new-password"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -82,7 +83,7 @@ export default function ResetPassword({ token, email }: ResetPasswordI) {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="new-password"
                         handleChange={onHandleChange}
                     />
@@ -98,6 +99,6 @@ export default function ResetPassword({ token, email }: ResetPasswordI) {
                     </Button>
                 </div>
             </form>
-        </Guest>
+        </AuthTemplate>
     );
 }
