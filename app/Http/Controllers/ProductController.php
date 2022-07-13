@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Traits\ValidateResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
+    use ValidateResponseTrait;
     /**
      * Show all resources from storage.
      *
@@ -17,19 +19,37 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // return DB::table('products')->get();
-        return Product::all();
+        $products = Product::with(['image', 'category'])->get();
+        return $this->validateCollection($products, "Sorry, we find no products");
+
     }
+
+    // /**
+    //  * Show selected columns of all resources from storage
+    //  *
+    //  * @param  str|arr  $columns you whant to return, default value is '*' (all)
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function indexWithSelectedColumns($columns = '*')
+    // {
+    //     $products = Product::select($columns)->with(['image' => function($query) {$query->get()->toArray();}])->get();
+    //     return $this->validateCollection($products, "Sorry, we find no products");
+
+    // }
+
 
     /**
      * Show the specified resource in storage.
-     *
+     *object
      * @param  int  $id
+     * @param  str|arr  $columns you whant to return, default value is '*' (all)
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $columns = '*')
     {
-        return Product::find($id);
+        $product[] = Product::select($columns)->with(['image', 'category'])->find($id);
+        return $this->validateCollection($product, "Sorry, we can't find this product");
+
     }
 
     /**
@@ -41,18 +61,24 @@ class ProductController extends Controller
      */
     public function search($column, $phrase)
     {
-        $product = Product::where($column, 'like', '%' . $phrase . '%')->get();
+        $products = Product::with(['image', 'category'])->where($column, 'like', '%' . $phrase . '%')->get();
+        return $this->validateCollection($products, "Sorry, we can't find product like: " . $phrase);
 
-        if (count($product) > 0) {
-            $response = ['$name', $product];
-            $status = 200;
-        } else {
-            $response = "Sorry, we didn't find " . $phrase;
-            $status = 200;
-        }
+    }
 
-        return \response($response, $status);
+    /**
+     * Find the specified resource in storage.
+     *
+     * @param  str  $categoryName category's table, value of column 'name'.
+     * @return \Illuminate\Http\Response
+     */
+    public function searchByCategory($categoryName)
+    {
+        $products = Product::whereHas('category', function ($query) use ($categoryName) {
+            $query->where('name', $categoryName);
+        })->with('image')->get();
 
+        return $this->validateCollection($products, "Sorry, we find no product in " . $categoryName . " category");
     }
 
     /**
@@ -64,18 +90,9 @@ class ProductController extends Controller
      */
     public function searchValue($column, $value)
     {
-        $product = Product::where($column, $value)->get();
+        $product = Product::with(['image', 'category'])->where($column, $value)->get();
 
-        if (count($product) > 0) {
-            $response = ['$name', $product];
-            $status = 200;
-        } else {
-            $response = "Sorry, we didn't find " . $value;
-            $status = 200;
-        }
-
-        return \response($response, $status);
-
+        return $this->validateCollection($product, "Sorry, we find no value: " . $value . " in products table");
     }
 
     /**

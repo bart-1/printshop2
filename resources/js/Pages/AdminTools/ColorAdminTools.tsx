@@ -36,7 +36,7 @@ const ColorAdminTools: FC<ColorAdminToolsProps> = ({
     }, [cssDataToMerge]);
 
     useEffect(() => {
-        cssInputData?.length > 0 &&
+        if (cssInputData && cssInputData.length > 0)
             setEditableCssData(prepareCssColorDataToEdit(cssInputData));
     }, []);
 

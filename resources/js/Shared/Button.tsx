@@ -1,17 +1,18 @@
-import React, { MouseEventHandler, ReactNode } from "react";
+import React, { MouseEventHandler, MouseEvent, ReactNode, SyntheticEvent } from "react";
 import { IconType } from "react-icons";
 
 export type ButtonType = {
     bgColor?: string;
-    children?: ReactNode | ReactNode[] | IconType | undefined;
+    children?: ReactNode | ReactNode[];
     className?: string;
     disabled?: boolean;
     hoverColor?: string;
-    onClick?: MouseEventHandler<HTMLButtonElement>;
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
     size?: "l" | "m" | "s" | "xs";
     type: "submit" | "button" | "reset" | undefined;
     txtColor?: string;
     dataCy?: string;
+    name?: string;
 };
 
 function Button({
@@ -25,6 +26,7 @@ function Button({
     type = "button",
     txtColor = `text-[color:var(--btn-txt)]`,
     dataCy,
+    name,
 }: ButtonType) {
     return (
         <button
@@ -39,7 +41,8 @@ function Button({
                 disabled && "opacity-25"
             } ${className}`}
             disabled={disabled}
-            onClick={onClick}
+            onClick={onClick ? (e:MouseEvent<HTMLButtonElement>) => onClick(e) : undefined}
+            name={name}
         >
             {children}
         </button>

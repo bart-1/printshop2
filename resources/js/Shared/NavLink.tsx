@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { Link } from "@inertiajs/inertia-react";
+import {Link} from "@inertiajs/inertia-react";
 
 export interface NavLinkInterface {
     href: string;
@@ -11,18 +11,19 @@ export interface NavLinkInterface {
 
 const NavLink: FC<NavLinkInterface> = ({
     href,
-    active,
+    active = true,
     children,
     method = "get",
     className,
 }) => {
     return (
         <Link
-            href={href}
+            
+            href={`${active ? href : ''}`}
             method={method}
             as="button"
             className={
-                active
+                !active
                     ? ""
                     : `${
                           className

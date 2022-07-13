@@ -15,27 +15,12 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('acronym', 30);
-            $table->string('slug');
-            $table->string('name');
+            $table->string('acronym', 30)->unique();
+            $table->string('slug')->unique();
+            $table->string('name')->nullable();
             $table->string('description', 255)->nullable();
-            $table->string('img')->nullable();
-
-            //TODO category
-            // $table->enum('category', [
-            //     'tshirts',
-            //     'calendars',
-            //     'business-cards',
-            //     'leeflets',
-            //     'invitations',
-            //     'cups',
-            //     'posters',
-            //     'prints',
-            //     'stamps',
-            //     'brochures',
-            //     'stickers',
-            //     'stands',
-            //     ])->nullable();
+            $table->unsignedBigInteger('image_id')->default(1);
+            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade')->onUpdate('cascade');
             $table->smallInteger('width')->unsigned()->nullable();
             $table->smallInteger('height')->unsigned()->nullable();
             $table->smallInteger('thickness')->unsigned()->nullable();
@@ -44,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 9, 4)->default(0);
             $table->string('components')->nullable();
             $table->integer('warehouse')->unsigned()->default(0);
-            $table->enum('expose_level', ['hidden', 'normal', '+1', '+2', '+3'])->default('normal');
+            $table->enum('expose_level', [0, 1, 2, 3, 4])->default(1);
             $table->timestamps();
         });
     }

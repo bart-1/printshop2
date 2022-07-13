@@ -1,7 +1,7 @@
 require("./bootstrap");
 
 import React from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/inertia-react";
 import { InertiaProgress } from "@inertiajs/progress";
 import ThemeProvider from "./Shared/ThemeContext";
@@ -26,11 +26,13 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props, name }) {
-        return render(
+        const container = document.getElementById("app");
+        const root = createRoot(container);
+        root.render(
             <ThemeProvider>
                 <App {...props} />
-            </ThemeProvider>,
-            el
+            </ThemeProvider>
+
         );
     },
 });

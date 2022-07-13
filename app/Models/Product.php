@@ -10,16 +10,16 @@ class Product extends Model
     use HasFactory;
 
     /**
-    * The attributes that are mass assignable.
-    *
-    * @var array<int, string>
-    */
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'acronym',
         'slug',
         'name',
         'description',
-        'img',
+        'image_id',
         'width',
         'height',
         'thickness',
@@ -28,6 +28,16 @@ class Product extends Model
         'price',
         'components',
         'warehouse',
-        'expose_level'
+        'expose_level',
     ];
+
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'id', 'image_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsToMany(Category::class, 'product_category', 'product_id', 'category_id')->withPivot('category_id');
+    }
 }

@@ -1,30 +1,55 @@
-import React, { useEffect } from "react";
-import { InertiaRouteProps } from "../../Layouts/Template";
+import React, { useEffect, useState } from "react";
+import { InertiaRouteProps } from "../../Shared/Interfaces";
 import ProductCard from "../../Shared/ProductCard";
 import { usePage } from "@inertiajs/inertia-react";
 import { Page } from "@inertiajs/inertia";
+import useStore from "../../Shared/Store";
+import NavSubMenu from "../../Shared/NavSubMenu";
+import { ParsedJSONData } from "../../Shared/Interfaces";
 
 const Printshop = () => {
-    const { products } = usePage<Page & InertiaRouteProps>().props;
+    const { dataDump, submenu, responseStatus } = usePage<
+        Page & InertiaRouteProps
+    >().props;
+    const store = useStore((state) => state.objectsBg);
+    const [dataPack, setDataPack] = useState<ParsedJSONData>([
+        { Error: "sorry, no data" },
+    ]);
 
     useEffect(() => {
-        console.log(products);
-    }, []);
-    const productsList = products?.map((product) => {
+        if (dataDump) setDataPack(JSON.parse(dataDump));
+
+        return () => {
+            setDataPack([{ Error: "sorry, no data" }]);
+        };
+    }, [dataDump]);
+
+    const productCards = dataPack.map((element) => {
         return (
             <ProductCard
-                key={product.id}
-                addToCart={() => null}
-                productDescription={product.description}
-                productId={product.id}
-                productImg={product.img}
-                productName={product.name}
-                productPrice={product.price}
+                key={Number(element.id)}
+                productDescription={String(element.description)}
+                productId={Number(element.id)}
+                productImg={Object(element.image)}
+                productName={String(element.name)}
+                productPrice={Number(element.price)}
+                classNameProps={store}
             />
         );
     });
 
-    return <>{productsList}</>;
+    return (
+        <>
+            {submenu && (
+                <NavSubMenu
+                    links={submenu}
+                    classNameProps={store}
+                    path="/printshop/category"
+                />
+            )}
+            {responseStatus === 200 && productCards}
+        </>
+    );
 };
 
 export default Printshop;

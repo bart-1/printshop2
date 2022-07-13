@@ -33,14 +33,38 @@ Route::get('/', function () {
 
 Route::get('/start', [StartPageController::class, 'index'])->name('Start');
 
-Route::get('/printshop', [PrintshopPageController::class, 'index'])->name('Printshop');
-Route::get('/printshop/{id}', [PrintshopPageController::class, 'show'])->name('Printshop');
+Route::get('/printshop', function () {
+    return redirect('/printshop/category/all');
+});
+
+Route::get('/printshop/category/all', [PrintshopPageController::class, 'index'])->name('Printshop');
+Route::get('/printshop/{id}', [PrintshopPageController::class, 'show'])->where('id', '[0-9]+')->name('Printshop');
+Route::get('/printshop/category/{name}', [PrintshopPageController::class, 'showByCategory'])->name('Printshop');
+Route::get('/printshop/category/{wildcard}/search/{name}', [PrintshopPageController::class, 'searchProduct'])->name('Printshop');
 
 Route::get('/creator', [CreatorPageController::class, 'index'])->name('Creator');
 
 Route::get('/contact', [ContactPageController::class, 'index'])->name('Contact');
 
-Route::get('/admin-tools', [AdminToolsPageController::class, 'index'])->middleware('auth', 'isAdmin', 'verified')->name('AdminTools');
+Route::middleware(['auth', 'isAdmin', 'verified'])->group(function () {
+    Route::get('/admin-tools', function () {
+        return redirect('/admin-tools/users/1');
+    });
+    Route::get('/admin-tools/users', function () {
+        return redirect('/admin-tools/users/1');
+    });
+      Route::get('/admin-tools/products', function () {
+        return redirect('/admin-tools/products/1');
+    });
+    Route::get('/admin-tools/users/{chunk}', [AdminToolsPageController::class, 'usersIndex'])->name('AdminTools');
+    Route::get('/admin-tools/products/{chunk}', [AdminToolsPageController::class, 'productsIndex'])->name('AdminTools');
+    Route::get('/admin-tools/users/id/{id}', [AdminToolsPageController::class, 'userShow'])->where('id', '[0-9]+')->name('AdminTools');
+    Route::get('/admin-tools/products/id/{id}', [AdminToolsPageController::class, 'productShow'])->where('id', '[0-9]+')->name('AdminTools');
+    Route::get('/admin-tools/users/{wildcard}/search/{name}', [AdminToolsPageController::class, 'userSearch'])->name('AdminTools');
+    Route::get('/admin-tools/products/{wildcard}/search/{name}', [AdminToolsPageController::class, 'productSearch'])->name('AdminTools');
+
+});
+
 
 Route::get('/forgot-password', [NewPasswordController::class, 'create'])->middleware('guest')->name('password.request');
 

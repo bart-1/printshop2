@@ -1,24 +1,26 @@
 import React, { FC } from "react";
 import ApplicationLogo from "./ApplicationLogo";
-import { ComponentsRouteProps } from "../Layouts/Template";
+import { InertiaRouteProps } from "../Shared/Interfaces";
 import Button from "./Button";
 import { useThemeContext } from "./ThemeContext";
 import NavLink from "./NavLink";
-import Nav from "./Nav";
+import Nav from "./NavButtonsMenu";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { usePage } from "@inertiajs/inertia-react";
 import { Page } from "@inertiajs/inertia";
 
-const Header = ( {auth, title, navRoutes}:ComponentsRouteProps) => {
+const Header = () => {
+     const { auth, navRoutes } = usePage<Page & InertiaRouteProps>()
+         .props;
     const { colorTheme, setColorTheme } = useThemeContext();
     return (
         <>
             <div className="fixed top-0 z-40 flex w-full h-12 align-items-center bg-[color:var(--side-elements)] drop-shadow-md">
-                <div className="flex flex-wrap md:flex-nowrap h-20 md:h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--text-dark)] text-right items-center justify-center grow">
+                <div className="flex flex-wrap md:flex-nowrap h-10 sm:w-full py-1 px-2 rounded-b-md text-[color:var(--text-dark)] text-right items-center justify-center grow">
                     <ApplicationLogo
                         className="justify-center hidden w-24 p-1 grow-0 xs:block right-2"
-                        fillColor={`var(--text-dark)`}
+                        fillColor={`var(--text-body)`}
                     />
                     <IconContext.Provider
                         value={{
@@ -41,7 +43,7 @@ const Header = ( {auth, title, navRoutes}:ComponentsRouteProps) => {
                             {colorTheme ? <BsSunFill /> : <BsMoonFill />}
                         </Button>
                     </IconContext.Provider>
-                    <div className="flex-none h-8 px-2 mb-2 rounded-md max-w-xxs md:mb-0 text-[color:var(--btn-hov)]  md:order-last">
+                    <div className="flex-none h-8 px-2 rounded-md max-w-xxs text-[color:var(--btn-hov)] md:order-last">
                         <span className="flex-none inline-block text-xs text-center text-[color:var(--text-body)] align-middle">
                             {auth?.user?.name
                                 ? `user: ${auth.user.name}
@@ -83,7 +85,6 @@ const Header = ( {auth, title, navRoutes}:ComponentsRouteProps) => {
                 <div className="mx-auto w-96 bg-[color:var(--side-elements)] rounded-b-2xl drop-shadow-md p-1">
                     <Nav
                         navRoutes={navRoutes}
-                        auth={auth}
                         classNameDiv="mr-2 whitespace-nowrap"
                         classNameBtn="mr-2"
                     />

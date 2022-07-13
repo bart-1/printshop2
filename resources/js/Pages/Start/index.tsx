@@ -1,13 +1,22 @@
 import { Page } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
-import React from "react";
-import { InertiaRouteProps } from "../../Layouts/Template";
+import React, { ReactElement, ReactText } from "react";
+import { InertiaRouteProps } from "../../Shared/Interfaces";
+import ImageFrame from "../../Shared/ImageFrame";
+import useStore from "../../Shared/Store";
 
 const Start = () => {
-    const { title } = usePage<Page & InertiaRouteProps>().props;
+    const { title, imagesCollection } = usePage<Page & InertiaRouteProps>()
+        .props;
+    const store = useStore((state) => state.objectsBg);
     return (
         <>
-            <div className="justify-center text-[color:var(--text-body)] ">
+            <div className={`${store} w-full`}>
+                <ImageFrame imagesCollection={imagesCollection} time={4} />
+            </div>
+            <div
+                className={` ${store} justify-center text-[color:var(--text-body)]`}
+            >
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut
                 accusantium vero repellendus excepturi, quae temporibus,
                 molestiae fugit, tenetur voluptates aliquam corrupti

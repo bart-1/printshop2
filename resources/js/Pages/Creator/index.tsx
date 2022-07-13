@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import CreatorCanvas from "./CreatorCanvas";
 import CreatorRightToolbox from "./CreatorRightToolbox";
 import CreatorLeftToolbox from "./CreatorLeftToolbox";
-import { InertiaRouteProps } from "../../Layouts/Template";
+import { InertiaRouteProps } from "../../Shared/Interfaces";
 import { usePage } from "@inertiajs/inertia-react";
 import { Page } from "@inertiajs/inertia";
 

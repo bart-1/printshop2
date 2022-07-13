@@ -1,0 +1,22 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(self["webpackChunkprintshop2"] = self["webpackChunkprintshop2"] || []).push([["resources_js_Pages_AdminTools_colorHelpers_rgbaObjectToHexaString_ts"],{
+
+/***/ "./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.rgbaObjectToHexaString = void 0;\n/**\n *@param {objectRgba} colorRgba color as objectRgba\n *@return {string} color as hex string (with alpha)\n */\n\nfunction rgbaObjectToHexaString(colorRgba) {\n  var r = colorRgba.r,\n      g = colorRgba.g,\n      b = colorRgba.b,\n      a = colorRgba.a;\n\n  function prepareHex(n) {\n    return n.toString(16).padStart(2, \"0\").toUpperCase();\n  }\n\n  return \"#\".concat(prepareHex(r)).concat(prepareHex(g)).concat(prepareHex(b)).concat(prepareHex(Math.round(a * 255 / 100)));\n}\n\nexports.rgbaObjectToHexaString = rgbaObjectToHexaString;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvUGFnZXMvQWRtaW5Ub29scy9jb2xvckhlbHBlcnMvcmdiYU9iamVjdFRvSGV4YVN0cmluZy50cy5qcyIsIm1hcHBpbmdzIjoiQUFBYTs7QUFDYkEsOENBQTZDO0FBQUVHLEVBQUFBLEtBQUssRUFBRTtBQUFULENBQTdDO0FBQ0FELDhCQUFBLEdBQWlDLEtBQUssQ0FBdEM7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFDQSxTQUFTRSxzQkFBVCxDQUFnQ0MsU0FBaEMsRUFBMkM7QUFDdkMsTUFBUUMsQ0FBUixHQUF1QkQsU0FBdkIsQ0FBUUMsQ0FBUjtBQUFBLE1BQVdDLENBQVgsR0FBdUJGLFNBQXZCLENBQVdFLENBQVg7QUFBQSxNQUFjQyxDQUFkLEdBQXVCSCxTQUF2QixDQUFjRyxDQUFkO0FBQUEsTUFBaUJDLENBQWpCLEdBQXVCSixTQUF2QixDQUFpQkksQ0FBakI7O0FBQ0EsV0FBU0MsVUFBVCxDQUFvQkMsQ0FBcEIsRUFBdUI7QUFDbkIsV0FBT0EsQ0FBQyxDQUFDQyxRQUFGLENBQVcsRUFBWCxFQUFlQyxRQUFmLENBQXdCLENBQXhCLEVBQTJCLEdBQTNCLEVBQWdDQyxXQUFoQyxFQUFQO0FBQ0g7O0FBQ0Qsb0JBQVdKLFVBQVUsQ0FBQ0osQ0FBRCxDQUFyQixTQUEyQkksVUFBVSxDQUFDSCxDQUFELENBQXJDLFNBQTJDRyxVQUFVLENBQUNGLENBQUQsQ0FBckQsU0FBMkRFLFVBQVUsQ0FBQ0ssSUFBSSxDQUFDQyxLQUFMLENBQVlQLENBQUMsR0FBRyxHQUFMLEdBQVksR0FBdkIsQ0FBRCxDQUFyRTtBQUNIOztBQUNEUCw4QkFBQSxHQUFpQ0Usc0JBQWpDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vcHJpbnRzaG9wMi8uL3Jlc291cmNlcy9qcy9QYWdlcy9BZG1pblRvb2xzL2NvbG9ySGVscGVycy9yZ2JhT2JqZWN0VG9IZXhhU3RyaW5nLnRzPzFhNjYiXSwic291cmNlc0NvbnRlbnQiOlsiXCJ1c2Ugc3RyaWN0XCI7XG5PYmplY3QuZGVmaW5lUHJvcGVydHkoZXhwb3J0cywgXCJfX2VzTW9kdWxlXCIsIHsgdmFsdWU6IHRydWUgfSk7XG5leHBvcnRzLnJnYmFPYmplY3RUb0hleGFTdHJpbmcgPSB2b2lkIDA7XG4vKipcbiAqQHBhcmFtIHtvYmplY3RSZ2JhfSBjb2xvclJnYmEgY29sb3IgYXMgb2JqZWN0UmdiYVxuICpAcmV0dXJuIHtzdHJpbmd9IGNvbG9yIGFzIGhleCBzdHJpbmcgKHdpdGggYWxwaGEpXG4gKi9cbmZ1bmN0aW9uIHJnYmFPYmplY3RUb0hleGFTdHJpbmcoY29sb3JSZ2JhKSB7XG4gICAgY29uc3QgeyByLCBnLCBiLCBhIH0gPSBjb2xvclJnYmE7XG4gICAgZnVuY3Rpb24gcHJlcGFyZUhleChuKSB7XG4gICAgICAgIHJldHVybiBuLnRvU3RyaW5nKDE2KS5wYWRTdGFydCgyLCBcIjBcIikudG9VcHBlckNhc2UoKTtcbiAgICB9XG4gICAgcmV0dXJuIGAjJHtwcmVwYXJlSGV4KHIpfSR7cHJlcGFyZUhleChnKX0ke3ByZXBhcmVIZXgoYil9JHtwcmVwYXJlSGV4KE1hdGgucm91bmQoKGEgKiAyNTUpIC8gMTAwKSl9YDtcbn1cbmV4cG9ydHMucmdiYU9iamVjdFRvSGV4YVN0cmluZyA9IHJnYmFPYmplY3RUb0hleGFTdHJpbmc7XG4iXSwibmFtZXMiOlsiT2JqZWN0IiwiZGVmaW5lUHJvcGVydHkiLCJleHBvcnRzIiwidmFsdWUiLCJyZ2JhT2JqZWN0VG9IZXhhU3RyaW5nIiwiY29sb3JSZ2JhIiwiciIsImciLCJiIiwiYSIsInByZXBhcmVIZXgiLCJuIiwidG9TdHJpbmciLCJwYWRTdGFydCIsInRvVXBwZXJDYXNlIiwiTWF0aCIsInJvdW5kIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/Pages/AdminTools/colorHelpers/rgbaObjectToHexaString.ts\n");
+
+/***/ })
+
+}]);

@@ -22,6 +22,7 @@ interface ThemeProviderProps {
     children: ReactNode | ReactNode[] | ReactElement;
 }
 
+
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const [colorTheme, setColorTheme] = useState<Theme>("light");
 
