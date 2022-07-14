@@ -22,7 +22,7 @@ const Search = () => {
     }, [input]);
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") Inertia.visit(`/search/${input}`);
+        if (e.key === "Enter") Inertia.visit(`./search/${input}`);
     };
 
     return (
@@ -55,7 +55,7 @@ const Search = () => {
                     className: "w-6 h-6 text-[color:var(--text-body)] m-auto",
                 }}
             >
-                <NavLink href={`/search/${input}`} active={isActive}>
+                <NavLink href={`./search/${input}`} active={isActive}>
                     <div className="flex w-8 h-8 p-0 bg-[color:var(--btn-bg)] hover:bg-[color:var(--btn-hov)] justify-center rounded-r-md">
                         <BsFillCaretRightFill />
                     </div>

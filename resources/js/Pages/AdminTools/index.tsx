@@ -36,19 +36,20 @@ const AdminTools = () => {
 
     return (
         <>
-            <div
-                className={`${store} flex flex-wrap justify-center gap-x-3 w-full gap-y-2 font-semibold text-sm text-[color:var(--text-body)]`}
-            >
+
                 {/* <ColorAdminTools cssInputData={cssStoredData} /> */}
                 {submenu && (
                     <NavSubMenu
                         links={submenu}
                         classNameProps={store}
-                        path="/admin-tools"
-                    />
+                    path="/admin-tools"
+                    childrenClassNameProps="flex flex-1  mt-auto justify-end"
+                    >
+                        {" "}
+                        <Search />
+                    </NavSubMenu>
                 )}
-                <Search />
-            </div>
+
 
             <Table
                 parsedData={dataPack}

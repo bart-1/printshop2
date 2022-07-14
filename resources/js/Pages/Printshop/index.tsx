@@ -6,6 +6,7 @@ import { Page } from "@inertiajs/inertia";
 import useStore from "../../Shared/Store";
 import NavSubMenu from "../../Shared/NavSubMenu";
 import { ParsedJSONData } from "../../Shared/Interfaces";
+import Search from "../../Shared/Search";
 
 const Printshop = () => {
     const { dataDump, submenu, responseStatus } = usePage<
@@ -45,7 +46,7 @@ const Printshop = () => {
                     links={submenu}
                     classNameProps={store}
                     path="/printshop/category"
-                />
+                ><Search/></NavSubMenu>
             )}
             {responseStatus === 200 && productCards}
         </>

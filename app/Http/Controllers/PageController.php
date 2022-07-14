@@ -17,10 +17,9 @@ class PageController extends Controller
         $this->routeName = $request->route()->getName();
         $this->cssStoredData = $css->download();
         $baseCategory = (object) ['id' => 0, 'name' => 'all'];
-        $cat = $categories->all();
-        $this->categoriesSubmenu = collect($cat)->concat([$baseCategory])->all();
+        $cat = $categories->orderBy('name')->get();
+        $this->categoriesSubmenu = collect()->concat([$baseCategory])->concat(collect($cat))->all();
         $this->adminToolsSubmenu = $submenu = collect([['name' => 'users'], ['name' => 'products'], ['name' => 'sale'], ['name' => 'settings']])->all();
-
 
     }
 
