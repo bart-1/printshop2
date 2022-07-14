@@ -24,7 +24,7 @@ const ProductCard = ({
     return (
         <>
             <div
-                className={`${classNameProps} grid flex-none w-56 grid-cols-3 gap-2 p-1 grid-rows-8`}
+                className={`${classNameProps} grid flex-none w-56 grid-cols-3 gap-2 p-1 grid-rows-8 max-h-80`}
             >
                 <div className="col-span-3 bg-[color:var(--background)] text-[color:var(--text-body)] rounded-t-md p-1 font-normal text-center">
                     {productName}
@@ -32,7 +32,7 @@ const ProductCard = ({
                 <div className="row-span-3 ">
                     <img src={`${productImg?.url}`} alt="calendar" />
                 </div>
-                <div className="col-span-2 row-span-2 text-3xl font-thin text-center text-[color:var(--text-strong)]">
+                <div className="col-span-2 row-span-1 text-3xl font-thin text-center text-[color:var(--text-strong)]">
                     {productPrice * quantity},- pln
                 </div>
                 <div className="col-span-2 text-center text-[color:var(--text-body)]">
@@ -52,8 +52,9 @@ const ProductCard = ({
                     {productDescription}
                 </div>
                 <button
-                    className="col-span-3 p-1 bg-[color:var(--btn-bg)] rounded-b-md hover:bg-[color:var(--btn-hov)] text-center font-strong"
-                    onClick={() => null
+                    className="col-span-3 row-span-1 max-h-8 p-1 bg-[color:var(--btn-bg)] rounded-b-md hover:bg-[color:var(--btn-hov)] text-center font-strong"
+                    onClick={
+                        () => null
                         // addToCart({ id: productId, quantity: quantity }) TODO
                     }
                 >

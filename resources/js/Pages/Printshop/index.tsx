@@ -7,6 +7,8 @@ import useStore from "../../Shared/Store";
 import NavSubMenu from "../../Shared/NavSubMenu";
 import { ParsedJSONData } from "../../Shared/Interfaces";
 import Search from "../../Shared/Search";
+import ProductCardMd from "../../Shared/ProductCardMd";
+import ProductCardXL from "../../Shared/ProductCardXL";
 
 const Printshop = () => {
     const { dataDump, submenu, responseStatus } = usePage<
@@ -26,17 +28,42 @@ const Printshop = () => {
     }, [dataDump]);
 
     const productCards = dataPack.map((element) => {
-        return (
-            <ProductCard
-                key={Number(element.id)}
-                productDescription={String(element.description)}
-                productId={Number(element.id)}
-                productImg={Object(element.image)}
-                productName={String(element.name)}
-                productPrice={Number(element.price)}
-                classNameProps={store}
-            />
-        );
+        if (element.expose_level === "1")
+            return (
+                <ProductCard
+                    key={Number(element.id)}
+                    productDescription={String(element.description)}
+                    productId={Number(element.id)}
+                    productImg={Object(element.image)}
+                    productName={String(element.name)}
+                    productPrice={Number(element.price)}
+                    classNameProps={store}
+                />
+            );
+        else if (element.expose_level === "3")
+            return (
+                <ProductCardMd
+                    key={Number(element.id)}
+                    productDescription={String(element.description)}
+                    productId={Number(element.id)}
+                    productImg={Object(element.image)}
+                    productName={String(element.name)}
+                    productPrice={Number(element.price)}
+                    classNameProps={store}
+                />
+            );
+        else if (element.expose_level === "4")
+            return (
+                <ProductCardXL
+                    key={Number(element.id)}
+                    productDescription={String(element.description)}
+                    productId={Number(element.id)}
+                    productImg={Object(element.image)}
+                    productName={String(element.name)}
+                    productPrice={Number(element.price)}
+                    classNameProps={store}
+                />
+            );
     });
 
     return (

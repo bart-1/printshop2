@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -23,12 +22,12 @@ class UserSeeder extends Seeder
             'account_type' => 'business',
             'company' => 'Dziwny Kot',
             'nip' => 1192341997,
-            'street' => 'Budrysów',
-            'house_number' => '9',
+            'street' => 'Trzech Budrysów',
+            'house_number' => '11',
             'apartment_number' => '45',
-            'zip_code' => '00-119',
+            'zip_code' => '00-850',
             'city' => 'Warszawa',
-          'role' => 'admin'
+            'role' => 'admin',
 
         ]);
         DB::table('users')->insert([
@@ -42,7 +41,7 @@ class UserSeeder extends Seeder
             'apartment_number' => '435',
             'zip_code' => '00-077',
             'city' => 'Warszawa',
-            'role' => 'customer'
+            'role' => 'customer',
 
         ]);
         //
