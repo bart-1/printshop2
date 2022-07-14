@@ -35,9 +35,12 @@ class PrintshopPageController extends PageController
 
     public function showByCategory(ProductController $products, Product $model, $name)
     {
-        $productsList = $products->searchByCategory($name);
+
         if ($name === 'all') {
-            $productsList = $products->indexWithSelectedColumns($model, 'Status 204: Sorry, No products found');
+            $productsList = $products->indexWithSelectedColumns($model, ['id', 'acronym', 'name', 'description', 'tax', 'price', 'warehouse', 'expose_level', 'image_id'], 'Status 204: Sorry, No products found', 1);
+        } else {
+            $productsList = $products->searchByCategory($name);
+
         }
 
         return Inertia::render($this->routeName, [
@@ -48,21 +51,13 @@ class PrintshopPageController extends PageController
         ]);
 
     }
-    public function searchProduct(ProductController $products, $name)
+    public function searchProduct(Product $product, $name)
     {
-
-        $productsListByName = $products->search('name', $name);
-        $productsListByDescription = $products->search('description', $name);
-
-        if (!$productsListByName->isEmpty()) {
-            $productsList = $productsListByName->merge($productsListByDescription);
-        } else {
-            $productsList = $productsListByDescription;
-        }
+        $productsList = $this->searchWithSelectedColumns($product, $name, ['id', 'acronym', 'name', 'description', 'tax', 'price', 'warehouse', 'expose_level', 'image_id'], ['name', 'description'], 'Status 204: no products found');
 
         return Inertia::render($this->routeName, [
             'title' => $this->routeName,
-            'dataDump' => $productsList,
+            'dataDump' => $productsList->original['response'],
             'submenu' => $this->categoriesSubmenu,
             'responseStatus' => $productsList->original['status'],
         ]);

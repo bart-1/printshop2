@@ -27,9 +27,9 @@ class Controller extends BaseController
      * @param  str|arr  $columns you whant to return, default value is '*' (all)
      * @return \Illuminate\Http\Response
      */
-    public function indexWithSelectedColumns($model, $columns = '*', $chunk = 1, $failMessage = 'unknown error')
+    public function indexWithSelectedColumns($model, $columns = '*', $failMessage = 'unknown error', $chunk = 1 )
     {
-        $data = $model->where('id', '>', $chunk * 10 - 10)->where('id', '<=', $chunk * 10)->select($columns)->get();
+        $data = $model->where('id', '>', $chunk * 10 - 10)->where('id', '<=', $chunk * 10)->select($columns)->with('image')->get();
         return $this->validateCollection($data, $failMessage);
 
     }
@@ -40,10 +40,14 @@ class Controller extends BaseController
      * @param  str|arr  $columns you whant to return, default value is '*' (all)
      * @return \Illuminate\Http\Response
      */
-    public function searchWithSelectedColumns($model, $phrase, $columns = '*', $columnToSearch, $failMessage = 'unknown error')
+    public function searchWithSelectedColumns($model, $phrase, $columns = '*', $columnsToSearch, $failMessage = 'unknown error')
     {
-        $data = $model->where($columnToSearch, 'like', '%' . $phrase . '%')->select($columns)->get();
-        return $this->validateCollection($data, $failMessage);
+        $agragatedData = collect();
+        foreach ($columnsToSearch as $column) {
+            $data = $model->where($column, 'like', '%' . $phrase . '%')->select($columns)->get();
+            $agragatedData = $agragatedData->concat($data);
+        }
+        return $this->validateCollection($agragatedData, $failMessage);
 
     }
 }
