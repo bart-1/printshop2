@@ -46,7 +46,9 @@ const Printshop = () => {
                     links={submenu}
                     classNameProps={store}
                     path="/printshop/category"
-                ><Search/></NavSubMenu>
+                >
+                    <Search basePath="/printshop" />
+                </NavSubMenu>
             )}
             {responseStatus === 200 && productCards}
         </>

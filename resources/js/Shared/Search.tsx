@@ -1,20 +1,24 @@
-import React, { ChangeEvent, KeyboardEvent, KeyboardEventHandler, useEffect, useState } from "react";
+import React, {
+    ChangeEvent,
+    KeyboardEvent,
+    KeyboardEventHandler,
+    useEffect,
+    useState,
+} from "react";
 import NavLink from "./NavLink";
 import { IconContext } from "react-icons";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { Inertia } from "@inertiajs/inertia";
 import Input from "./Input";
 
-interface SearchProps {}
+type SearchProps = {
+    basePath?: string
+}
 
-const Search = () => {
+const Search = ({basePath}:SearchProps) => {
     const [input, setInput] = useState("");
     const [isActive, setIsActive] = useState(false);
-    const [baseRoutePath, setBaseRouthPath] = useState("");
-
-    useEffect(() => {
-        setBaseRouthPath(window.location.pathname);
-    }, []);
+   
 
     useEffect(() => {
         if (input.length > 0) setIsActive(true);
@@ -22,7 +26,7 @@ const Search = () => {
     }, [input]);
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") Inertia.visit(`./search/${input}`);
+        if (e.key === "Enter") Inertia.visit(`${basePath}/search/${input}`);
     };
 
     return (
@@ -55,7 +59,7 @@ const Search = () => {
                     className: "w-6 h-6 text-[color:var(--text-body)] m-auto",
                 }}
             >
-                <NavLink href={`./search/${input}`} active={isActive}>
+                <NavLink href={`${basePath}/search/${input}`} active={isActive}>
                     <div className="flex w-8 h-8 p-0 bg-[color:var(--btn-bg)] hover:bg-[color:var(--btn-hov)] justify-center rounded-r-md">
                         <BsFillCaretRightFill />
                     </div>

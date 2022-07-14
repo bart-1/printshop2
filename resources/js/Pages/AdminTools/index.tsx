@@ -24,8 +24,6 @@ const AdminTools = () => {
         { Error: "sorry, no data" },
     ]);
 
-
-
     useEffect(() => {
         if (dataDump) setDataPack(JSON.parse(dataDump));
 
@@ -34,22 +32,36 @@ const AdminTools = () => {
         };
     }, [dataDump]);
 
+     const [baseRoutePath, setBaseRouthPath] = useState("");
+
+     useEffect(() => {
+         setBaseRouthPath(window.location.pathname);
+
+     }, []);
+
+    const handleBasePath = () => {
+        let basePath = '';
+        if (baseRoutePath.includes('users'))
+            basePath = 'users';
+            else if (baseRoutePath.includes('products'))
+            basePath = 'products';
+        return basePath;
+   }
+
     return (
         <>
-
-                {/* <ColorAdminTools cssInputData={cssStoredData} /> */}
-                {submenu && (
-                    <NavSubMenu
-                        links={submenu}
-                        classNameProps={store}
+            {/* <ColorAdminTools cssInputData={cssStoredData} /> */}
+            {submenu && (
+                <NavSubMenu
+                    links={submenu}
+                    classNameProps={store}
                     path="/admin-tools"
                     childrenClassNameProps="flex flex-1  mt-auto justify-end"
-                    >
-                        {" "}
-                        <Search />
-                    </NavSubMenu>
-                )}
-
+                >
+                    {" "}
+                    <Search basePath={`/admin-tools/${handleBasePath()}`} />
+                </NavSubMenu>
+            )}
 
             <Table
                 parsedData={dataPack}

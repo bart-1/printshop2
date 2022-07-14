@@ -72,7 +72,9 @@ class AdminToolsPageController extends PageController
     }
     public function userSearch(User $user, $name)
     {
-        $searchResult = $this->searchWithSelectedColumns($user, $name, ['id', 'name', 'role', 'phone', 'company', 'nip', 'street', 'house_number', 'apartment_number', 'zip_code', 'city'], 'name', 'Status 204: no users found');
+        $searchResult = $this->searchWithSelectedColumns($user, $name, ['id', 'name', 'role', 'phone', 'company', 'nip', 'street', 'house_number', 'apartment_number', 'zip_code', 'city'], ['name', 'company', 'nip', 'city'], 'Status 204: no users found');
+
+        //search with array
 
         return Inertia::render($this->routeName, [
             'title' => $this->routeName,
@@ -83,7 +85,7 @@ class AdminToolsPageController extends PageController
     }
     public function productSearch(Product $product, $name)
     {
-        $searchResult = $this->searchWithSelectedColumns($product, $name, ['id', 'acronym', 'name', 'description', 'tax', 'price', 'warehouse', 'expose_level', 'image_id'], 'name', 'Status 204: no products found');
+        $searchResult = $this->searchWithSelectedColumns($product, $name, ['id', 'acronym', 'name', 'description', 'tax', 'price', 'warehouse', 'expose_level', 'image_id'], ['name', 'description', 'expose_level'], 'Status 204: no products found');
 
         return Inertia::render($this->routeName, [
             'title' => $this->routeName,

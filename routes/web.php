@@ -37,10 +37,10 @@ Route::get('/printshop', function () {
     return redirect('/printshop/category/all');
 });
 
-Route::get('/printshop/category/all', [PrintshopPageController::class, 'index'])->name('Printshop');
+// Route::get('/printshop/category/all', [PrintshopPageController::class, 'showByCategory'])->name('Printshop');
 Route::get('/printshop/{id}', [PrintshopPageController::class, 'show'])->where('id', '[0-9]+')->name('Printshop');
 Route::get('/printshop/category/{name}', [PrintshopPageController::class, 'showByCategory'])->name('Printshop');
-Route::get('/printshop/category/{wildcard}/search/{name}', [PrintshopPageController::class, 'searchProduct'])->name('Printshop');
+Route::get('/printshop/search/{name}', [PrintshopPageController::class, 'searchProduct'])->name('Printshop');
 
 Route::get('/creator', [CreatorPageController::class, 'index'])->name('Creator');
 
@@ -60,8 +60,8 @@ Route::middleware(['auth', 'isAdmin', 'verified'])->group(function () {
     Route::get('/admin-tools/products/{chunk}', [AdminToolsPageController::class, 'productsIndex'])->name('AdminTools');
     Route::get('/admin-tools/users/id/{id}', [AdminToolsPageController::class, 'userShow'])->where('id', '[0-9]+')->name('AdminTools');
     Route::get('/admin-tools/products/id/{id}', [AdminToolsPageController::class, 'productShow'])->where('id', '[0-9]+')->name('AdminTools');
-    Route::get('/admin-tools/users/{wildcard}/search/{name}', [AdminToolsPageController::class, 'userSearch'])->name('AdminTools');
-    Route::get('/admin-tools/products/{wildcard}/search/{name}', [AdminToolsPageController::class, 'productSearch'])->name('AdminTools');
+    Route::get('/admin-tools/users/search/{name}', [AdminToolsPageController::class, 'userSearch'])->name('AdminTools');
+    Route::get('/admin-tools/products/search/{name}', [AdminToolsPageController::class, 'productSearch'])->name('AdminTools');
 
 });
 
