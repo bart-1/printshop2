@@ -1,14 +1,42 @@
 import { Page } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
-import React, { ReactElement, ReactText } from "react";
-import { InertiaRouteProps } from "../../Shared/Interfaces";
+import React, { useEffect, useState } from "react";
+import { InertiaRouteProps, ParsedJSONData } from "../../Shared/Interfaces";
 import ImageFrame from "../../Shared/ImageFrame";
 import useStore from "../../Shared/Store";
+import ProductCard from "../../Shared/ProductCard";
 
 const Start = () => {
-    const { title, imagesCollection } = usePage<Page & InertiaRouteProps>()
+    const { title, imagesCollection, dataDump } = usePage<Page & InertiaRouteProps>()
         .props;
     const store = useStore((state) => state.objectsBg);
+    const [dataPack, setDataPack] = useState<ParsedJSONData>([
+        { Error: "sorry, no data" },
+    ]);
+
+    useEffect(() => {
+        if (dataDump) setDataPack(JSON.parse(dataDump));
+
+        return () => {
+            setDataPack([{ Error: "sorry, no data" }]);
+        };
+    }, [dataDump]);
+
+    const products = dataPack.map(product => {
+        if (product.expose_level === "4" || product.expose_level === "3")
+            return (
+                <ProductCard
+                    key={Number(product.id)}
+                    productDescription={String(product.description)}
+                    productId={Number(product.id)}
+                    productImg={Object(product.image)}
+                    productName={String(product.name)}
+                    productPrice={Number(product.price)}
+                    classNameProps={store}
+                />
+            );
+    })
+
     return (
         <>
             <div className={`${store} w-full`}>
@@ -34,6 +62,7 @@ const Start = () => {
                 repudiandae esse voluptatem fuga officia minus molestias!
                 Impedit sunt quaerat veniam. Test.
             </div>
+            {products}
         </>
     );
 };

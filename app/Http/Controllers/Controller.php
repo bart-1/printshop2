@@ -44,7 +44,7 @@ class Controller extends BaseController
     {
         $agragatedData = collect();
         foreach ($columnsToSearch as $column) {
-            $data = $model->where($column, 'like', '%' . $phrase . '%')->select($columns)->get();
+            $data = $model->where($column, 'like', '%' . $phrase . '%')->select($columns)->with('image')->get();
             $agragatedData = $agragatedData->concat($data);
         }
         return $this->validateCollection($agragatedData, $failMessage);

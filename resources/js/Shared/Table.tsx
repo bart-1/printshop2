@@ -6,35 +6,53 @@ interface TableProps {
     classNameProps?: string;
     isActiveHref: boolean;
     biggestCellsKeys?: string[];
+    omitColumns?: string[];
 }
 
 const Table = ({
     classNameProps,
-    parsedData,
-    isActiveHref,
     biggestCellsKeys,
+    isActiveHref,
+    omitColumns,
+    parsedData,
 }: TableProps) => {
     const [baseRoutePath, setBaseRouthPath] = useState("");
     useEffect(() => {
         setBaseRouthPath(window.location.pathname);
     }, []);
 
-    const thead = Object.entries(parsedData[0]).map(([key, value], index) => (
-        <th key={index} className="py-5 text-center">
-            {String(key.replace("_", " "))}
-        </th>
-    ));
-
+    const thead = Object.entries(parsedData[0]).map(([key, value], index) => {
+        if (
+            omitColumns &&
+            omitColumns.length > 0 &&
+            !omitColumns.find((element) => element === String(key))
+        )
+            return (
+                <th key={index} className="py-5 text-center">
+                    {String(key.replace("_", " "))}
+                </th>
+            );
+    });
 
     const tbody = Object.entries(parsedData).map(
         ([keyRow, valueRow], indexRow) => (
-            <tr key={indexRow} className={indexRow%2 === 0 ? `bg-[color:var(--background)]` : ''}>
+            <tr
+                key={indexRow}
+                className={
+                    indexRow % 2 === 0 ? `bg-[color:var(--background)]` : ""
+                }
+            >
                 {Object.entries(valueRow).map(
                     ([keyCell, valueCell], indexCell) => {
                         if (
                             typeof valueCell !== "object" &&
                             valueCell !== null &&
-                            valueCell !== undefined
+                            valueCell !== undefined &&
+                            omitColumns &&
+                            omitColumns.length > 0 &&
+                            !omitColumns.find(
+                                (element) => element === String(keyCell)
+                            )
                         )
                             return (
                                 <td
@@ -47,7 +65,12 @@ const Table = ({
                         else if (
                             typeof valueCell == "object" &&
                             valueCell !== null &&
-                            valueCell !== undefined
+                            valueCell !== undefined &&
+                            omitColumns &&
+                            omitColumns.length > 0 &&
+                            !omitColumns.find(
+                                (element) => element === String(keyCell)
+                            )
                         ) {
                             return (
                                 <td

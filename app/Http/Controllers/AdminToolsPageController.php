@@ -24,7 +24,7 @@ class AdminToolsPageController extends PageController
 
     public function usersIndex(CssController $css, User $model, $chunk = 1)
     {
-        $users = $this->indexWithSelectedColumns($model, ['id', 'name', 'role', 'phone', 'company', 'nip', 'street', 'house_number', 'apartment_number', 'zip_code', 'city'], $chunk, 'Status 204: no users found');
+        $users = $this->indexWithSelectedColumns($model, ['id', 'name', 'role', 'phone', 'company', 'nip', 'street', 'house_number', 'apartment_number', 'zip_code', 'city'], 'Status 204: no users found', $chunk);
         $recordsTotal = DB::select(DB::raw("SELECT COUNT(*) as count FROM users"));
 
         $cssStoredData = $css->download();
@@ -41,7 +41,7 @@ class AdminToolsPageController extends PageController
     }
     public function productsIndex(CssController $css, Product $model, $chunk = 1)
     {
-        $products = $this->indexWithSelectedColumns($model, ['id', 'acronym', 'name', 'description', 'tax', 'price', 'warehouse', 'expose_level', 'image_id'], $chunk, 'Status 204: no products found');
+        $products = $this->indexWithSelectedColumns($model, ['id', 'acronym', 'name', 'description', 'tax', 'price', 'warehouse', 'expose_level', 'image_id'], 'Status 204: no products found', $chunk);
         $recordsTotal = DB::select(DB::raw("SELECT COUNT(*) as count FROM products"));
 
         $cssStoredData = $css->download();

@@ -32,21 +32,18 @@ const AdminTools = () => {
         };
     }, [dataDump]);
 
-     const [baseRoutePath, setBaseRouthPath] = useState("");
+    const [baseRoutePath, setBaseRouthPath] = useState("");
 
-     useEffect(() => {
-         setBaseRouthPath(window.location.pathname);
-
-     }, []);
+    useEffect(() => {
+        setBaseRouthPath(window.location.pathname);
+    }, []);
 
     const handleBasePath = () => {
-        let basePath = '';
-        if (baseRoutePath.includes('users'))
-            basePath = 'users';
-            else if (baseRoutePath.includes('products'))
-            basePath = 'products';
+        let basePath = "";
+        if (baseRoutePath.includes("users")) basePath = "users";
+        else if (baseRoutePath.includes("products")) basePath = "products";
         return basePath;
-   }
+    };
 
     return (
         <>
@@ -68,6 +65,7 @@ const AdminTools = () => {
                 classNameProps={store}
                 isActiveHref={responseStatus === 200}
                 biggestCellsKeys={["description", "name", "company", "street"]}
+                omitColumns={["image"]}
             />
             <NavPagesScroll
                 recordsTotal={recordsTotal}
